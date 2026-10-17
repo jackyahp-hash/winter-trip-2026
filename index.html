@@ -3662,6 +3662,1839 @@ body.studio-unlocked .day-plan-switcher-bar {
 }
 
 </style>
+<style>
+
+/* ============================================================
+   MOBILE TICKETS REVAMP & 3D LANYARD MASTERPIECE STYLES
+   ============================================================ */
+
+/* --- 1. Lanyard 3D Showcase Container --- */
+.lanyard-masterpiece-section {
+  margin: 36px 0 28px;
+  padding: 30px 24px;
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.92) 0%, rgba(246, 242, 234, 0.85) 100%);
+  border: 1px solid rgba(179, 140, 82, 0.4);
+  border-radius: var(--radius-lg, 24px);
+  box-shadow: 0 18px 45px rgba(22, 33, 46, 0.1), inset 0 1px 2px rgba(255, 255, 255, 0.9);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+body.theme-night .lanyard-masterpiece-section {
+  background: linear-gradient(165deg, rgba(22, 32, 45, 0.92) 0%, rgba(13, 19, 27, 0.95) 100%);
+  border-color: rgba(209, 171, 110, 0.35);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.08);
+}
+
+.lanyard-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+.lanyard-badge-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.lanyard-badge {
+  display: inline-block;
+  font-family: var(--display, "Cinzel", serif);
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  color: var(--gold, #b38c52);
+  background: rgba(179, 140, 82, 0.12);
+  border: 1px solid rgba(179, 140, 82, 0.3);
+  padding: 4px 14px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* Gyroscope toggle pill button */
+.gyro-toggle-pill {
+  appearance: none;
+  border: 1px solid rgba(179, 140, 82, 0.45);
+  background: rgba(179, 140, 82, 0.12);
+  color: var(--ink, #1e2631);
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-family: "Plus Jakarta Sans", var(--sans, sans-serif);
+  font-size: 0.76rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+body.theme-night .gyro-toggle-pill {
+  background: rgba(209, 171, 110, 0.15);
+  color: #ece7de;
+  border-color: rgba(209, 171, 110, 0.4);
+}
+.gyro-toggle-pill:hover {
+  background: var(--gold-gradient, linear-gradient(135deg, #c5a065, #e2cb9d));
+  color: #161209 !important;
+  transform: translateY(-1px);
+}
+.gyro-toggle-pill.active {
+  background: var(--gold-gradient, linear-gradient(135deg, #c5a065, #e2cb9d));
+  color: #161209 !important;
+  box-shadow: 0 0 16px rgba(179, 140, 82, 0.45);
+  font-weight: 700;
+  border-color: transparent;
+}
+.gyro-toggle-pill .gyro-icon {
+  font-size: 0.95rem;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+.gyro-toggle-pill.active .gyro-icon {
+  animation: gyroPulse 1.8s infinite ease-in-out;
+}
+@keyframes gyroPulse {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-15deg) scale(1.1); }
+  75% { transform: rotate(15deg) scale(1.1); }
+}
+
+.lanyard-title {
+  font-family: var(--serif, "Noto Serif TC", serif);
+  font-size: 1.48rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ink, #1e2631);
+  margin: 0 0 8px;
+}
+.lanyard-desc {
+  font-size: 0.88rem;
+  color: var(--mute, #78828f);
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* 3D Stage Container */
+.lanyard-stage-wrap {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  margin: 12px 0 18px;
+  border-radius: var(--radius-md, 16px);
+  background: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.4) 0%, rgba(235, 241, 248, 0.1) 60%, transparent 100%);
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+body.theme-night .lanyard-stage-wrap {
+  background: radial-gradient(circle at 50% 30%, rgba(35, 52, 72, 0.35) 0%, rgba(14, 20, 28, 0.1) 60%, transparent 100%);
+}
+@media (max-width: 768px) {
+  .lanyard-stage-wrap {
+    height: 380px;
+  }
+}
+
+.lanyard-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  touch-action: pan-y;
+}
+.lanyard-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  outline: none;
+}
+
+.lanyard-hint-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(22, 33, 46, 0.68);
+  color: #f8f5ee;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  padding: 5px 14px;
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  pointer-events: none;
+  opacity: 0.88;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+}
+body.theme-night .lanyard-hint-badge {
+  background: rgba(0, 0, 0, 0.65);
+  border-color: rgba(209, 171, 110, 0.3);
+  color: #e2cb9d;
+}
+
+/* Crew Selector Pills */
+.lanyard-crew-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 4px;
+}
+.lanyard-crew-chip {
+  appearance: none;
+  border: 1px solid rgba(179, 140, 82, 0.3);
+  background: rgba(255, 255, 255, 0.75);
+  padding: 5px 12px 5px 6px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+  font-family: "Plus Jakarta Sans", var(--sans, sans-serif);
+}
+body.theme-night .lanyard-crew-chip {
+  background: rgba(22, 32, 45, 0.75);
+  border-color: rgba(209, 171, 110, 0.3);
+}
+.lanyard-crew-chip img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid var(--gold, #b38c52);
+}
+.lanyard-crew-chip span {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ink, #1e2631);
+  letter-spacing: 0.5px;
+}
+.lanyard-crew-chip small {
+  font-size: 0.68rem;
+  color: var(--mute, #78828f);
+}
+.lanyard-crew-chip:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold, #b38c52);
+  box-shadow: 0 4px 12px rgba(179, 140, 82, 0.2);
+}
+.lanyard-crew-chip.active {
+  background: var(--gold-gradient, linear-gradient(135deg, #c5a065, #e2cb9d));
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(179, 140, 82, 0.38);
+}
+.lanyard-crew-chip.active span {
+  color: #161209 !important;
+}
+.lanyard-crew-chip.active small {
+  color: rgba(22, 18, 9, 0.78) !important;
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   REVAMPED MOBILE TICKETS (BOARDING PASS & SHINKANSEN TICKET)
+   ============================================================ */
+
+/* Mobile Notch Enhancements */
+.boarding-pass {
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+}
+.bp-notch-mobile-left,
+.bp-notch-mobile-right {
+  display: none;
+}
+
+/* Flip action button for tickets */
+.ticket-flip-btn {
+  appearance: none;
+  border: 1px solid rgba(179, 140, 82, 0.35);
+  background: rgba(179, 140, 82, 0.08);
+  color: var(--ink, #1e2631);
+  font-family: "Plus Jakarta Sans", var(--sans, sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+  margin-top: 6px;
+}
+body.theme-night .ticket-flip-btn {
+  background: rgba(209, 171, 110, 0.12);
+  color: #ece7de;
+  border-color: rgba(209, 171, 110, 0.35);
+}
+.ticket-flip-btn:hover {
+  background: var(--gold, #b38c52);
+  color: #161209;
+}
+
+/* 3D Flip Card Container */
+.ticket-flip-card {
+  perspective: 1200px;
+}
+.ticket-card-inner {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.ticket-card-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+.ticket-face-front,
+.ticket-face-back {
+  width: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.ticket-face-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transform: rotateY(180deg);
+  border-radius: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+/* Boarding Pass Back Face: Aviation Baggage & Rules */
+.boarding-pass-back {
+  background: #f4f0e6;
+  color: #1e2631;
+  border: 1px solid rgba(179, 140, 82, 0.35);
+  box-shadow: 0 16px 45px rgba(22, 33, 46, 0.12);
+}
+body.theme-night .boarding-pass-back {
+  background: #141c26;
+  color: #f1f3f7;
+  border-color: rgba(209, 171, 110, 0.35);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+}
+.bp-back-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(179, 140, 82, 0.25);
+  padding-bottom: 8px;
+}
+.bp-back-title {
+  font-family: var(--display, "Cinzel", serif);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #006564;
+  letter-spacing: 1.5px;
+}
+body.theme-night .bp-back-title { color: #5eead4; }
+.bp-baggage-tag {
+  background: rgba(179, 140, 82, 0.12);
+  border: 1px dashed rgba(179, 140, 82, 0.4);
+  border-radius: 8px;
+  padding: 12px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.bp-baggage-code {
+  font-family: "Space Mono", monospace;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.bp-back-notes {
+  font-size: 0.72rem;
+  color: var(--mute, #78828f);
+  line-height: 1.5;
+}
+
+/* Shinkansen Ticket Back Face: Classic Magnetic Strip */
+.shinkansen-ticket-back {
+  background: #2a2521;
+  color: #ded6cb;
+  border: 1px solid rgba(120, 100, 80, 0.4);
+  box-shadow: 0 16px 45px rgba(22, 33, 46, 0.15);
+  font-family: "Shippori Mincho", "Noto Serif TC", serif;
+}
+body.theme-night .shinkansen-ticket-back {
+  background: #181513;
+  color: #d1c7ba;
+  border-color: rgba(160, 130, 90, 0.35);
+}
+.sk-back-magnetic-strip {
+  width: 100%;
+  height: 28px;
+  background: #0f0d0c;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8), 0 1px 0 rgba(255, 255, 255, 0.1);
+  margin: 12px 0;
+  border-radius: 2px;
+}
+.sk-back-rules {
+  font-size: 0.7rem;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+
+/* ============================================================
+   RESPONSIVE OVERHAUL (MOBILE SCREEN SPECIFIC RULES)
+   ============================================================ */
+@media (max-width: 768px) {
+  /* 1. Ephemera container padding */
+  .ephemera-showcase {
+    padding: 20px 14px !important;
+    border-radius: 18px !important;
+  }
+  .ephemera-title {
+    font-size: 1.25rem !important;
+  }
+  .ephemera-desc {
+    font-size: 0.82rem !important;
+  }
+  .ticket-wallet-tabs {
+    width: 100% !important;
+    justify-content: stretch !important;
+    gap: 4px !important;
+  }
+  .tw-tab {
+    flex: 1 1 30% !important;
+    padding: 6px 10px !important;
+    font-size: 0.75rem !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .tw-tab small { display: none !important; }
+
+  /* 2. Boarding Pass Mobile Layout Fix */
+  .boarding-pass {
+    flex-direction: column !important;
+    border-radius: 16px !important;
+  }
+  .bp-main {
+    border-right: none !important;
+    border-bottom: 2px dashed rgba(179, 140, 82, 0.45) !important;
+    padding: 20px 16px 18px !important;
+    position: relative !important;
+  }
+  /* Restore Punch Notches at the Perforation seam */
+  .bp-main::before,
+  .bp-main::after {
+    display: block !important;
+    position: absolute !important;
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 50% !important;
+    background: var(--paper, #f8f5ee) !important;
+    box-shadow: inset 0 0 0 1px rgba(179, 140, 82, 0.35) !important;
+    z-index: 12 !important;
+  }
+  .bp-main::before {
+    top: auto !important;
+    bottom: -10px !important;
+    left: -10px !important;
+    right: auto !important;
+  }
+  .bp-main::after {
+    top: auto !important;
+    bottom: -10px !important;
+    right: -10px !important;
+    left: auto !important;
+  }
+
+  /* Keep flight path horizontal & crystal clear */
+  .bp-route-hero {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-bottom: 14px !important;
+  }
+  .bp-city {
+    flex: 0 0 auto !important;
+  }
+  .bp-code {
+    font-size: 2rem !important;
+    line-height: 1 !important;
+  }
+  .bp-city-name {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.8px !important;
+  }
+  .bp-flight-path {
+    flex: 1 1 auto !important;
+    width: auto !important;
+    padding: 0 8px !important;
+  }
+  .bp-flight-num {
+    font-size: 0.78rem !important;
+    letter-spacing: 1.5px !important;
+  }
+  .bp-path-line {
+    margin: 2px 0 !important;
+  }
+  .bp-duration {
+    font-size: 0.64rem !important;
+  }
+
+  /* Grid: 2 columns, passenger takes full row */
+  .bp-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px 12px !important;
+  }
+  .bp-field:first-child {
+    grid-column: span 2 !important;
+  }
+  .bp-field small {
+    font-size: 0.62rem !important;
+  }
+  .bp-field b {
+    font-size: 0.88rem !important;
+    font-variant-numeric: tabular-nums lining-nums !important;
+  }
+
+  /* Safe Position for Narita Entry Stamp */
+  .boarding-pass .bp-stamp {
+    top: auto !important;
+    bottom: 10px !important;
+    right: 12px !important;
+    width: 58px !important;
+    height: 58px !important;
+    transform: rotate(-8deg) !important;
+    opacity: 0.82 !important;
+    pointer-events: none !important;
+    z-index: 5 !important;
+  }
+
+  /* Stub bottom layout */
+  .bp-stub {
+    flex: auto !important;
+    padding: 16px 16px 14px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    background: rgba(179, 140, 82, 0.05) !important;
+  }
+  .bp-stub-top b {
+    font-size: 0.95rem !important;
+  }
+  .bp-barcode-svg {
+    height: 26px !important;
+    width: 140px !important;
+  }
+  .bp-barcode-wrap {
+    margin-top: 0 !important;
+  }
+
+  /* 3. Shinkansen Ticket Mobile Layout Fix */
+  .shinkansen-ticket {
+    padding: 18px 16px !important;
+    border-radius: 14px !important;
+  }
+  .sk-header {
+    margin-bottom: 12px !important;
+    padding-bottom: 6px !important;
+  }
+  .sk-title {
+    font-size: 0.92rem !important;
+    letter-spacing: 1.5px !important;
+  }
+  .sk-jr {
+    font-size: 0.78rem !important;
+  }
+
+  .sk-route-row {
+    padding: 8px 12px !important;
+    margin-bottom: 12px !important;
+  }
+  .sk-name {
+    font-size: 1.35rem !important;
+    letter-spacing: 1.5px !important;
+  }
+  .sk-arrow {
+    font-size: 1.25rem !important;
+  }
+
+  /* Train Info in 4 neat compact columns */
+  .sk-train-info {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 4px !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 12px !important;
+    text-align: center !important;
+  }
+  .sk-train-info small {
+    font-size: 0.6rem !important;
+    margin-bottom: 1px !important;
+  }
+  .sk-train-info b {
+    font-size: 0.8rem !important;
+    font-variant-numeric: tabular-nums !important;
+    white-space: nowrap !important;
+  }
+
+  /* Safe Position for JR Stamp */
+  .shinkansen-ticket .sk-stamp {
+    top: auto !important;
+    bottom: 8px !important;
+    right: 12px !important;
+    width: 56px !important;
+    height: 56px !important;
+    transform: rotate(6deg) !important;
+    opacity: 0.85 !important;
+    pointer-events: none !important;
+    z-index: 5 !important;
+  }
+
+  .sk-bottom-row {
+    font-size: 0.75rem !important;
+  }
+  .sk-fare b {
+    font-size: 0.95rem !important;
+  }
+}
+
+</style>
+<style>
+
+/* ============================================================
+   MOBILE TICKETS REVAMP & 3D LANYARD MASTERPIECE STYLES
+   ============================================================ */
+
+/* --- 1. Lanyard 3D Showcase Container --- */
+.lanyard-masterpiece-section {
+  margin: 36px 0 28px;
+  padding: 30px 24px;
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.92) 0%, rgba(246, 242, 234, 0.85) 100%);
+  border: 1px solid rgba(179, 140, 82, 0.4);
+  border-radius: var(--radius-lg, 24px);
+  box-shadow: 0 18px 45px rgba(22, 33, 46, 0.1), inset 0 1px 2px rgba(255, 255, 255, 0.9);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+body.theme-night .lanyard-masterpiece-section {
+  background: linear-gradient(165deg, rgba(22, 32, 45, 0.92) 0%, rgba(13, 19, 27, 0.95) 100%);
+  border-color: rgba(209, 171, 110, 0.35);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.08);
+}
+
+.lanyard-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+.lanyard-badge-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.lanyard-badge {
+  display: inline-block;
+  font-family: var(--display, "Cinzel", serif);
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  color: var(--gold, #b38c52);
+  background: rgba(179, 140, 82, 0.12);
+  border: 1px solid rgba(179, 140, 82, 0.3);
+  padding: 4px 14px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* Gyroscope toggle pill button */
+.gyro-toggle-pill {
+  appearance: none;
+  border: 1px solid rgba(179, 140, 82, 0.45);
+  background: rgba(179, 140, 82, 0.12);
+  color: var(--ink, #1e2631);
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-family: "Plus Jakarta Sans", var(--sans, sans-serif);
+  font-size: 0.76rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+body.theme-night .gyro-toggle-pill {
+  background: rgba(209, 171, 110, 0.15);
+  color: #ece7de;
+  border-color: rgba(209, 171, 110, 0.4);
+}
+.gyro-toggle-pill:hover {
+  background: var(--gold-gradient, linear-gradient(135deg, #c5a065, #e2cb9d));
+  color: #161209 !important;
+  transform: translateY(-1px);
+}
+.gyro-toggle-pill.active {
+  background: var(--gold-gradient, linear-gradient(135deg, #c5a065, #e2cb9d));
+  color: #161209 !important;
+  box-shadow: 0 0 16px rgba(179, 140, 82, 0.45);
+  font-weight: 700;
+  border-color: transparent;
+}
+.gyro-toggle-pill .gyro-icon {
+  font-size: 0.95rem;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+.gyro-toggle-pill.active .gyro-icon {
+  animation: gyroPulse 1.8s infinite ease-in-out;
+}
+@keyframes gyroPulse {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-15deg) scale(1.1); }
+  75% { transform: rotate(15deg) scale(1.1); }
+}
+
+.lanyard-title {
+  font-family: var(--serif, "Noto Serif TC", serif);
+  font-size: 1.48rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ink, #1e2631);
+  margin: 0 0 8px;
+}
+.lanyard-desc {
+  font-size: 0.88rem;
+  color: var(--mute, #78828f);
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* 3D Stage Container */
+.lanyard-stage-wrap {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  margin: 12px 0 18px;
+  border-radius: var(--radius-md, 16px);
+  background: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.4) 0%, rgba(235, 241, 248, 0.1) 60%, transparent 100%);
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+body.theme-night .lanyard-stage-wrap {
+  background: radial-gradient(circle at 50% 30%, rgba(35, 52, 72, 0.35) 0%, rgba(14, 20, 28, 0.1) 60%, transparent 100%);
+}
+@media (max-width: 768px) {
+  .lanyard-stage-wrap {
+    height: 380px;
+  }
+}
+
+.lanyard-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  touch-action: pan-y;
+}
+.lanyard-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  outline: none;
+}
+
+.lanyard-hint-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(22, 33, 46, 0.68);
+  color: #f8f5ee;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  padding: 5px 14px;
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  pointer-events: none;
+  opacity: 0.88;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+}
+body.theme-night .lanyard-hint-badge {
+  background: rgba(0, 0, 0, 0.65);
+  border-color: rgba(209, 171, 110, 0.3);
+  color: #e2cb9d;
+}
+
+/* Crew Selector Pills */
+.lanyard-crew-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 4px;
+}
+.lanyard-crew-chip {
+  appearance: none;
+  border: 1px solid rgba(179, 140, 82, 0.3);
+  background: rgba(255, 255, 255, 0.75);
+  padding: 5px 12px 5px 6px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+  font-family: "Plus Jakarta Sans", var(--sans, sans-serif);
+}
+body.theme-night .lanyard-crew-chip {
+  background: rgba(22, 32, 45, 0.75);
+  border-color: rgba(209, 171, 110, 0.3);
+}
+.lanyard-crew-chip img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid var(--gold, #b38c52);
+}
+.lanyard-crew-chip span {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ink, #1e2631);
+  letter-spacing: 0.5px;
+}
+.lanyard-crew-chip small {
+  font-size: 0.68rem;
+  color: var(--mute, #78828f);
+}
+.lanyard-crew-chip:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold, #b38c52);
+  box-shadow: 0 4px 12px rgba(179, 140, 82, 0.2);
+}
+.lanyard-crew-chip.active {
+  background: var(--gold-gradient, linear-gradient(135deg, #c5a065, #e2cb9d));
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(179, 140, 82, 0.38);
+}
+.lanyard-crew-chip.active span {
+  color: #161209 !important;
+}
+.lanyard-crew-chip.active small {
+  color: rgba(22, 18, 9, 0.78) !important;
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   REVAMPED MOBILE TICKETS (BOARDING PASS & SHINKANSEN TICKET)
+   ============================================================ */
+
+/* Mobile Notch Enhancements */
+.boarding-pass {
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+}
+.bp-notch-mobile-left,
+.bp-notch-mobile-right {
+  display: none;
+}
+
+/* Flip action button for tickets */
+.ticket-flip-btn {
+  appearance: none;
+  border: 1px solid rgba(179, 140, 82, 0.35);
+  background: rgba(179, 140, 82, 0.08);
+  color: var(--ink, #1e2631);
+  font-family: "Plus Jakarta Sans", var(--sans, sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+  margin-top: 6px;
+}
+body.theme-night .ticket-flip-btn {
+  background: rgba(209, 171, 110, 0.12);
+  color: #ece7de;
+  border-color: rgba(209, 171, 110, 0.35);
+}
+.ticket-flip-btn:hover {
+  background: var(--gold, #b38c52);
+  color: #161209;
+}
+
+/* 3D Flip Card Container */
+.ticket-flip-card {
+  perspective: 1200px;
+}
+.ticket-card-inner {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.ticket-card-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+.ticket-face-front,
+.ticket-face-back {
+  width: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.ticket-face-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transform: rotateY(180deg);
+  border-radius: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+/* Boarding Pass Back Face: Aviation Baggage & Rules */
+.boarding-pass-back {
+  background: #f4f0e6;
+  color: #1e2631;
+  border: 1px solid rgba(179, 140, 82, 0.35);
+  box-shadow: 0 16px 45px rgba(22, 33, 46, 0.12);
+}
+body.theme-night .boarding-pass-back {
+  background: #141c26;
+  color: #f1f3f7;
+  border-color: rgba(209, 171, 110, 0.35);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+}
+.bp-back-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(179, 140, 82, 0.25);
+  padding-bottom: 8px;
+}
+.bp-back-title {
+  font-family: var(--display, "Cinzel", serif);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #006564;
+  letter-spacing: 1.5px;
+}
+body.theme-night .bp-back-title { color: #5eead4; }
+.bp-baggage-tag {
+  background: rgba(179, 140, 82, 0.12);
+  border: 1px dashed rgba(179, 140, 82, 0.4);
+  border-radius: 8px;
+  padding: 12px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.bp-baggage-code {
+  font-family: "Space Mono", monospace;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.bp-back-notes {
+  font-size: 0.72rem;
+  color: var(--mute, #78828f);
+  line-height: 1.5;
+}
+
+/* Shinkansen Ticket Back Face: Classic Magnetic Strip */
+.shinkansen-ticket-back {
+  background: #2a2521;
+  color: #ded6cb;
+  border: 1px solid rgba(120, 100, 80, 0.4);
+  box-shadow: 0 16px 45px rgba(22, 33, 46, 0.15);
+  font-family: "Shippori Mincho", "Noto Serif TC", serif;
+}
+body.theme-night .shinkansen-ticket-back {
+  background: #181513;
+  color: #d1c7ba;
+  border-color: rgba(160, 130, 90, 0.35);
+}
+.sk-back-magnetic-strip {
+  width: 100%;
+  height: 28px;
+  background: #0f0d0c;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8), 0 1px 0 rgba(255, 255, 255, 0.1);
+  margin: 12px 0;
+  border-radius: 2px;
+}
+.sk-back-rules {
+  font-size: 0.7rem;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+
+/* ============================================================
+   RESPONSIVE OVERHAUL (MOBILE SCREEN SPECIFIC RULES)
+   ============================================================ */
+@media (max-width: 768px) {
+  /* 1. Ephemera container padding */
+  .ephemera-showcase {
+    padding: 20px 14px !important;
+    border-radius: 18px !important;
+  }
+  .ephemera-title {
+    font-size: 1.25rem !important;
+  }
+  .ephemera-desc {
+    font-size: 0.82rem !important;
+  }
+  .ticket-wallet-tabs {
+    width: 100% !important;
+    justify-content: stretch !important;
+    gap: 4px !important;
+  }
+  .tw-tab {
+    flex: 1 1 30% !important;
+    padding: 6px 10px !important;
+    font-size: 0.75rem !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .tw-tab small { display: none !important; }
+
+  /* 2. Boarding Pass Mobile Layout Fix */
+  .boarding-pass {
+    flex-direction: column !important;
+    border-radius: 16px !important;
+  }
+  .bp-main {
+    border-right: none !important;
+    border-bottom: 2px dashed rgba(179, 140, 82, 0.45) !important;
+    padding: 20px 16px 18px !important;
+    position: relative !important;
+  }
+  /* Restore Punch Notches at the Perforation seam */
+  .bp-main::before,
+  .bp-main::after {
+    display: block !important;
+    position: absolute !important;
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 50% !important;
+    background: var(--paper, #f8f5ee) !important;
+    box-shadow: inset 0 0 0 1px rgba(179, 140, 82, 0.35) !important;
+    z-index: 12 !important;
+  }
+  .bp-main::before {
+    top: auto !important;
+    bottom: -10px !important;
+    left: -10px !important;
+    right: auto !important;
+  }
+  .bp-main::after {
+    top: auto !important;
+    bottom: -10px !important;
+    right: -10px !important;
+    left: auto !important;
+  }
+
+  /* Keep flight path horizontal & crystal clear */
+  .bp-route-hero {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-bottom: 14px !important;
+  }
+  .bp-city {
+    flex: 0 0 auto !important;
+  }
+  .bp-code {
+    font-size: 2rem !important;
+    line-height: 1 !important;
+  }
+  .bp-city-name {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.8px !important;
+  }
+  .bp-flight-path {
+    flex: 1 1 auto !important;
+    width: auto !important;
+    padding: 0 8px !important;
+  }
+  .bp-flight-num {
+    font-size: 0.78rem !important;
+    letter-spacing: 1.5px !important;
+  }
+  .bp-path-line {
+    margin: 2px 0 !important;
+  }
+  .bp-duration {
+    font-size: 0.64rem !important;
+  }
+
+  /* Grid: 2 columns, passenger takes full row */
+  .bp-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px 12px !important;
+  }
+  .bp-field:first-child {
+    grid-column: span 2 !important;
+  }
+  .bp-field small {
+    font-size: 0.62rem !important;
+  }
+  .bp-field b {
+    font-size: 0.88rem !important;
+    font-variant-numeric: tabular-nums lining-nums !important;
+  }
+
+  /* Safe Position for Narita Entry Stamp */
+  .boarding-pass .bp-stamp {
+    top: auto !important;
+    bottom: 10px !important;
+    right: 12px !important;
+    width: 58px !important;
+    height: 58px !important;
+    transform: rotate(-8deg) !important;
+    opacity: 0.82 !important;
+    pointer-events: none !important;
+    z-index: 5 !important;
+  }
+
+  /* Stub bottom layout */
+  .bp-stub {
+    flex: auto !important;
+    padding: 16px 16px 14px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    background: rgba(179, 140, 82, 0.05) !important;
+  }
+  .bp-stub-top b {
+    font-size: 0.95rem !important;
+  }
+  .bp-barcode-svg {
+    height: 26px !important;
+    width: 140px !important;
+  }
+  .bp-barcode-wrap {
+    margin-top: 0 !important;
+  }
+
+  /* 3. Shinkansen Ticket Mobile Layout Fix */
+  .shinkansen-ticket {
+    padding: 18px 16px !important;
+    border-radius: 14px !important;
+  }
+  .sk-header {
+    margin-bottom: 12px !important;
+    padding-bottom: 6px !important;
+  }
+  .sk-title {
+    font-size: 0.92rem !important;
+    letter-spacing: 1.5px !important;
+  }
+  .sk-jr {
+    font-size: 0.78rem !important;
+  }
+
+  .sk-route-row {
+    padding: 8px 12px !important;
+    margin-bottom: 12px !important;
+  }
+  .sk-name {
+    font-size: 1.35rem !important;
+    letter-spacing: 1.5px !important;
+  }
+  .sk-arrow {
+    font-size: 1.25rem !important;
+  }
+
+  /* Train Info in 4 neat compact columns */
+  .sk-train-info {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 4px !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 12px !important;
+    text-align: center !important;
+  }
+  .sk-train-info small {
+    font-size: 0.6rem !important;
+    margin-bottom: 1px !important;
+  }
+  .sk-train-info b {
+    font-size: 0.8rem !important;
+    font-variant-numeric: tabular-nums !important;
+    white-space: nowrap !important;
+  }
+
+  /* Safe Position for JR Stamp */
+  .shinkansen-ticket .sk-stamp {
+    top: auto !important;
+    bottom: 8px !important;
+    right: 12px !important;
+    width: 56px !important;
+    height: 56px !important;
+    transform: rotate(6deg) !important;
+    opacity: 0.85 !important;
+    pointer-events: none !important;
+    z-index: 5 !important;
+  }
+
+  .sk-bottom-row {
+    font-size: 0.75rem !important;
+  }
+  .sk-fare b {
+    font-size: 0.95rem !important;
+  }
+}
+
+</style>
+<style>
+
+/* ============================================================
+   MOBILE TICKETS REVAMP & 3D LANYARD MASTERPIECE STYLES
+   ============================================================ */
+
+/* --- 1. Lanyard 3D Showcase Container --- */
+.lanyard-masterpiece-section {
+  margin: 36px 0 28px;
+  padding: 30px 24px;
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.92) 0%, rgba(246, 242, 234, 0.85) 100%);
+  border: 1px solid rgba(179, 140, 82, 0.4);
+  border-radius: var(--radius-lg, 24px);
+  box-shadow: 0 18px 45px rgba(22, 33, 46, 0.1), inset 0 1px 2px rgba(255, 255, 255, 0.9);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+body.theme-night .lanyard-masterpiece-section {
+  background: linear-gradient(165deg, rgba(22, 32, 45, 0.92) 0%, rgba(13, 19, 27, 0.95) 100%);
+  border-color: rgba(209, 171, 110, 0.35);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.08);
+}
+
+.lanyard-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+.lanyard-badge-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.lanyard-badge {
+  display: inline-block;
+  font-family: var(--display, "Cinzel", serif);
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  color: var(--gold, #b38c52);
+  background: rgba(179, 140, 82, 0.12);
+  border: 1px solid rgba(179, 140, 82, 0.3);
+  padding: 4px 14px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* Gyroscope toggle pill button */
+.gyro-toggle-pill {
+  appearance: none;
+  border: 1px solid rgba(179, 140, 82, 0.45);
+  background: rgba(179, 140, 82, 0.12);
+  color: var(--ink, #1e2631);
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-family: "Plus Jakarta Sans", var(--sans, sans-serif);
+  font-size: 0.76rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+body.theme-night .gyro-toggle-pill {
+  background: rgba(209, 171, 110, 0.15);
+  color: #ece7de;
+  border-color: rgba(209, 171, 110, 0.4);
+}
+.gyro-toggle-pill:hover {
+  background: var(--gold-gradient, linear-gradient(135deg, #c5a065, #e2cb9d));
+  color: #161209 !important;
+  transform: translateY(-1px);
+}
+.gyro-toggle-pill.active {
+  background: var(--gold-gradient, linear-gradient(135deg, #c5a065, #e2cb9d));
+  color: #161209 !important;
+  box-shadow: 0 0 16px rgba(179, 140, 82, 0.45);
+  font-weight: 700;
+  border-color: transparent;
+}
+.gyro-toggle-pill .gyro-icon {
+  font-size: 0.95rem;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+.gyro-toggle-pill.active .gyro-icon {
+  animation: gyroPulse 1.8s infinite ease-in-out;
+}
+@keyframes gyroPulse {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-15deg) scale(1.1); }
+  75% { transform: rotate(15deg) scale(1.1); }
+}
+
+.lanyard-title {
+  font-family: var(--serif, "Noto Serif TC", serif);
+  font-size: 1.48rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ink, #1e2631);
+  margin: 0 0 8px;
+}
+.lanyard-desc {
+  font-size: 0.88rem;
+  color: var(--mute, #78828f);
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* 3D Stage Container */
+.lanyard-stage-wrap {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  margin: 12px 0 18px;
+  border-radius: var(--radius-md, 16px);
+  background: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.4) 0%, rgba(235, 241, 248, 0.1) 60%, transparent 100%);
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+body.theme-night .lanyard-stage-wrap {
+  background: radial-gradient(circle at 50% 30%, rgba(35, 52, 72, 0.35) 0%, rgba(14, 20, 28, 0.1) 60%, transparent 100%);
+}
+@media (max-width: 768px) {
+  .lanyard-stage-wrap {
+    height: 380px;
+  }
+}
+
+.lanyard-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  touch-action: pan-y;
+}
+.lanyard-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  outline: none;
+}
+
+.lanyard-hint-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(22, 33, 46, 0.68);
+  color: #f8f5ee;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  padding: 5px 14px;
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  pointer-events: none;
+  opacity: 0.88;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+}
+body.theme-night .lanyard-hint-badge {
+  background: rgba(0, 0, 0, 0.65);
+  border-color: rgba(209, 171, 110, 0.3);
+  color: #e2cb9d;
+}
+
+/* Crew Selector Pills */
+.lanyard-crew-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 4px;
+}
+.lanyard-crew-chip {
+  appearance: none;
+  border: 1px solid rgba(179, 140, 82, 0.3);
+  background: rgba(255, 255, 255, 0.75);
+  padding: 5px 12px 5px 6px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+  font-family: "Plus Jakarta Sans", var(--sans, sans-serif);
+}
+body.theme-night .lanyard-crew-chip {
+  background: rgba(22, 32, 45, 0.75);
+  border-color: rgba(209, 171, 110, 0.3);
+}
+.lanyard-crew-chip img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid var(--gold, #b38c52);
+}
+.lanyard-crew-chip span {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ink, #1e2631);
+  letter-spacing: 0.5px;
+}
+.lanyard-crew-chip small {
+  font-size: 0.68rem;
+  color: var(--mute, #78828f);
+}
+.lanyard-crew-chip:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold, #b38c52);
+  box-shadow: 0 4px 12px rgba(179, 140, 82, 0.2);
+}
+.lanyard-crew-chip.active {
+  background: var(--gold-gradient, linear-gradient(135deg, #c5a065, #e2cb9d));
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(179, 140, 82, 0.38);
+}
+.lanyard-crew-chip.active span {
+  color: #161209 !important;
+}
+.lanyard-crew-chip.active small {
+  color: rgba(22, 18, 9, 0.78) !important;
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   REVAMPED MOBILE TICKETS (BOARDING PASS & SHINKANSEN TICKET)
+   ============================================================ */
+
+/* Mobile Notch Enhancements */
+.boarding-pass {
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+}
+.bp-notch-mobile-left,
+.bp-notch-mobile-right {
+  display: none;
+}
+
+/* Flip action button for tickets */
+.ticket-flip-btn {
+  appearance: none;
+  border: 1px solid rgba(179, 140, 82, 0.35);
+  background: rgba(179, 140, 82, 0.08);
+  color: var(--ink, #1e2631);
+  font-family: "Plus Jakarta Sans", var(--sans, sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+  margin-top: 6px;
+}
+body.theme-night .ticket-flip-btn {
+  background: rgba(209, 171, 110, 0.12);
+  color: #ece7de;
+  border-color: rgba(209, 171, 110, 0.35);
+}
+.ticket-flip-btn:hover {
+  background: var(--gold, #b38c52);
+  color: #161209;
+}
+
+/* 3D Flip Card Container */
+.ticket-flip-card {
+  perspective: 1200px;
+}
+.ticket-card-inner {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.ticket-card-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+.ticket-face-front,
+.ticket-face-back {
+  width: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.ticket-face-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transform: rotateY(180deg);
+  border-radius: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+/* Boarding Pass Back Face: Aviation Baggage & Rules */
+.boarding-pass-back {
+  background: #f4f0e6;
+  color: #1e2631;
+  border: 1px solid rgba(179, 140, 82, 0.35);
+  box-shadow: 0 16px 45px rgba(22, 33, 46, 0.12);
+}
+body.theme-night .boarding-pass-back {
+  background: #141c26;
+  color: #f1f3f7;
+  border-color: rgba(209, 171, 110, 0.35);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+}
+.bp-back-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(179, 140, 82, 0.25);
+  padding-bottom: 8px;
+}
+.bp-back-title {
+  font-family: var(--display, "Cinzel", serif);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #006564;
+  letter-spacing: 1.5px;
+}
+body.theme-night .bp-back-title { color: #5eead4; }
+.bp-baggage-tag {
+  background: rgba(179, 140, 82, 0.12);
+  border: 1px dashed rgba(179, 140, 82, 0.4);
+  border-radius: 8px;
+  padding: 12px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.bp-baggage-code {
+  font-family: "Space Mono", monospace;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.bp-back-notes {
+  font-size: 0.72rem;
+  color: var(--mute, #78828f);
+  line-height: 1.5;
+}
+
+/* Shinkansen Ticket Back Face: Classic Magnetic Strip */
+.shinkansen-ticket-back {
+  background: #2a2521;
+  color: #ded6cb;
+  border: 1px solid rgba(120, 100, 80, 0.4);
+  box-shadow: 0 16px 45px rgba(22, 33, 46, 0.15);
+  font-family: "Shippori Mincho", "Noto Serif TC", serif;
+}
+body.theme-night .shinkansen-ticket-back {
+  background: #181513;
+  color: #d1c7ba;
+  border-color: rgba(160, 130, 90, 0.35);
+}
+.sk-back-magnetic-strip {
+  width: 100%;
+  height: 28px;
+  background: #0f0d0c;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8), 0 1px 0 rgba(255, 255, 255, 0.1);
+  margin: 12px 0;
+  border-radius: 2px;
+}
+.sk-back-rules {
+  font-size: 0.7rem;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+
+/* ============================================================
+   RESPONSIVE OVERHAUL (MOBILE SCREEN SPECIFIC RULES)
+   ============================================================ */
+@media (max-width: 768px) {
+  /* 1. Ephemera container padding */
+  .ephemera-showcase {
+    padding: 20px 14px !important;
+    border-radius: 18px !important;
+  }
+  .ephemera-title {
+    font-size: 1.25rem !important;
+  }
+  .ephemera-desc {
+    font-size: 0.82rem !important;
+  }
+  .ticket-wallet-tabs {
+    width: 100% !important;
+    justify-content: stretch !important;
+    gap: 4px !important;
+  }
+  .tw-tab {
+    flex: 1 1 30% !important;
+    padding: 6px 10px !important;
+    font-size: 0.75rem !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .tw-tab small { display: none !important; }
+
+  /* 2. Boarding Pass Mobile Layout Fix */
+  .boarding-pass {
+    flex-direction: column !important;
+    border-radius: 16px !important;
+  }
+  .bp-main {
+    border-right: none !important;
+    border-bottom: 2px dashed rgba(179, 140, 82, 0.45) !important;
+    padding: 20px 16px 18px !important;
+    position: relative !important;
+  }
+  /* Restore Punch Notches at the Perforation seam */
+  .bp-main::before,
+  .bp-main::after {
+    display: block !important;
+    position: absolute !important;
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 50% !important;
+    background: var(--paper, #f8f5ee) !important;
+    box-shadow: inset 0 0 0 1px rgba(179, 140, 82, 0.35) !important;
+    z-index: 12 !important;
+  }
+  .bp-main::before {
+    top: auto !important;
+    bottom: -10px !important;
+    left: -10px !important;
+    right: auto !important;
+  }
+  .bp-main::after {
+    top: auto !important;
+    bottom: -10px !important;
+    right: -10px !important;
+    left: auto !important;
+  }
+
+  /* Keep flight path horizontal & crystal clear */
+  .bp-route-hero {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-bottom: 14px !important;
+  }
+  .bp-city {
+    flex: 0 0 auto !important;
+  }
+  .bp-code {
+    font-size: 2rem !important;
+    line-height: 1 !important;
+  }
+  .bp-city-name {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.8px !important;
+  }
+  .bp-flight-path {
+    flex: 1 1 auto !important;
+    width: auto !important;
+    padding: 0 8px !important;
+  }
+  .bp-flight-num {
+    font-size: 0.78rem !important;
+    letter-spacing: 1.5px !important;
+  }
+  .bp-path-line {
+    margin: 2px 0 !important;
+  }
+  .bp-duration {
+    font-size: 0.64rem !important;
+  }
+
+  /* Grid: 2 columns, passenger takes full row */
+  .bp-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px 12px !important;
+  }
+  .bp-field:first-child {
+    grid-column: span 2 !important;
+  }
+  .bp-field small {
+    font-size: 0.62rem !important;
+  }
+  .bp-field b {
+    font-size: 0.88rem !important;
+    font-variant-numeric: tabular-nums lining-nums !important;
+  }
+
+  /* Safe Position for Narita Entry Stamp */
+  .boarding-pass .bp-stamp {
+    top: auto !important;
+    bottom: 10px !important;
+    right: 12px !important;
+    width: 58px !important;
+    height: 58px !important;
+    transform: rotate(-8deg) !important;
+    opacity: 0.82 !important;
+    pointer-events: none !important;
+    z-index: 5 !important;
+  }
+
+  /* Stub bottom layout */
+  .bp-stub {
+    flex: auto !important;
+    padding: 16px 16px 14px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    background: rgba(179, 140, 82, 0.05) !important;
+  }
+  .bp-stub-top b {
+    font-size: 0.95rem !important;
+  }
+  .bp-barcode-svg {
+    height: 26px !important;
+    width: 140px !important;
+  }
+  .bp-barcode-wrap {
+    margin-top: 0 !important;
+  }
+
+  /* 3. Shinkansen Ticket Mobile Layout Fix */
+  .shinkansen-ticket {
+    padding: 18px 16px !important;
+    border-radius: 14px !important;
+  }
+  .sk-header {
+    margin-bottom: 12px !important;
+    padding-bottom: 6px !important;
+  }
+  .sk-title {
+    font-size: 0.92rem !important;
+    letter-spacing: 1.5px !important;
+  }
+  .sk-jr {
+    font-size: 0.78rem !important;
+  }
+
+  .sk-route-row {
+    padding: 8px 12px !important;
+    margin-bottom: 12px !important;
+  }
+  .sk-name {
+    font-size: 1.35rem !important;
+    letter-spacing: 1.5px !important;
+  }
+  .sk-arrow {
+    font-size: 1.25rem !important;
+  }
+
+  /* Train Info in 4 neat compact columns */
+  .sk-train-info {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 4px !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 12px !important;
+    text-align: center !important;
+  }
+  .sk-train-info small {
+    font-size: 0.6rem !important;
+    margin-bottom: 1px !important;
+  }
+  .sk-train-info b {
+    font-size: 0.8rem !important;
+    font-variant-numeric: tabular-nums !important;
+    white-space: nowrap !important;
+  }
+
+  /* Safe Position for JR Stamp */
+  .shinkansen-ticket .sk-stamp {
+    top: auto !important;
+    bottom: 8px !important;
+    right: 12px !important;
+    width: 56px !important;
+    height: 56px !important;
+    transform: rotate(6deg) !important;
+    opacity: 0.85 !important;
+    pointer-events: none !important;
+    z-index: 5 !important;
+  }
+
+  .sk-bottom-row {
+    font-size: 0.75rem !important;
+  }
+  .sk-fare b {
+    font-size: 0.95rem !important;
+  }
+}
+
+</style>
 </head>
 <body>
 
@@ -6943,7 +8776,67 @@ body.studio-unlocked .day-plan-switcher-bar {
       <h3 style="font-family:var(--serif);margin:6px 0;font-size:1.35rem;">雪國滑雪六人行陣容</h3>
     </div>
     
-    <!-- ==================== VIP SKI RESORT ACCESS PASSES ==================== -->
+    
+    <!-- ==================== 3D TACTILE LANYARD SHOWCASE ==================== -->
+    <div class="lanyard-masterpiece-section">
+      <div class="lanyard-header">
+        <div class="lanyard-badge-wrap">
+          <span class="lanyard-badge">TACTILE 3D EPHEMERA ・ 實體體感吊牌</span>
+          <button type="button" class="gyro-toggle-pill" id="gyro-toggle-btn" onclick="toggleLanyardGyro()" title="點擊授權或開啟手機體感陀螺儀">
+            <span class="gyro-icon">📱</span>
+            <span class="gyro-text" id="gyro-status-text">體感陀螺儀：點擊連動手機晃動</span>
+          </button>
+        </div>
+        <h3 class="lanyard-title">越後湯澤・雪山 VIP 實體通行證</h3>
+        <p class="lanyard-desc">
+          真・物理質點張力模擬 ＆ 全息彩虹折射。可拖拽拉彈、甩動回彈；手持手機傾斜時，吊帶與通行證隨真實重力與晃動自然擺動！
+        </p>
+      </div>
+
+      <!-- 3D WebGL Canvas Stage -->
+      <div class="lanyard-stage-wrap">
+        <div id="lanyard-interactive-container" class="lanyard-container"></div>
+        <div class="lanyard-hint-badge">
+          <span>👆 拖拽卡片拉彈 / 點擊翻轉 / 📱 傾斜晃動手機體感連動</span>
+        </div>
+      </div>
+
+      <!-- 6 Members Interactive Switcher -->
+      <div class="lanyard-crew-selector" role="tablist" aria-label="切換通行證成員">
+        <button type="button" class="lanyard-crew-chip active" onclick="switchLanyardMember(0, this)">
+          <img src="img/avatar_jacky.jpg" alt="Jacky">
+          <span>JACKY</span>
+          <small>單板先鋒</small>
+        </button>
+        <button type="button" class="lanyard-crew-chip" onclick="switchLanyardMember(1, this)">
+          <img src="img/avatar_sophie.jpg" alt="Sophie">
+          <span>SOPHIE</span>
+          <small>光影記錄</small>
+        </button>
+        <button type="button" class="lanyard-crew-chip" onclick="switchLanyardMember(2, this)">
+          <img src="img/avatar_mikep.jpg" alt="Mike P">
+          <span>MIKE P.</span>
+          <small>深雪狂熱</small>
+        </button>
+        <button type="button" class="lanyard-crew-chip" onclick="switchLanyardMember(3, this)">
+          <img src="img/avatar_amy.jpg" alt="Amy">
+          <span>AMY</span>
+          <small>湯治巡禮</small>
+        </button>
+        <button type="button" class="lanyard-crew-chip" onclick="switchLanyardMember(4, this)">
+          <img src="img/avatar_rem.jpg" alt="Rem">
+          <span>REM</span>
+          <small>美饌鑑賞</small>
+        </button>
+        <button type="button" class="lanyard-crew-chip" onclick="switchLanyardMember(5, this)">
+          <img src="img/avatar_godfrey.jpg" alt="Godfrey">
+          <span>GODFREY</span>
+          <small>雪原領航</small>
+        </button>
+      </div>
+    </div>
+
+<!-- ==================== VIP SKI RESORT ACCESS PASSES ==================== -->
     <div class="crew-grid-v2">
       <!-- 1. JACKY -->
       <div class="vip-pass-card">
@@ -8499,6 +10392,1070 @@ window.switchMiniMapView = function(dayId, viewMode, btnEl) {
     }
   });
 };
+</script>
+
+
+<!-- ==================== THREE.JS & TACTILE LANYARD CONTROLLER ==================== -->
+<script src="js/three.min.js"></script>
+<script>
+if (typeof THREE === 'undefined') {
+  document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"><\/script>');
+}
+</script>
+
+<script id="tactile-lanyard-engine">
+(function() {
+  // Members data definition for VIP Pass card textures
+  const CREW_MEMBERS = [
+    {
+      name: "JACKY",
+      serial: "PASS-2026-001",
+      kanji: "單板先鋒",
+      eng: "EXPEDITION LEADER",
+      avatar: "img/avatar_jacky.jpg",
+      color: "#ffffff"
+    },
+    {
+      name: "SOPHIE",
+      serial: "PASS-2026-002",
+      kanji: "光影記錄",
+      eng: "VISUAL DIRECTOR",
+      avatar: "img/avatar_sophie.jpg",
+      color: "#fbf9f5"
+    },
+    {
+      name: "MIKE P.",
+      serial: "PASS-2026-003",
+      kanji: "深雪狂熱",
+      eng: "POWDER HUNTER",
+      avatar: "img/avatar_mikep.jpg",
+      color: "#f5f8fb"
+    },
+    {
+      name: "AMY",
+      serial: "PASS-2026-004",
+      kanji: "湯治巡禮",
+      eng: "ONSEN CURATOR",
+      avatar: "img/avatar_amy.jpg",
+      color: "#faf5f8"
+    },
+    {
+      name: "REM",
+      serial: "PASS-2026-005",
+      kanji: "美饌鑑賞",
+      eng: "GASTRONOMY LEAD",
+      avatar: "img/avatar_rem.jpg",
+      color: "#fbf7f2"
+    },
+    {
+      name: "GODFREY",
+      serial: "PASS-2026-006",
+      kanji: "雪原領航",
+      eng: "ROAD CAPTAIN",
+      avatar: "img/avatar_godfrey.jpg",
+      color: "#f3f8f6"
+    }
+  ];
+
+  let currentMemberIndex = 0;
+  let updateMemberCard = null;
+  let lanyardController = null;
+
+  // Global switch function for pill buttons
+  window.switchLanyardMember = function(idx, btn) {
+    if (idx < 0 || idx >= CREW_MEMBERS.length) return;
+    currentMemberIndex = idx;
+    document.querySelectorAll('.lanyard-crew-chip').forEach((b, i) => {
+      b.classList.toggle('active', i === idx);
+    });
+    if (updateMemberCard) {
+      updateMemberCard(CREW_MEMBERS[idx]);
+    }
+  };
+
+  // ---------------------------------------------------------
+  // GYROSCOPE & MOTION ENGINE
+  // ---------------------------------------------------------
+  const gyroState = {
+    enabled: false,
+    available: false,
+    gamma: 0, // Left-Right (-90 to 90)
+    beta: 48, // Front-Back (-180 to 180)
+    smoothGamma: 0,
+    smoothBeta: 0,
+    accelX: 0,
+    accelY: 0,
+    accelZ: 0
+  };
+
+  function onDeviceOrientation(e) {
+    if (e.gamma !== null && e.beta !== null) {
+      gyroState.available = true;
+      gyroState.gamma = Math.max(-65, Math.min(65, e.gamma));
+      gyroState.beta = Math.max(-30, Math.min(110, e.beta));
+    }
+  }
+
+  function onDeviceMotion(e) {
+    const acc = e.acceleration || e.accelerationIncludingGravity;
+    if (acc) {
+      const ax = acc.x || 0;
+      const ay = acc.y || 0;
+      const az = acc.z || 0;
+      // Filter out high-frequency noise and detect active shakes
+      gyroState.accelX = ax * 0.45;
+      gyroState.accelY = ay * 0.45;
+      gyroState.accelZ = az * 0.45;
+    }
+  }
+
+  function enableGyroEngine() {
+    gyroState.enabled = true;
+    window.addEventListener('deviceorientation', onDeviceOrientation, true);
+    window.addEventListener('devicemotion', onDeviceMotion, true);
+    const btn = document.getElementById('gyro-toggle-btn');
+    const txt = document.getElementById('gyro-status-text');
+    if (btn) btn.classList.add('active');
+    if (txt) txt.textContent = '📱 體感連動中・晃動手機試試';
+  }
+
+  window.toggleLanyardGyro = function() {
+    if (gyroState.enabled) {
+      gyroState.enabled = false;
+      window.removeEventListener('deviceorientation', onDeviceOrientation, true);
+      window.removeEventListener('devicemotion', onDeviceMotion, true);
+      const btn = document.getElementById('gyro-toggle-btn');
+      const txt = document.getElementById('gyro-status-text');
+      if (btn) btn.classList.remove('active');
+      if (txt) txt.textContent = '📱 體感陀螺儀：已暫停';
+      return;
+    }
+
+    if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+      DeviceOrientationEvent.requestPermission()
+        .then(permissionState => {
+          if (permissionState === 'granted') {
+            enableGyroEngine();
+          } else {
+            alert('需開啟陀螺儀權限方能使用體感功能');
+          }
+        })
+        .catch(err => {
+          console.warn('Gyro permission error:', err);
+          enableGyroEngine();
+        });
+    } else if ('DeviceOrientationEvent' in window) {
+      enableGyroEngine();
+    } else {
+      const txt = document.getElementById('gyro-status-text');
+      if (txt) txt.textContent = '🖱️ 當前設備支援滑鼠拖拽與彈射';
+    }
+  };
+
+  // ---------------------------------------------------------
+  // CARD FACE CANVAS PAINTER (High Tactile Aesthetics)
+  // ---------------------------------------------------------
+  const cardCanvas = document.createElement('canvas');
+  cardCanvas.width = 1024;
+  cardCanvas.height = 1440;
+  const cardBackCanvas = document.createElement('canvas');
+  cardBackCanvas.width = 1024;
+  cardBackCanvas.height = 1440;
+  const strapCanvas = document.createElement('canvas');
+
+  const avatarCache = new Map();
+  function loadAvatarImage(url) {
+    if (!url) return Promise.resolve(null);
+    if (avatarCache.has(url)) return Promise.resolve(avatarCache.get(url));
+    return new Promise(resolve => {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => {
+        avatarCache.set(url, img);
+        resolve(img);
+      };
+      img.onerror = () => resolve(null);
+      img.src = url;
+    });
+  }
+
+  function paintFrontFace(ctx, member, avatarImg) {
+    const w = 1024;
+    const h = 1440;
+    ctx.clearRect(0, 0, w, h);
+
+    // 1. Frosted Acrylic Background with Ice-Blue Gradient
+    const bgGrad = ctx.createLinearGradient(0, 0, w, h);
+    bgGrad.addColorStop(0, '#ffffff');
+    bgGrad.addColorStop(0.3, '#f7faff');
+    bgGrad.addColorStop(0.7, '#edf4fb');
+    bgGrad.addColorStop(1, '#e4edf7');
+    ctx.fillStyle = bgGrad;
+    ctx.fillRect(0, 0, w, h);
+
+    // Subtle Grid pattern
+    ctx.strokeStyle = 'rgba(179, 140, 82, 0.08)';
+    ctx.lineWidth = 1;
+    for (let x = 40; x < w; x += 40) {
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+    }
+    for (let y = 40; y < h; y += 40) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+    }
+
+    // Border line
+    ctx.strokeStyle = 'rgba(179, 140, 82, 0.45)';
+    ctx.lineWidth = 12;
+    ctx.strokeRect(30, 30, w - 60, h - 60);
+
+    // Inner fine gold frame
+    ctx.strokeStyle = 'rgba(218, 165, 32, 0.65)';
+    ctx.lineWidth = 3;
+    ctx.strokeRect(48, 48, w - 96, h - 96);
+
+    // Top Lanyard slot punch guide
+    ctx.fillStyle = 'rgba(22, 33, 46, 0.15)';
+    ctx.beginPath();
+    ctx.roundRect(w / 2 - 110, 80, 220, 36, 18);
+    ctx.fill();
+
+    // 2. Header: Resort & Pass Type
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#b38c52';
+    ctx.font = '700 32px "Cinzel", "Cormorant Garamond", serif';
+    ctx.letterSpacing = '6px';
+    ctx.fillText('YUZAWA ・ NAEBA', w / 2, 190);
+
+    ctx.fillStyle = '#16212e';
+    ctx.font = '900 44px "Cinzel", "Space Mono", monospace';
+    ctx.letterSpacing = '8px';
+    ctx.fillText('ALL-MOUNTAIN VIP', w / 2, 245);
+
+    // Metallic Smart Chip (Left) & Contactless RFID (Right)
+    // Chip
+    ctx.fillStyle = '#e5c158';
+    ctx.beginPath();
+    ctx.roundRect(80, 280, 110, 80, 10);
+    ctx.fill();
+    ctx.strokeStyle = '#996515';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(80, 320); ctx.lineTo(190, 320);
+    ctx.moveTo(135, 280); ctx.lineTo(135, 360);
+    ctx.stroke();
+
+    // RFID symbol
+    ctx.fillStyle = '#78828f';
+    ctx.font = '700 28px "Space Mono", monospace';
+    ctx.textAlign = 'right';
+    ctx.fillText('●))) RFID PASS', w - 80, 330);
+
+    // 3. Avatar Portrait (Circular with Gold Halo)
+    const avatarY = 560;
+    const avatarR = 170;
+    ctx.save();
+    // Shadow
+    ctx.shadowColor = 'rgba(22, 33, 46, 0.25)';
+    ctx.shadowBlur = 35;
+    ctx.shadowOffsetY = 15;
+    ctx.beginPath();
+    ctx.arc(w / 2, avatarY, avatarR, 0, Math.PI * 2);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    ctx.restore();
+
+    // Image clip
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(w / 2, avatarY, avatarR - 6, 0, Math.PI * 2);
+    ctx.clip();
+    if (avatarImg) {
+      ctx.drawImage(avatarImg, w / 2 - avatarR, avatarY - avatarR, avatarR * 2, avatarR * 2);
+    } else {
+      ctx.fillStyle = '#3d6a93';
+      ctx.fillRect(w / 2 - avatarR, avatarY - avatarR, avatarR * 2, avatarR * 2);
+    }
+    ctx.restore();
+
+    // Gold rings around avatar
+    ctx.strokeStyle = '#c5a065';
+    ctx.lineWidth = 8;
+    ctx.beginPath();
+    ctx.arc(w / 2, avatarY, avatarR - 2, 0, Math.PI * 2);
+    ctx.stroke();
+
+    // 4. Member Name & Serial
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#16212e';
+    ctx.font = '900 64px "Cinzel", "Noto Serif TC", serif';
+    ctx.letterSpacing = '4px';
+    ctx.fillText(member.name, w / 2, 820);
+
+    ctx.fillStyle = '#78828f';
+    ctx.font = '700 30px "Space Mono", monospace';
+    ctx.letterSpacing = '4px';
+    ctx.fillText(member.serial, w / 2, 875);
+
+    // 5. Dual Kanji & English Role Stamp Box
+    const roleBoxW = 460;
+    const roleBoxH = 140;
+    const roleBoxX = (w - roleBoxW) / 2;
+    const roleBoxY = 925;
+
+    ctx.fillStyle = 'rgba(179, 140, 82, 0.08)';
+    ctx.beginPath();
+    ctx.roundRect(roleBoxX, roleBoxY, roleBoxW, roleBoxH, 12);
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(179, 140, 82, 0.7)';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+
+    ctx.fillStyle = '#16212e';
+    ctx.font = '800 48px "Shippori Mincho", "Noto Serif TC", serif';
+    ctx.letterSpacing = '6px';
+    ctx.fillText(member.kanji, w / 2, 990);
+
+    ctx.fillStyle = '#b38c52';
+    ctx.font = '700 24px "Space Mono", monospace';
+    ctx.letterSpacing = '3px';
+    ctx.fillText(member.eng, w / 2, 1038);
+
+    // 6. Access Tagline & Seasons
+    ctx.fillStyle = '#444f5d';
+    ctx.font = '500 28px "Plus Jakarta Sans", sans-serif';
+    ctx.fillText('2026–2027 WINTER EXPEDITION', w / 2, 1140);
+    ctx.fillStyle = '#78828f';
+    ctx.font = '400 24px "Plus Jakarta Sans", sans-serif';
+    ctx.fillText('GALA YUZAWA ・ KAGURA ・ NAEBA', w / 2, 1180);
+
+    // 7. Mini Barcode at Bottom
+    ctx.fillStyle = '#16212e';
+    const barcodeY = 1250;
+    const barcodeH = 50;
+    const barStartX = 240;
+    const pattern = [3,1,4,2,1,4,2,3,1,2,4,1,3,2,1,4,3,2,1,3,4,2,1,3,2,4,1,2,3,1,4,2,3,1];
+    let currX = barStartX;
+    for (let i = 0; i < pattern.length; i++) {
+      ctx.fillRect(currX, barcodeY, pattern[i] * 4, barcodeH);
+      currX += pattern[i] * 4 + 6;
+    }
+    ctx.font = '700 20px "Space Mono", monospace';
+    ctx.fillStyle = '#78828f';
+    ctx.fillText('AUTHENTICATED SKI PASS 2026', w / 2, 1340);
+  }
+
+  function paintBackFace(ctx) {
+    const w = 1024;
+    const h = 1440;
+    ctx.clearRect(0, 0, w, h);
+
+    // Navy & Gold Luxury Pattern
+    const grad = ctx.createLinearGradient(0, 0, w, h);
+    grad.addColorStop(0, '#16212e');
+    grad.addColorStop(0.5, '#1e2c3d');
+    grad.addColorStop(1, '#0f1722');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, w, h);
+
+    // Top hole
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
+    ctx.beginPath();
+    ctx.roundRect(w / 2 - 110, 80, 220, 36, 18);
+    ctx.fill();
+
+    // Gold Mountain Topo Contour Lines
+    ctx.strokeStyle = 'rgba(209, 171, 110, 0.22)';
+    ctx.lineWidth = 2;
+    for (let r = 100; r < 600; r += 50) {
+      ctx.beginPath();
+      ctx.arc(w / 2, 540, r, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+
+    // Big Gold Emblem
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#d1ab6e';
+    ctx.font = '900 84px "Cinzel", serif';
+    ctx.fillText('❄️', w / 2, 480);
+
+    ctx.font = '700 40px "Cinzel", serif';
+    ctx.letterSpacing = '6px';
+    ctx.fillText('SNOW COUNTRY', w / 2, 560);
+    ctx.font = '500 26px "Space Mono", monospace';
+    ctx.letterSpacing = '4px';
+    ctx.fillText('ECHIGO YUZAWA EXPEDITION', w / 2, 610);
+
+    // Japanese Cinnabar Archival Seal (朱紅方印)
+    ctx.save();
+    ctx.translate(w / 2, 860);
+    ctx.rotate(0.08);
+    ctx.strokeStyle = '#b9382b';
+    ctx.lineWidth = 6;
+    ctx.strokeRect(-120, -120, 240, 240);
+    ctx.fillStyle = '#b9382b';
+    ctx.font = '900 52px "Shippori Mincho", serif';
+    ctx.fillText('雪國', 0, -20);
+    ctx.fillText('行旅', 0, 60);
+    ctx.restore();
+
+    // Emergency & Ski Patrol
+    ctx.fillStyle = '#8fa6bf';
+    ctx.font = '500 24px "Plus Jakarta Sans", sans-serif';
+    ctx.fillText('PATROL DISPATCH: 025-784-3326', w / 2, 1120);
+    ctx.fillText('VALID: 2026.12.23 – 2027.01.03', w / 2, 1170);
+
+    // Magnetic Strip at bottom
+    ctx.fillStyle = '#0a0d12';
+    ctx.fillRect(80, 1260, w - 160, 60);
+  }
+
+  function paintStrapTexture(canvas) {
+    canvas.width = 192;
+    canvas.height = 384;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    // Deep Ink Navy base
+    ctx.fillStyle = '#111823';
+    ctx.fillRect(0, 0, 192, 384);
+
+    // Gold edge stitchings
+    ctx.strokeStyle = '#c5a065';
+    ctx.lineWidth = 4;
+    ctx.strokeRect(10, 0, 172, 384);
+
+    // Center Gold Text
+    ctx.save();
+    ctx.translate(96, 192);
+    ctx.rotate(-Math.PI / 2);
+    ctx.fillStyle = '#d1ab6e';
+    ctx.font = '700 22px "Cinzel", "Space Mono", monospace';
+    ctx.textAlign = 'center';
+    ctx.letterSpacing = '3px';
+    ctx.fillText('❄️ YUZAWA NAEBA 2026 VIP PASS', 0, 8);
+    ctx.restore();
+  }
+
+  // ---------------------------------------------------------
+  // 3D LANYARD PHYSICAL ENGINE (React Bits Port to Vanilla JS)
+  // ---------------------------------------------------------
+  function initLanyardEngine() {
+    const container = document.getElementById('lanyard-interactive-container');
+    if (!container) return;
+
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
+    } catch(e) {
+      console.warn("WebGL not supported for Lanyard:", e);
+      return;
+    }
+
+    renderer.setClearColor(0x000000, 0);
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.NeutralToneMapping;
+    renderer.toneMappingExposure = 1;
+    const canvas = renderer.domElement;
+    canvas.className = 'lanyard-canvas';
+    canvas.setAttribute('aria-hidden', 'true');
+    container.appendChild(canvas);
+
+    const FOV = 24;
+    const JOINTS = 4;
+    const SAMPLES = 72;
+    const STRAP_WIDTH = 0.36;
+    const RING_RADIUS = 0.095;
+    const RING_TUBE = 0.0135;
+    const EYELET_RADIUS = 0.036;
+    const CLAMP_BODY = 0.15;
+    const THICKNESS = 0.018;
+    const BEVEL = 0.007;
+    const BAND_COLUMNS = [0, 0.07, 0.93, 1];
+    const BAND_BEND = [-0.95, -0.28, 0.28, 0.95];
+    const FLIP_SPIN = 9;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(FOV, 1, 0.1, 200);
+
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.8);
+    keyLight.position.set(-2.5, 4, 6);
+    const fillLight = new THREE.DirectionalLight(0xffffff, 0.45);
+    fillLight.position.set(3, -1, 4);
+    scene.add(keyLight, fillLight);
+
+    // Textures
+    paintStrapTexture(strapCanvas);
+    const frontTexture = new THREE.CanvasTexture(cardCanvas);
+    frontTexture.colorSpace = THREE.SRGBColorSpace;
+    const backTexture = new THREE.CanvasTexture(cardBackCanvas);
+    backTexture.colorSpace = THREE.SRGBColorSpace;
+    const strapTexture = new THREE.CanvasTexture(strapCanvas);
+    strapTexture.colorSpace = THREE.SRGBColorSpace;
+    strapTexture.wrapS = THREE.ClampToEdgeWrapping;
+    strapTexture.wrapT = THREE.RepeatWrapping;
+
+    // Materials
+    const metalMaterial = new THREE.MeshStandardMaterial({
+      color: 0xd9dce2,
+      roughness: 0.18,
+      metalness: 0.95
+    });
+    const edgeMaterial = new THREE.MeshPhysicalMaterial({
+      color: 0xe8eef5,
+      roughness: 0.25,
+      metalness: 0.1,
+      clearcoat: 1
+    });
+    const frontMaterial = new THREE.MeshPhysicalMaterial({
+      map: frontTexture,
+      roughness: 0.35,
+      metalness: 0.05,
+      clearcoat: 1,
+      clearcoatRoughness: 0.05
+    });
+    const backMaterial = new THREE.MeshPhysicalMaterial({
+      map: backTexture,
+      roughness: 0.35,
+      metalness: 0.15,
+      clearcoat: 1,
+      clearcoatRoughness: 0.05
+    });
+    const bandMaterial = new THREE.MeshPhysicalMaterial({
+      map: strapTexture,
+      roughness: 0.65,
+      metalness: 0.05,
+      sheen: 1,
+      sheenColor: new THREE.Color(0.4, 0.35, 0.25),
+      side: THREE.DoubleSide
+    });
+
+    // Card Geometries
+    const cardW = 1.6;
+    const cardH = 2.25;
+    const radius = 0.18;
+    const ringY = cardH / 2 - 0.055;
+    const hangY = ringY + RING_RADIUS;
+
+    function buildCardGeometry() {
+      const shape = new THREE.Shape();
+      const r = radius;
+      const w = cardW - BEVEL * 2;
+      const h = cardH - BEVEL * 2;
+      const x = -cardW / 2 + BEVEL;
+      const y = -cardH / 2 + BEVEL;
+
+      shape.moveTo(x + r, y);
+      shape.lineTo(x + w - r, y);
+      shape.bezierCurveTo(x + w, y, x + w, y + r, x + w, y + r);
+      shape.lineTo(x + w, y + h - r);
+      shape.bezierCurveTo(x + w, y + h, x + w - r, y + h, x + w - r, y + h);
+      shape.lineTo(x + r, y + h);
+      shape.bezierCurveTo(x, y + h, x, y + h - r, x, y + h - r);
+      shape.lineTo(x, y + r);
+      shape.bezierCurveTo(x, y, x + r, y, x + r, y);
+
+      const body = new THREE.ExtrudeGeometry(shape, {
+        depth: THICKNESS,
+        bevelEnabled: true,
+        bevelThickness: BEVEL,
+        bevelSize: BEVEL,
+        bevelSegments: 4,
+        curveSegments: 16
+      });
+      body.translate(0, 0, -THICKNESS / 2);
+
+      const face = new THREE.ShapeGeometry(shape, 16);
+      const pos = face.getAttribute('position');
+      const uv = face.getAttribute('uv');
+      for (let i = 0; i < pos.count; i++) {
+        uv.setXY(i, (pos.getX(i) + cardW / 2) / cardW, (pos.getY(i) + cardH / 2) / cardH);
+      }
+      uv.needsUpdate = true;
+      return { body, face };
+    }
+
+    const { body: cardBodyGeom, face: cardFaceGeom } = buildCardGeometry();
+    const cardGroup = new THREE.Group();
+    const bodyMesh = new THREE.Mesh(cardBodyGeom, edgeMaterial);
+    const frontMesh = new THREE.Mesh(cardFaceGeom, frontMaterial);
+    const backMesh = new THREE.Mesh(cardFaceGeom.clone(), backMaterial);
+    frontMesh.position.z = THICKNESS / 2 + BEVEL + 0.001;
+    backMesh.rotation.y = Math.PI;
+    backMesh.position.z = -(THICKNESS / 2 + BEVEL + 0.001);
+
+    const ringMesh = new THREE.Mesh(new THREE.TorusGeometry(RING_RADIUS, RING_TUBE, 16, 48), metalMaterial);
+    ringMesh.position.set(0, ringY, 0);
+    ringMesh.rotation.y = Math.PI / 2 - 0.7;
+
+    cardGroup.add(bodyMesh, frontMesh, backMesh, ringMesh);
+    scene.add(cardGroup);
+
+    // Band Geometry & Clamp
+    function buildBandGeometry(count) {
+      const columns = BAND_COLUMNS.length;
+      const geom = new THREE.BufferGeometry();
+      geom.setAttribute('position', new THREE.BufferAttribute(new Float32Array(count * columns * 3), 3));
+      geom.setAttribute('normal', new THREE.BufferAttribute(new Float32Array(count * columns * 3), 3));
+      geom.setAttribute('uv', new THREE.BufferAttribute(new Float32Array(count * columns * 2), 2));
+      const index = [];
+      for (let i = 0; i < count - 1; i++) {
+        for (let c = 0; c < columns - 1; c++) {
+          const a = i * columns + c;
+          index.push(a, a + columns, a + 1, a + 1, a + columns, a + columns + 1);
+        }
+      }
+      geom.setIndex(index);
+      return geom;
+    }
+
+    const bandGeom = buildBandGeometry(SAMPLES);
+    const bandMesh = new THREE.Mesh(bandGeom, bandMaterial);
+    bandMesh.frustumCulled = false;
+    scene.add(bandMesh);
+
+    // Clamp
+    const clampGroup = new THREE.Group();
+    const clampShape = new THREE.Shape();
+    clampShape.moveTo(-STRAP_WIDTH * 0.6, -CLAMP_BODY / 2);
+    clampShape.lineTo(STRAP_WIDTH * 0.6, -CLAMP_BODY / 2);
+    clampShape.lineTo(STRAP_WIDTH * 0.6, CLAMP_BODY / 2);
+    clampShape.lineTo(-STRAP_WIDTH * 0.6, CLAMP_BODY / 2);
+    const clampGeom = new THREE.ExtrudeGeometry(clampShape, { depth: 0.02, bevelEnabled: true, bevelThickness: 0.01, bevelSize: 0.01 });
+    clampGeom.translate(0, 0, -0.01);
+    const clampMesh = new THREE.Mesh(clampGeom, metalMaterial);
+    clampMesh.position.y = EYELET_RADIUS + CLAMP_BODY / 2;
+    const eyeletMesh = new THREE.Mesh(new THREE.TorusGeometry(EYELET_RADIUS, 0.01, 12, 32), metalMaterial);
+    clampGroup.add(clampMesh, eyeletMesh);
+    scene.add(clampGroup);
+
+    // ---------------------------------------------------------
+    // PHYSICS ENGINE
+    // ---------------------------------------------------------
+    function createSimulation() {
+      const v = () => Array.from({ length: JOINTS + 1 }, () => new THREE.Vector3());
+      return {
+        nodes: v(),
+        previous: v(),
+        velocities: v(),
+        lengths: new Float64Array(JOINTS),
+        impulses: new Float64Array(JOINTS),
+        rest: 1,
+        anchor: new THREE.Vector3(),
+        body: {
+          position: new THREE.Vector3(),
+          previous: new THREE.Vector3(),
+          velocity: new THREE.Vector3(),
+          quaternion: new THREE.Quaternion(),
+          previousQuaternion: new THREE.Quaternion(),
+          angular: new THREE.Vector3(),
+          mass: 1,
+          hang: new THREE.Vector3(0, hangY, 0)
+        },
+        grab: null,
+        turn: 0,
+        twist: 0,
+        twistRaw: 0,
+        calm: 0
+      };
+    }
+
+    const sim = createSimulation();
+    const controls = [];
+    const mouth = new THREE.Vector3();
+    const tuck = new THREE.Vector3();
+    const curve = new THREE.CatmullRomCurve3(controls, false, 'centripetal');
+    const view = { width: 1, height: 1 };
+    let raf = 0;
+    let last = performance.now();
+    let time = 0;
+    let visible = true;
+    let alive = true;
+
+    function resetHanging(intro) {
+      sim.nodes[0].copy(sim.anchor);
+      for (let i = 1; i <= JOINTS; i++) {
+        sim.nodes[i].copy(sim.nodes[i - 1]);
+        if (intro) sim.nodes[i].x += sim.rest;
+        else sim.nodes[i].y -= sim.rest;
+      }
+      sim.body.quaternion.identity();
+      if (intro) sim.body.quaternion.setFromAxisAngle(new THREE.Vector3(0, 0, 1), Math.PI / 2.5);
+      const offset = sim.body.hang.clone().applyQuaternion(sim.body.quaternion);
+      sim.body.position.copy(sim.nodes[JOINTS]).sub(offset);
+      sim.body.previous.copy(sim.body.position);
+      sim.body.previousQuaternion.copy(sim.body.quaternion);
+      sim.body.velocity.set(0, 0, 0);
+      sim.body.angular.set(0, 0, 0);
+      for (let i = 0; i <= JOINTS; i++) {
+        sim.previous[i].copy(sim.nodes[i]);
+        sim.velocities[i].set(0, 0, 0);
+      }
+      sim.lengths.fill(sim.rest);
+      sim.turn = 0;
+    }
+
+    function frameView() {
+      const aspect = view.width / view.height;
+      let viewHeight = cardH / 0.62;
+      const minW = cardW / 0.75;
+      if (viewHeight * aspect < minW) viewHeight = minW / aspect;
+      const viewWidth = viewHeight * aspect;
+
+      camera.aspect = aspect;
+      camera.position.set(0, 0, (viewHeight / 2) / Math.tan((FOV * Math.PI) / 360));
+      camera.lookAt(0, 0, 0);
+      camera.updateProjectionMatrix();
+
+      const anchorY = viewHeight / 2 + 0.15;
+      const cardTop = viewHeight / 2 - viewHeight * 0.28;
+      const hangTop = cardTop + (hangY - cardH / 2);
+      sim.anchor.set(0, anchorY, 0);
+      sim.rest = (anchorY - hangTop) / JOINTS;
+      sim.nodes[0].copy(sim.anchor);
+      sim.previous[0].copy(sim.anchor);
+    }
+
+    // Step physics with GYROSCOPE VECTORS
+    function stepSimulation(dt) {
+      const steps = 4;
+      const h = dt / steps;
+      const baseGrav = 38;
+
+      // Gyroscope Vector Computation
+      let gx = 0;
+      let gy = -baseGrav;
+      let gz = 0;
+
+      if (gyroState.enabled && gyroState.available) {
+        // Natural hand-held angle: Beta around 48 deg, Gamma around 0 deg
+        const diffGamma = gyroState.gamma;
+        const diffBeta = (gyroState.beta - 48);
+
+        // Smooth with spring lerp
+        gyroState.smoothGamma += (diffGamma - gyroState.smoothGamma) * 0.12;
+        gyroState.smoothBeta += (diffBeta - gyroState.smoothBeta) * 0.12;
+
+        const radX = (gyroState.smoothGamma * Math.PI) / 180;
+        const radZ = (gyroState.smoothBeta * Math.PI) / 180;
+
+        // Dynamic 3D gravity projection
+        gx = Math.sin(radX) * baseGrav * 1.5;
+        gz = -Math.sin(radZ) * baseGrav * 1.1;
+        gy = -Math.cos(radX) * Math.cos(radZ) * baseGrav;
+
+        // Motion shake inertia
+        gx -= gyroState.accelX * 0.6;
+        gy -= gyroState.accelY * 0.6;
+        gz -= gyroState.accelZ * 0.6;
+      }
+
+      // Wind oscillation
+      const windX = Math.sin(time * 0.6) * 1.2;
+      const windZ = Math.cos(time * 0.4) * 0.8;
+
+      for (let s = 0; s < steps; s++) {
+        // Step nodes
+        for (let i = 1; i < JOINTS; i++) {
+          const v = sim.velocities[i];
+          v.x += (gx + windX) * h;
+          v.y += gy * h;
+          v.z += (gz + windZ) * h;
+          v.multiplyScalar(Math.exp(-2.5 * h));
+          sim.previous[i].copy(sim.nodes[i]);
+          sim.nodes[i].addScaledVector(v, h);
+        }
+
+        // Body movement
+        sim.body.previous.copy(sim.body.position);
+        sim.body.previousQuaternion.copy(sim.body.quaternion);
+
+        sim.body.velocity.x += (gx + windX * 0.3) * h;
+        sim.body.velocity.y += gy * h;
+        sim.body.velocity.z += (gz + windZ * 0.3) * h;
+        sim.body.velocity.multiplyScalar(Math.exp(-1.8 * h));
+        sim.body.angular.multiplyScalar(Math.exp(-2.2 * h));
+
+        // Flip twist torque
+        const up = new THREE.Vector3(0, 1, 0).applyQuaternion(sim.body.quaternion);
+        sim.body.angular.addScaledVector(up, (25 * (sim.turn - sim.twist) - 3 * sim.body.angular.dot(up)) * h);
+
+        sim.body.position.addScaledVector(sim.body.velocity, h);
+
+        // Angular rotation
+        const angLen = sim.body.angular.length();
+        if (angLen > 1e-6) {
+          const axis = sim.body.angular.clone().divideScalar(angLen);
+          const dq = new THREE.Quaternion().setFromAxisAngle(axis, angLen * h);
+          sim.body.quaternion.multiply(dq).normalize();
+        }
+
+        // Pin grab
+        if (sim.grab) {
+          const r = sim.grab.local.clone().applyQuaternion(sim.body.quaternion);
+          const currentHit = sim.body.position.clone().add(r);
+          const delta = sim.grab.target.clone().sub(currentHit);
+          sim.body.position.addScaledVector(delta, 0.45);
+          sim.body.velocity.addScaledVector(delta, 12);
+        }
+
+        // Distance constraint solving
+        for (let iter = 0; iter < 2; iter++) {
+          for (let i = 0; i < JOINTS; i++) {
+            const a = sim.nodes[i];
+            let b = i === JOINTS - 1
+              ? sim.body.hang.clone().applyQuaternion(sim.body.quaternion).add(sim.body.position)
+              : sim.nodes[i + 1];
+            const d = b.clone().sub(a);
+            const dist = d.length();
+            if (dist > 1e-6) {
+              const stretch = dist - sim.rest;
+              if (stretch > 0) {
+                const norm = d.divideScalar(dist);
+                if (i > 0) a.addScaledVector(norm, stretch * 0.45);
+                if (i === JOINTS - 1) {
+                  sim.body.position.addScaledVector(norm, -stretch * 0.45);
+                } else {
+                  b.addScaledVector(norm, -stretch * 0.45);
+                }
+              }
+            }
+          }
+        }
+
+        // Update joint velocity
+        for (let i = 1; i < JOINTS; i++) {
+          sim.velocities[i].subVectors(sim.nodes[i], sim.previous[i]).divideScalar(h);
+        }
+        sim.body.velocity.subVectors(sim.body.position, sim.body.previous).divideScalar(h);
+        sim.nodes[JOINTS].copy(sim.body.hang).applyQuaternion(sim.body.quaternion).add(sim.body.position);
+      }
+    }
+
+    // Update Strap curve
+    const bandPoints = Array.from({ length: SAMPLES }, () => new THREE.Vector3());
+    const bandSides = Array.from({ length: SAMPLES }, () => new THREE.Vector3());
+
+    function updateBandMesh() {
+      const hang = sim.nodes[JOINTS];
+      const reach = EYELET_RADIUS + CLAMP_BODY + 0.05;
+      let guide = JOINTS - 1;
+      const axis = new THREE.Vector3().subVectors(sim.nodes[guide], hang).normalize();
+      mouth.copy(hang).addScaledVector(axis, reach);
+      tuck.copy(hang).addScaledVector(axis, EYELET_RADIUS + CLAMP_BODY * 0.35);
+
+      controls.length = 0;
+      for (let i = 0; i <= guide; i++) controls.push(sim.nodes[i]);
+      controls.push(mouth, tuck);
+      curve.updateArcLengths();
+      for (let i = 0; i < SAMPLES; i++) curve.getPointAt(i / (SAMPLES - 1), bandPoints[i]);
+
+      const pos = bandGeom.getAttribute('position');
+      const norm = bandGeom.getAttribute('normal');
+      const uv = bandGeom.getAttribute('uv');
+      const columns = BAND_COLUMNS.length;
+      const width = STRAP_WIDTH;
+
+      for (let i = 0; i < SAMPLES; i++) {
+        const tangent = new THREE.Vector3().subVectors(
+          bandPoints[Math.min(SAMPLES - 1, i + 1)],
+          bandPoints[Math.max(0, i - 1)]
+        ).normalize();
+        const toCam = new THREE.Vector3().subVectors(camera.position, bandPoints[i]).normalize();
+        const side = bandSides[i].crossVectors(toCam, tangent).normalize();
+        if (i > 0 && side.dot(bandSides[i - 1]) < 0) side.negate();
+        const across = side;
+        const facing = new THREE.Vector3().crossVectors(tangent, across);
+
+        const p = bandPoints[i];
+        const v = (1 - i / (SAMPLES - 1)) * 3.5;
+
+        for (let c = 0; c < columns; c++) {
+          const k = i * columns + c;
+          const offset = (BAND_COLUMNS[c] - 0.5) * width;
+          pos.setXYZ(k, p.x + across.x * offset, p.y + across.y * offset, p.z + across.z * offset);
+          norm.setXYZ(k, facing.x, facing.y, facing.z);
+          uv.setXY(k, BAND_COLUMNS[c], v);
+        }
+      }
+      pos.needsUpdate = true;
+      norm.needsUpdate = true;
+      uv.needsUpdate = true;
+
+      // Position clamp
+      clampGroup.position.copy(hang);
+      clampGroup.quaternion.copy(sim.body.quaternion);
+    }
+
+    function render() {
+      cardGroup.position.copy(sim.body.position);
+      cardGroup.quaternion.copy(sim.body.quaternion);
+      updateBandMesh();
+      renderer.render(scene, camera);
+    }
+
+    function tick(now) {
+      raf = 0;
+      if (!alive) return;
+      const dt = Math.min(1 / 30, Math.max(1 / 180, (now - last) / 1000));
+      last = now;
+      time += dt;
+
+      stepSimulation(dt);
+      render();
+
+      if (visible) raf = requestAnimationFrame(tick);
+    }
+
+    function startLoop() {
+      if (!raf && visible && alive) {
+        last = performance.now();
+        raf = requestAnimationFrame(tick);
+      }
+    }
+
+    // ---------------------------------------------------------
+    // TOUCH & POINTER INTERACTIONS (Smart separation)
+    // ---------------------------------------------------------
+    const raycaster = new THREE.Raycaster();
+    const pointer = new THREE.Vector2();
+    let isDragging = false;
+    let pressTime = 0;
+
+    function getPointerPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      pointer.set(
+        ((clientX - rect.left) / rect.width) * 2 - 1,
+        -((clientY - rect.top) / rect.height) * 2 + 1
+      );
+      raycaster.setFromCamera(pointer, camera);
+    }
+
+    function pickCardMesh() {
+      cardGroup.updateMatrixWorld();
+      const hits = raycaster.intersectObjects([bodyMesh, frontMesh, backMesh], false);
+      return hits[0] || null;
+    }
+
+    function onPointerDown(e) {
+      getPointerPos(e);
+      const hit = pickCardMesh();
+      if (!hit) return;
+
+      isDragging = true;
+      pressTime = performance.now();
+      const local = hit.point.clone().sub(sim.body.position).applyQuaternion(sim.body.quaternion.clone().invert());
+      sim.grab = {
+        local: local,
+        reach: hit.distance,
+        target: hit.point.clone()
+      };
+      if (e.cancelable) e.preventDefault();
+      canvas.style.cursor = 'grabbing';
+      startLoop();
+    }
+
+    function onPointerMove(e) {
+      getPointerPos(e);
+      if (isDragging && sim.grab) {
+        raycaster.ray.at(sim.grab.reach, sim.grab.target);
+        if (e.cancelable) e.preventDefault();
+        startLoop();
+      } else {
+        const hit = pickCardMesh();
+        canvas.style.cursor = hit ? 'grab' : 'default';
+      }
+    }
+
+    function onPointerUp(e) {
+      if (!isDragging) return;
+      isDragging = false;
+      sim.grab = null;
+      canvas.style.cursor = 'default';
+
+      // Tap to flip card
+      if (performance.now() - pressTime < 320) {
+        sim.turn = sim.turn === 0 ? Math.PI : 0;
+        const up = new THREE.Vector3(0, 1, 0).applyQuaternion(sim.body.quaternion);
+        sim.body.angular.addScaledVector(up, FLIP_SPIN);
+      }
+      startLoop();
+    }
+
+    canvas.addEventListener('mousedown', onPointerDown);
+    window.addEventListener('mousemove', onPointerMove);
+    window.addEventListener('mouseup', onPointerUp);
+
+    // Mobile touch events with passive check
+    canvas.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        getPointerPos(e);
+        if (pickCardMesh()) {
+          onPointerDown(e);
+        }
+      }
+    }, { passive: false });
+
+    window.addEventListener('touchmove', (e) => {
+      if (isDragging) {
+        onPointerMove(e);
+      }
+    }, { passive: false });
+
+    window.addEventListener('touchend', onPointerUp);
+
+    // Resize handling
+    function resize() {
+      view.width = Math.max(1, container.clientWidth);
+      view.height = Math.max(1, container.clientHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.setSize(view.width, view.height, false);
+      frameView();
+      render();
+    }
+
+    const resizeObserver = new ResizeObserver(resize);
+    resizeObserver.observe(container);
+
+    const intersectionObserver = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      if (visible) startLoop();
+    });
+    intersectionObserver.observe(container);
+
+    // Initial setup
+    resize();
+    resetHanging(true);
+    startLoop();
+
+    // Member update callback
+    updateMemberCard = function(member) {
+      loadAvatarImage(member.avatar).then(img => {
+        paintFrontFace(cardCanvas.getContext('2d'), member, img);
+        frontTexture.needsUpdate = true;
+        // Apply flip spin torque for aesthetic feel
+        sim.turn += Math.PI * 2;
+        const up = new THREE.Vector3(0, 1, 0).applyQuaternion(sim.body.quaternion);
+        sim.body.angular.addScaledVector(up, 6);
+        startLoop();
+      });
+    };
+
+    // Paint initial Jacky card
+    paintBackFace(cardBackCanvas.getContext('2d'));
+    backTexture.needsUpdate = true;
+    updateMemberCard(CREW_MEMBERS[0]);
+  }
+
+  // Auto initialize on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLanyardEngine);
+  } else {
+    initLanyardEngine();
+  }
+})();
 </script>
 
 </body>
