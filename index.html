@@ -5483,53 +5483,7 @@ body.theme-night .shinkansen-ticket-back {
 }
 
 </style>
-<style>
-
-/* ============================================================
-   REACT BITS OFFICIAL LANYARD CSS
-   ============================================================ */
-.lanyard-section-wrap {
-  width: 100%;
-  max-width: 920px;
-  margin: 36px auto 28px;
-  position: relative;
-  text-align: center;
-}
-.lanyard-showcase-box {
-  width: 100%;
-  height: 600px;
-  position: relative;
-  border-radius: var(--radius-lg, 24px);
-  background: radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.45) 0%, rgba(22, 33, 46, 0.04) 70%, transparent 100%);
-  border: 1px solid rgba(179, 140, 82, 0.35);
-  box-shadow: 0 16px 45px rgba(22, 33, 46, 0.08);
-  overflow: hidden;
-}
-body.theme-night .lanyard-showcase-box {
-  background: radial-gradient(circle at 50% 25%, rgba(35, 52, 72, 0.4) 0%, rgba(14, 20, 28, 0.1) 70%, transparent 100%);
-  border-color: rgba(209, 171, 110, 0.3);
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
-}
-@media (max-width: 768px) {
-  .lanyard-showcase-box {
-    height: 560px;
-  }
-}
-.lanyard {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-.lanyard-canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-</style>
-<style>
-
+<style id="official-reactbits-lanyard-css">
 /* ============================================================
    REACT BITS OFFICIAL LANYARD CSS (PERFECT VIP PASS EDITION)
    ============================================================ */
@@ -5717,198 +5671,6 @@ body.theme-night .lanyard-action-btn {
   border-color: transparent;
   box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
 }
-
-</style>
-<style>
-
-/* ============================================================
-   REACT BITS OFFICIAL LANYARD CSS (PERFECT VIP PASS EDITION)
-   ============================================================ */
-.lanyard-section-wrap {
-  width: 100%;
-  max-width: 920px;
-  margin: 36px auto 28px;
-  position: relative;
-  text-align: center;
-}
-.lanyard-showcase-box {
-  width: 100%;
-  height: 600px;
-  position: relative;
-  border-radius: var(--radius-lg, 24px);
-  background: radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.45) 0%, rgba(22, 33, 46, 0.04) 70%, transparent 100%);
-  border: 1px solid rgba(179, 140, 82, 0.35);
-  box-shadow: 0 16px 45px rgba(22, 33, 46, 0.08);
-  overflow: hidden;
-  touch-action: pan-y;
-}
-body.theme-night .lanyard-showcase-box {
-  background: radial-gradient(circle at 50% 25%, rgba(35, 52, 72, 0.4) 0%, rgba(14, 20, 28, 0.1) 70%, transparent 100%);
-  border-color: rgba(209, 171, 110, 0.3);
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
-}
-@media (max-width: 768px) {
-  .lanyard-showcase-box {
-    height: 560px;
-  }
-}
-.lanyard {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  user-select: none;
-  -webkit-user-select: none;
-}
-.lanyard-canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-  touch-action: none;
-}
-
-/* Crew Selector Chips */
-.lanyard-crew-selector {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  margin: 0 auto 16px;
-  padding: 0 8px;
-  max-width: 680px;
-}
-.lanyard-crew-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 5px 14px 5px 6px;
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(179, 140, 82, 0.3);
-  border-radius: 999px;
-  cursor: pointer;
-  font-family: var(--sans, sans-serif);
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: #1e293b;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  transition: all 0.22s ease;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-body.theme-night .lanyard-crew-chip {
-  background: rgba(30, 41, 59, 0.8);
-  border-color: rgba(209, 171, 110, 0.25);
-  color: #e2e8f0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
-}
-.lanyard-crew-chip:hover {
-  transform: translateY(-2px);
-  border-color: #c5a059;
-  box-shadow: 0 4px 14px rgba(197, 160, 89, 0.25);
-}
-.lanyard-crew-chip.active {
-  background: linear-gradient(135deg, #16212e 0%, #1e2c3d 100%);
-  border-color: #d1ab6e;
-  color: #f7f4ee;
-  box-shadow: 0 4px 16px rgba(22, 33, 46, 0.35);
-}
-body.theme-night .lanyard-crew-chip.active {
-  background: linear-gradient(135deg, #d1ab6e 0%, #b88e4f 100%);
-  border-color: #f5f0e6;
-  color: #0f172a;
-  box-shadow: 0 4px 18px rgba(209, 171, 110, 0.4);
-}
-.chip-avatar {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-size: cover;
-  background-position: center;
-  border: 1px solid rgba(197, 160, 89, 0.5);
-  flex-shrink: 0;
-}
-.chip-name {
-  white-space: nowrap;
-}
-
-/* Floating Hint Badge */
-.lanyard-hint-badge {
-  position: absolute;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(179, 140, 82, 0.35);
-  border-radius: 999px;
-  padding: 6px 18px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: #334155;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  pointer-events: auto;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  z-index: 5;
-}
-body.theme-night .lanyard-hint-badge {
-  background: rgba(22, 33, 46, 0.88);
-  border-color: rgba(209, 171, 110, 0.3);
-  color: #cbd5e1;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
-}
-.lanyard-hint-badge:hover {
-  transform: translateX(-50%) scale(1.03);
-  border-color: #c5a059;
-}
-
-/* Control buttons below showcase */
-.lanyard-ctrl-bar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  margin-top: 14px;
-}
-.lanyard-gyro-btn,
-.lanyard-action-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 18px;
-  border-radius: 999px;
-  font-family: var(--sans, sans-serif);
-  font-size: 0.84rem;
-  font-weight: 600;
-  cursor: pointer;
-  border: 1px solid rgba(179, 140, 82, 0.35);
-  background: rgba(255, 255, 255, 0.9);
-  color: #1e293b;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  transition: all 0.2s ease;
-}
-body.theme-night .lanyard-gyro-btn,
-body.theme-night .lanyard-action-btn {
-  background: rgba(30, 41, 59, 0.85);
-  color: #e2e8f0;
-  border-color: rgba(209, 171, 110, 0.25);
-}
-.lanyard-gyro-btn:hover,
-.lanyard-action-btn:hover {
-  border-color: #c5a059;
-  transform: translateY(-1px);
-}
-.lanyard-gyro-btn.active {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  color: #ffffff;
-  border-color: transparent;
-  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
-}
-
 </style>
 </head>
 <body>
@@ -9247,18 +9009,7 @@ body.theme-night .lanyard-action-btn {
         </button>
       </div>
     </div>
-
-      <div class="lanyard-ctrl-bar">
-        <button type="button" id="gyro-toggle-btn" class="lanyard-gyro-btn" onclick="toggleLanyardGyro()">
-          <span class="gyro-icon">📱</span>
-          <span id="gyro-status-text">開啟手機體感陀螺儀</span>
-        </button>
-        <button type="button" class="lanyard-action-btn" onclick="window.flipLanyardCard && window.flipLanyardCard()">
-          🔄 翻轉卡片
-        </button>
-      </div>
-    </div>
-    </div>
+    
 
     <!-- Resort Comparison Table -->
     <h3 style="font-family:var(--serif);margin:24px 0 10px;font-size:1.18rem;letter-spacing:0.05em;">越後湯澤周邊核心雪場評比</h3>
@@ -10684,7 +10435,7 @@ if (typeof THREE === 'undefined') {
   const FACE_WIDTH = 1024;
 
   const FINISHES = {
-    glossy: { roughness: 0.42, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.06, foil: 0, anisotropy: 0 },
+    glossy: { roughness: 0.52, metalness: 0, clearcoat: 0.16, clearcoatRoughness: 0.35, foil: 0, anisotropy: 0 },
     matte: { roughness: 0.85, metalness: 0, clearcoat: 0, clearcoatRoughness: 0.6, foil: 0, anisotropy: 0 },
     holographic: { roughness: 0.3, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.04, foil: 1, anisotropy: 0 },
     metallic: { roughness: 0.36, metalness: 0.75, clearcoat: 0.5, clearcoatRoughness: 0.18, foil: 0, anisotropy: 0.7 }
@@ -11432,26 +11183,26 @@ if (foilStrength > 0.0) {
 
     // 1. Warm ivory frosted card background
     const bg = ctx.createLinearGradient(0, 0, 0, h);
-    bg.addColorStop(0, '#fcfbfa');
-    bg.addColorStop(0.5, '#f8f6f0');
-    bg.addColorStop(1, '#f4efe6');
+    bg.addColorStop(0, '#fcf9f2');
+    bg.addColorStop(0.5, '#f5eee2');
+    bg.addColorStop(1, '#ece2d0');
     ctx.fillStyle = bg;
     ctx.fillRect(0, 0, w, h);
 
     // Inner delicate gold border
-    ctx.strokeStyle = 'rgba(179, 140, 82, 0.28)';
-    ctx.lineWidth = 3;
+    ctx.strokeStyle = 'rgba(165, 120, 50, 0.55)';
+    ctx.lineWidth = 3.5;
     drawRoundRect(ctx, 32, 32, w - 64, h - 64, 70);
     ctx.stroke();
 
     // 2. Header left: YUZAWA ・ NAEBA & ALL-MOUNTAIN PASS
     ctx.textAlign = 'left';
-    ctx.fillStyle = '#a87e43';
+    ctx.fillStyle = '#7d5018';
     ctx.font = '700 36px "Cinzel", "Shippori Mincho", "Times New Roman", serif';
     ctx.letterSpacing = '6px';
     ctx.fillText('YUZAWA  ・  NAEBA', 78, 172);
 
-    ctx.fillStyle = '#64748b';
+    ctx.fillStyle = '#1e293b';
     ctx.font = '700 24px "Space Mono", monospace';
     ctx.letterSpacing = '4px';
     ctx.fillText('ALL-MOUNTAIN PASS', 78, 218);
@@ -11462,13 +11213,13 @@ if (foilStrength > 0.0) {
     const chipW = 96;
     const chipH = 68;
     const chipGrad = ctx.createLinearGradient(chipX, chipY, chipX + chipW, chipY + chipH);
-    chipGrad.addColorStop(0, '#e5be65');
-    chipGrad.addColorStop(0.5, '#d4af37');
-    chipGrad.addColorStop(1, '#b88e28');
+    chipGrad.addColorStop(0, '#e0b355');
+    chipGrad.addColorStop(0.5, '#cf9e2e');
+    chipGrad.addColorStop(1, '#9c6d12');
     ctx.fillStyle = chipGrad;
     drawRoundRect(ctx, chipX, chipY, chipW, chipH, 10);
     ctx.fill();
-    ctx.strokeStyle = '#997316';
+    ctx.strokeStyle = '#6b4b0a';
     ctx.lineWidth = 1.5;
     ctx.stroke();
 
@@ -11482,8 +11233,8 @@ if (foilStrength > 0.0) {
     ctx.beginPath();
     ctx.moveTo(78, 252);
     ctx.lineTo(w - 78, 252);
-    ctx.strokeStyle = 'rgba(179, 140, 82, 0.3)';
-    ctx.lineWidth = 2;
+    ctx.strokeStyle = 'rgba(165, 120, 50, 0.55)';
+    ctx.lineWidth = 2.5;
     ctx.stroke();
 
     // 5. Circular Avatar with double gold metallic halo
@@ -11492,25 +11243,30 @@ if (foilStrength > 0.0) {
     const haloRadius = 175;
 
     // Outer halo
+    ctx.save();
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.12)';
+    ctx.shadowBlur = 12;
+    ctx.shadowOffsetY = 4;
     const haloGrad = ctx.createLinearGradient(avatarCenterX - haloRadius, avatarCenterY - haloRadius, avatarCenterX + haloRadius, avatarCenterY + haloRadius);
-    haloGrad.addColorStop(0, '#c5a059');
-    haloGrad.addColorStop(0.5, '#f3e3be');
-    haloGrad.addColorStop(1, '#c5a059');
+    haloGrad.addColorStop(0, '#b38328');
+    haloGrad.addColorStop(0.5, '#e6cb85');
+    haloGrad.addColorStop(1, '#b38328');
     ctx.strokeStyle = haloGrad;
     ctx.lineWidth = 14;
     ctx.beginPath();
     ctx.arc(avatarCenterX, avatarCenterY, haloRadius, 0, Math.PI * 2);
     ctx.stroke();
+    ctx.restore();
 
     // Inner fine circle
-    ctx.strokeStyle = '#d8b974';
+    ctx.strokeStyle = '#8c621d';
     ctx.lineWidth = 3;
     ctx.beginPath();
     ctx.arc(avatarCenterX, avatarCenterY, haloRadius - 10, 0, Math.PI * 2);
     ctx.stroke();
 
     // Avatar background circle
-    ctx.fillStyle = '#faf7f0';
+    ctx.fillStyle = '#fcf8ef';
     ctx.beginPath();
     ctx.arc(avatarCenterX, avatarCenterY, haloRadius - 12, 0, Math.PI * 2);
     ctx.fill();
@@ -11524,17 +11280,17 @@ if (foilStrength > 0.0) {
       ctx.drawImage(avatarImg, avatarCenterX - (haloRadius - 12), avatarCenterY - (haloRadius - 12), (haloRadius - 12) * 2, (haloRadius - 12) * 2);
       ctx.restore();
     } else {
-      ctx.fillStyle = '#d1ab6e';
+      ctx.fillStyle = '#7d5018';
       ctx.font = '900 120px "Cinzel", serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(member.name.charAt(0), avatarCenterX, avatarCenterY);
     }
 
-    // 6. Member Name: Bold Serif
+    // 6. Member Name: Bold Serif (Solid Dark, High Contrast)
     ctx.textAlign = 'center';
     ctx.textBaseline = 'alphabetic';
-    ctx.fillStyle = '#16212e';
+    ctx.fillStyle = '#060a10';
     ctx.font = '900 76px "Cinzel", "Shippori Mincho", "Times New Roman", serif';
     ctx.letterSpacing = '8px';
     ctx.fillText(member.name, w / 2, 730);
@@ -11544,14 +11300,14 @@ if (foilStrength > 0.0) {
     const pillH = 58;
     const pillX = w / 2 - pillW / 2;
     const pillY = 765;
-    ctx.fillStyle = '#f5f0e6';
+    ctx.fillStyle = '#eee4d1';
     drawRoundRect(ctx, pillX, pillY, pillW, pillH, 29);
     ctx.fill();
-    ctx.strokeStyle = 'rgba(216, 198, 170, 0.85)';
+    ctx.strokeStyle = 'rgba(165, 120, 50, 0.85)';
     ctx.lineWidth = 2;
     ctx.stroke();
 
-    ctx.fillStyle = '#9b7139';
+    ctx.fillStyle = '#6b440e';
     ctx.font = '700 30px "Space Mono", monospace';
     ctx.letterSpacing = '5px';
     ctx.fillText(member.serial, w / 2, pillY + 41);
@@ -11561,30 +11317,30 @@ if (foilStrength > 0.0) {
     const boxH = 135;
     const boxX = w / 2 - boxW / 2;
     const boxY = 858;
-    ctx.fillStyle = '#f5f0e6';
+    ctx.fillStyle = '#eee4d1';
     drawRoundRect(ctx, boxX, boxY, boxW, boxH, 20);
     ctx.fill();
-    ctx.strokeStyle = 'rgba(216, 198, 170, 0.9)';
-    ctx.lineWidth = 2;
+    ctx.strokeStyle = 'rgba(165, 120, 50, 0.9)';
+    ctx.lineWidth = 2.5;
     ctx.stroke();
 
-    ctx.fillStyle = '#16212e';
+    ctx.fillStyle = '#060a10';
     ctx.font = '900 46px "Shippori Mincho", serif';
     ctx.letterSpacing = '12px';
     ctx.fillText(member.kanji, w / 2, boxY + 62);
 
-    ctx.fillStyle = '#a87e43';
+    ctx.fillStyle = '#7d5018';
     ctx.font = '700 24px "Space Mono", monospace';
     ctx.letterSpacing = '6px';
     ctx.fillText(member.eng, w / 2, boxY + 108);
 
-    // 9. Subtitle Lines
-    ctx.fillStyle = '#334155';
+    // 9. Subtitle Lines (High Legibility Slate)
+    ctx.fillStyle = '#0f172a';
     ctx.font = '600 32px "Shippori Mincho", serif';
     ctx.letterSpacing = '4px';
     ctx.fillText(member.sub1, w / 2, 1055);
 
-    ctx.fillStyle = '#475569';
+    ctx.fillStyle = '#334155';
     ctx.font = '500 28px "Shippori Mincho", serif';
     ctx.letterSpacing = '3px';
     ctx.fillText(member.sub2, w / 2, 1110);
@@ -11592,8 +11348,8 @@ if (foilStrength > 0.0) {
     // 10. Dashed Divider Line
     ctx.save();
     ctx.setLineDash([8, 8]);
-    ctx.strokeStyle = 'rgba(179, 140, 82, 0.35)';
-    ctx.lineWidth = 2;
+    ctx.strokeStyle = 'rgba(165, 120, 50, 0.55)';
+    ctx.lineWidth = 2.5;
     ctx.beginPath();
     ctx.moveTo(78, 1165);
     ctx.lineTo(w - 78, 1165);
@@ -11603,12 +11359,12 @@ if (foilStrength > 0.0) {
     // 11. Bottom Row: Contactless + VIP ACCESS on left, Barcode on right
     const cX = 100;
     const cY = 1225;
-    ctx.fillStyle = '#b88e4f';
+    ctx.fillStyle = '#7d5018';
     ctx.beginPath();
     ctx.arc(cX, cY, 6, 0, Math.PI * 2);
     ctx.fill();
 
-    ctx.strokeStyle = '#b88e4f';
+    ctx.strokeStyle = '#7d5018';
     ctx.lineWidth = 3;
     for (let r = 14; r <= 30; r += 8) {
       ctx.beginPath();
@@ -11617,7 +11373,7 @@ if (foilStrength > 0.0) {
     }
 
     ctx.textAlign = 'left';
-    ctx.fillStyle = '#475569';
+    ctx.fillStyle = '#1e293b';
     ctx.font = '700 28px "Space Mono", monospace';
     ctx.letterSpacing = '5px';
     ctx.fillText('VIP ACCESS', 152, 1236);
@@ -11627,7 +11383,7 @@ if (foilStrength > 0.0) {
     const barY = 1200;
     const barW = 320;
     const barH = 56;
-    ctx.fillStyle = '#1e293b';
+    ctx.fillStyle = '#060a10';
     const rand = seeded(12345);
     let curX = barX;
     while (curX < barX + barW) {
@@ -11793,8 +11549,8 @@ if (foilStrength > 0.0) {
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
     renderer.setClearColor(0x000000, 0);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.2;
+    renderer.toneMapping = THREE.AgXToneMapping || THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 0.95;
     const canvas = renderer.domElement;
     canvas.className = 'lanyard-canvas';
     canvas.setAttribute('aria-hidden', 'true');
@@ -11806,13 +11562,12 @@ if (foilStrength > 0.0) {
     scene.environment = environment.texture; // Assign texture so PBR reflections are vibrant!
     const camera = new THREE.PerspectiveCamera(FOV, 1, 0.1, 200);
 
-    // Bright, crisp studio lighting
-    const keyLight = new THREE.DirectionalLight(0xffffff, 2.0);
-    keyLight.position.set(-2.5, 4, 6);
-    const fillLight = new THREE.DirectionalLight(0xffffff, 0.8);
-    fillLight.position.set(3, -1, 4);
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.85);
-    scene.add(keyLight, fillLight, ambientLight);
+    // Balanced, calibrated studio lighting (prevents overexposure, keeps contrast & fine details crisp)
+    const keyLight = new THREE.DirectionalLight(0xfff8ed, 0.92);
+    keyLight.position.set(-2, 3.8, 5.5);
+    const fillLight = new THREE.DirectionalLight(0xeef4fc, 0.28);
+    fillLight.position.set(2.8, -1, 3.8);
+    scene.add(keyLight, fillLight);
 
     const imageCache = new Map();
     const images = { front: null, back: null, strap: null };
