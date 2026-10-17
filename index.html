@@ -5672,6 +5672,69 @@ body.theme-night .lanyard-action-btn {
   box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
 }
 </style>
+
+<style id="oct18-visual-fixes">
+.rm-canvas-wrap { min-height: 340px; background: #e8e7e3; }
+.rm-street-iframe { display: block; width: 100%; height: 360px; min-height: 360px; border: 0; filter: none !important; }
+.rm-route-note { color: #ced9e6; font-size: .75rem; line-height: 1.7; margin: 12px 0 0; }
+.rm-mode-btn:focus-visible, .rm-step-pill:focus-visible { outline: 2px solid #e2cb9d; outline-offset: 3px; }
+.ticket-miniature { min-width: 0; }
+.ticket-enlarge { display: none; }
+.ticket-detail { width: min(94vw, 760px); max-width: 94vw; padding: 18px; border: 1px solid var(--gold); border-radius: 14px; background: var(--paper); color: var(--ink); }
+.ticket-detail::backdrop { background: rgba(10,18,28,.7); }
+.ticket-detail-content { overflow-x: auto; padding-block: 16px; }
+.ticket-detail-close, .ticket-enlarge { border: 1px solid var(--gold); background: var(--paper); color: var(--ink); font: inherit; border-radius: 20px; padding: 7px 14px; cursor: pointer; }
+@media (max-width: 768px) {
+ .rm-Stage-grid { grid-template-columns: 1fr; }
+ .rm-street-iframe { height: 350px; min-height: 350px; }
+ .route-card { padding-inline: 12px; }
+ .ephemera-showcase { padding-inline: 8px !important; }
+ /* Scale the whole physical ticket; never stack its detachable stub. */
+ .ticket-miniature > .boarding-pass, .ticket-miniature > .shinkansen-ticket,
+ .ticket-detail .boarding-pass, .ticket-detail .shinkansen-ticket { width: 600px; min-width: 600px; max-width: none; margin: 0; transform: none !important; }
+ .ticket-enlarge { display: block; justify-self: center; margin: -8px auto 6px; font-size: 12px; }
+ .boarding-pass { flex-direction: row !important; border-radius: 10px !important; line-height: 1.25; }
+ .boarding-pass .bp-main { flex: 1 1 76%; min-width: 0; padding: 10px 8px !important; border-bottom: 0 !important; border-right: 1px dashed var(--gold) !important; }
+ .boarding-pass .bp-stub { flex: 0 0 23% !important; min-width: 0; padding: 10px 5px !important; flex-direction: column !important; align-items: stretch !important; justify-content: space-between !important; gap: 8px; }
+ .boarding-pass .bp-main::before, .boarding-pass .bp-main::after { left: auto !important; right: -7px !important; width: 12px !important; height: 12px !important; }
+ .boarding-pass .bp-main::before { top: -7px !important; bottom: auto !important; }
+ .boarding-pass .bp-main::after { top: auto !important; bottom: -7px !important; }
+ .boarding-pass .bp-logo-text, .boarding-pass .bp-class, .boarding-pass .bp-duration,
+ .boarding-pass .bp-field small, .boarding-pass .bp-field b,
+ .boarding-pass .bp-stub-top small, .boarding-pass .bp-stub-top b,
+ .boarding-pass .bp-stub-field small, .boarding-pass .bp-stub-field b,
+ .boarding-pass .bp-barcode-num { letter-spacing: 0 !important; line-height: 1.3; }
+ .boarding-pass .bp-top { gap: 3px; padding-bottom: 6px; margin-bottom: 8px; }
+ .boarding-pass .bp-airline { gap: 5px; min-width: 0; }
+ .boarding-pass .bp-emblem { width: 20px; height: 20px; flex-shrink: 0; font-size: 9px; }
+ .boarding-pass .bp-logo-text { font-size: 12px; }
+ .boarding-pass .bp-class { font-size: 9px; padding: 3px 5px; max-width: 120px; }
+ .boarding-pass .bp-route-hero { gap: 4px !important; margin-bottom: 8px !important; }
+ .boarding-pass .bp-code { font-size: 34px !important; }
+ .boarding-pass .bp-city-name { font-size: 7px !important; letter-spacing: 0 !important; max-width: 66px; }
+ .boarding-pass .bp-flight-path { min-width: 0; padding: 0 5px !important; }
+ .boarding-pass .bp-flight-num { font-size: 9px !important; letter-spacing: .5px !important; white-space: nowrap; }
+ .boarding-pass .bp-duration { font-size: 8px !important; white-space: nowrap; }
+ .boarding-pass .bp-grid { grid-template-columns: repeat(3,minmax(0,1fr)) !important; gap: 8px 4px !important; padding: 7px 5px; }
+ .boarding-pass .bp-field { line-height: 1; }
+ .boarding-pass .bp-field:first-child { grid-column: 1 / -1 !important; }
+ .boarding-pass .bp-field small { font-size: 8px !important; white-space: nowrap; margin-bottom: 3px; }
+ .boarding-pass .bp-field b { font-size: 12px !important; display: block; line-height: 1.2; white-space: nowrap; }
+ .boarding-pass .bp-barcode-wrap { display: block; margin-top: 8px !important; padding-right: 36px; }
+ .boarding-pass .bp-barcode-svg { width: 100% !important; max-width: 150px; height: 20px !important; }
+ .boarding-pass .bp-barcode-num { font-size: 5px; }
+ .boarding-pass .bp-stamp { top: auto !important; bottom: 10px !important; right: 8px !important; width: 40px !important; height: 40px !important; transform: rotate(-12deg) !important; }
+ .boarding-pass .bp-stub-top small, .boarding-pass .bp-stub-field small { font-size: 8px !important; margin-bottom: 2px; }
+ .boarding-pass .bp-stub-top b { font-size: 16px !important; }
+ .boarding-pass .bp-stub-field { margin-block: 5px 0; }
+ .boarding-pass .bp-stub-field b { font-size: 11px !important; }
+ .boarding-pass .bp-stub svg { height: 15px !important; }
+ .boarding-pass .bp-stub > div:last-child { margin-top: 5px !important; padding-top: 4px !important; }
+ .ticket-detail .boarding-pass, .ticket-detail .shinkansen-ticket { zoom: 1 !important; }
+}
+@media print { .ticket-enlarge, .ticket-detail { display:none !important; } .ticket-miniature > * { zoom: 1 !important; } }
+</style>
+
 </head>
 <body>
 
@@ -5942,7 +6005,7 @@ body.theme-night .lanyard-action-btn {
 
   
         <!-- ==================== BESPOKE EPHEMERA TICKETS (OUTBOUND + INBOUND) ==================== -->
-    <div class="ephemera-showcase">
+    <div class="ephemera-showcase" id="tickets">
       <div class="ephemera-header">
         <span class="ephemera-badge">ORIGINAL EPHEMERA ・ 往復實物典藏</span>
         <h3 class="ephemera-title">行旅憑證・往復實體特急券與登機證</h3>
@@ -6384,86 +6447,21 @@ body.theme-night .lanyard-action-btn {
       <div class="daily-route-minimap" id="rm-d1223" data-nodes='[{"id": "01", "name": "香港機場 HKG T1", "time": "15:25", "x": 85, "y": 155, "leg": "出發起點 · 24號閘口", "tip": "預早填妥 Visit Japan Web QR Code", "q": "Hong+Kong+International+Airport"}, {"id": "02", "name": "成田機場 NRT T2", "time": "20:20", "x": 245, "y": 68, "leg": "✈ 國泰 CX500 直飛 (4h55m)", "tip": "入境後落 B1 JR 服務中心或直接用 Suica/N&#39;EX 票入閘", "q": "Narita+Airport+Terminal+2"}, {"id": "03", "name": "東京站 (總武地下月台)", "time": "22:38", "x": 410, "y": 135, "leg": "🚄 成田特快 N&#39;EX 末班 21:47 (51分)", "tip": "若錯過末班 N&#39;EX，改去 T2 1樓 7號站牌搭高速巴士直達八重洲", "q": "Tokyo+Station"}, {"id": "04", "name": "東橫INN 八重洲北口", "time": "23:00", "x": 515, "y": 88, "leg": "🚶 經八重洲北口地面步行 (5分)", "tip": "途經 FamilyMart / 7-11 買定宵夜、熱飲與聽朝早餐", "q": "東横INN東京駅八重洲北口"}]'>
         <div class="rm-top-bar">
           <div class="rm-title-group">
-            <span class="rm-badge">📍 DAILY ROUTE RADAR // 當日動線與走線小地圖</span>
+            <span class="rm-badge">📍 DAILY GROUND ROUTE // 當日地面路線</span>
             <span class="rm-zone-code">HKG ✈ NARITA ➔ TOKYO STATION</span>
           </div>
-          <div class="rm-mode-btns">
-            <button type="button" class="rm-mode-btn active" onclick="switchMiniMapView('d1223', 'vector', this)">🧭 工藝動線圖</button>
-            <button type="button" class="rm-mode-btn" onclick="switchMiniMapView('d1223', 'street', this)">🗺️ 實景街道圖</button>
-          </div>
+          <div class="rm-mode-btns"><button type="button" class="rm-mode-btn" data-mode="walking" aria-pressed="false" onclick="switchMiniMapView('d1223', 'walking')">步行路線</button><button type="button" class="rm-mode-btn" data-mode="transit" aria-pressed="false" onclick="switchMiniMapView('d1223', 'transit')">公共交通</button></div>
         </div>
 
         <div class="rm-chain-bar">
           <button type="button" class="rm-step-pill active" data-node-idx="0" onclick="selectRouteNode('d1223', 0, this)"><span class="rm-step-num">01</span> 香港機場 HKG T1</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="1" onclick="selectRouteNode('d1223', 1, this)"><span class="rm-step-num">02</span> 成田機場 NRT T2</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="2" onclick="selectRouteNode('d1223', 2, this)"><span class="rm-step-num">03</span> 東京站 (總武地下月台)</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="3" onclick="selectRouteNode('d1223', 3, this)"><span class="rm-step-num">04</span> 東橫INN 八重洲北口</button>
         </div>
 
+        <p class="rm-route-note" aria-live="polite"></p>
         <div class="rm-Stage-grid">
           <!-- Left: Vector Archival Route Canvas OR Live Street Iframe -->
           <div class="rm-canvas-wrap">
-            <div class="rm-view-pane active" data-rm-view="vector">
-              <svg class="rm-vector-svg" viewBox="0 0 600 215" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="rmGrad-d1223" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#c5a065"/>
-                    <stop offset="50%" stop-color="#e2cb9d"/>
-                    <stop offset="100%" stop-color="#63b3ed"/>
-                  </linearGradient>
-                  <pattern id="rmGrid-d1223" width="30" height="30" patternUnits="userSpaceOnUse">
-                    <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(197,160,101,0.12)" stroke-width="0.7"/>
-                  </pattern>
-                </defs>
-                <rect width="600" height="215" fill="url(#rmGrid-d1223)"/>
-                <!-- Topographic contour decorative arcs -->
-                <path d="M -20 190 Q 180 120 390 175 T 620 110" fill="none" stroke="rgba(197,160,101,0.14)" stroke-width="1" stroke-dasharray="3 3"/>
-                <path d="M -10 55 Q 240 110 430 45 T 610 85" fill="none" stroke="rgba(99,179,237,0.12)" stroke-width="1" stroke-dasharray="4 4"/>
-                <!-- Compass Rose -->
-                <g transform="translate(565, 32)" opacity="0.65">
-                  <circle cx="0" cy="0" r="14" fill="none" stroke="#c5a065" stroke-width="0.9"/>
-                  <polygon points="0,-11 -3.5,3 0,0 3.5,3" fill="#c5a065"/>
-                  <text x="0" y="-15" font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="#c5a065" text-anchor="middle">N</text>
-                </g>
-                <!-- Base glow track -->
-                <path d="M 85 155 C 165.0 155, 165.0 68, 245 68 C 327.5 68, 327.5 135, 410 135 C 462.5 135, 462.5 88, 515 88 " fill="none" stroke="url(#rmGrad-d1223)" stroke-width="5" opacity="0.22" stroke-linecap="round"/>
-                <!-- Animated flowing dashed route line -->
-                <path class="rm-flowing-path" d="M 85 155 C 165.0 155, 165.0 68, 245 68 C 327.5 68, 327.5 135, 410 135 C 462.5 135, 462.5 88, 515 88 " fill="none" stroke="url(#rmGrad-d1223)" stroke-width="2.6" stroke-dasharray="7 5" stroke-linecap="round"/>
-                
-          <g class="rm-svg-pin active-pin" data-pin-idx="0" onclick="selectRouteNode('d1223', 0)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="85" cy="155" r="15" />
-            <circle class="rm-pin-outer" cx="85" cy="155" r="10" />
-            <text x="85" y="158.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">01</text>
-            <rect x="21" y="128" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="85" y="139" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">香港機場 HKG T1</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="1" onclick="selectRouteNode('d1223', 1)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="245" cy="68" r="15" />
-            <circle class="rm-pin-outer" cx="245" cy="68" r="10" />
-            <text x="245" y="71.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">02</text>
-            <rect x="181" y="81" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="245" y="92" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">成田機場 NRT T2</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="2" onclick="selectRouteNode('d1223', 2)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="410" cy="135" r="15" />
-            <circle class="rm-pin-outer" cx="410" cy="135" r="10" />
-            <text x="410" y="138.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">03</text>
-            <rect x="346" y="108" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="410" y="119" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">東京站 (總武地下月台</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="3" onclick="selectRouteNode('d1223', 3)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="515" cy="88" r="15" />
-            <circle class="rm-pin-outer" cx="515" cy="88" r="10" />
-            <text x="515" y="91.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">04</text>
-            <rect x="451" y="61" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="515" y="72" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">東橫INN 八重洲北口</text>
-          </g>
-        
-              </svg>
-            </div>
-            <div class="rm-view-pane" data-rm-view="street">
-              <iframe class="rm-street-iframe" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-src="https://maps.google.com/maps?q=Toyoko+Inn+Tokyo+Station+Yaesu+Kita+Guchi&t=m&z=14&output=embed&iwloc=near"></iframe>
-            </div>
+            <div class="rm-view-pane active" data-rm-view="street"><iframe class="rm-street-iframe" loading="lazy" title="地面路線地圖" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
           </div>
 
           <!-- Right: Active Stop Concierge Inspector -->
@@ -6609,86 +6607,21 @@ body.theme-night .lanyard-action-btn {
       <div class="daily-route-minimap" id="rm-d1224" data-nodes='[{"id": "01", "name": "東橫INN 八重洲北口", "time": "10:30", "x": 495, "y": 72, "leg": "上午自然醒出發", "tip": "穿過東京站北自由通路即可由八重洲側直通丸之內側", "q": "東横INN東京駅八重洲北口"}, {"id": "02", "name": "丸之內 Brick Square", "time": "11:00", "x": 350, "y": 148, "leg": "🚶 穿過東京站自由通路步行 (8分)", "tip": "歐陸紅磚中庭，推薦 Échiré 發酵牛油牛角包與手沖咖啡", "q": "Marunouchi+Brick+Square"}, {"id": "03", "name": "KITTE 6F 屋上庭園", "time": "14:30", "x": 215, "y": 95, "leg": "🚶 沿丸之內南口步行 (4分)", "tip": "免費入場，俯瞰東京站百年赤煉瓦站舍與新幹線列車進出", "q": "KITTE+Marunouchi"}, {"id": "04", "name": "丸之內仲通 香檳金燈海", "time": "17:30", "x": 105, "y": 152, "leg": "🚶 下樓即達 1.2km 林蔭大道 (2分)", "tip": "120萬顆香檳金 LED 亮燈，隨後前往丸之內或銀座享用平安夜大餐", "q": "Marunouchi+Illumination+Tokyo"}]'>
         <div class="rm-top-bar">
           <div class="rm-title-group">
-            <span class="rm-badge">📍 DAILY ROUTE RADAR // 當日動線與走線小地圖</span>
+            <span class="rm-badge">📍 DAILY GROUND ROUTE // 當日地面路線</span>
             <span class="rm-zone-code">MARUNOUCHI & GINZA // XMAS EVE WALK</span>
           </div>
-          <div class="rm-mode-btns">
-            <button type="button" class="rm-mode-btn active" onclick="switchMiniMapView('d1224', 'vector', this)">🧭 工藝動線圖</button>
-            <button type="button" class="rm-mode-btn" onclick="switchMiniMapView('d1224', 'street', this)">🗺️ 實景街道圖</button>
-          </div>
+          <div class="rm-mode-btns"><button type="button" class="rm-mode-btn" data-mode="walking" aria-pressed="false" onclick="switchMiniMapView('d1224', 'walking')">步行路線</button><button type="button" class="rm-mode-btn" data-mode="transit" aria-pressed="false" onclick="switchMiniMapView('d1224', 'transit')">公共交通</button></div>
         </div>
 
         <div class="rm-chain-bar">
           <button type="button" class="rm-step-pill active" data-node-idx="0" onclick="selectRouteNode('d1224', 0, this)"><span class="rm-step-num">01</span> 東橫INN 八重洲北口</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="1" onclick="selectRouteNode('d1224', 1, this)"><span class="rm-step-num">02</span> 丸之內 Brick Square</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="2" onclick="selectRouteNode('d1224', 2, this)"><span class="rm-step-num">03</span> KITTE 6F 屋上庭園</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="3" onclick="selectRouteNode('d1224', 3, this)"><span class="rm-step-num">04</span> 丸之內仲通 香檳金燈海</button>
         </div>
 
+        <p class="rm-route-note" aria-live="polite"></p>
         <div class="rm-Stage-grid">
           <!-- Left: Vector Archival Route Canvas OR Live Street Iframe -->
           <div class="rm-canvas-wrap">
-            <div class="rm-view-pane active" data-rm-view="vector">
-              <svg class="rm-vector-svg" viewBox="0 0 600 215" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="rmGrad-d1224" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#c5a065"/>
-                    <stop offset="50%" stop-color="#e2cb9d"/>
-                    <stop offset="100%" stop-color="#63b3ed"/>
-                  </linearGradient>
-                  <pattern id="rmGrid-d1224" width="30" height="30" patternUnits="userSpaceOnUse">
-                    <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(197,160,101,0.12)" stroke-width="0.7"/>
-                  </pattern>
-                </defs>
-                <rect width="600" height="215" fill="url(#rmGrid-d1224)"/>
-                <!-- Topographic contour decorative arcs -->
-                <path d="M -20 190 Q 180 120 390 175 T 620 110" fill="none" stroke="rgba(197,160,101,0.14)" stroke-width="1" stroke-dasharray="3 3"/>
-                <path d="M -10 55 Q 240 110 430 45 T 610 85" fill="none" stroke="rgba(99,179,237,0.12)" stroke-width="1" stroke-dasharray="4 4"/>
-                <!-- Compass Rose -->
-                <g transform="translate(565, 32)" opacity="0.65">
-                  <circle cx="0" cy="0" r="14" fill="none" stroke="#c5a065" stroke-width="0.9"/>
-                  <polygon points="0,-11 -3.5,3 0,0 3.5,3" fill="#c5a065"/>
-                  <text x="0" y="-15" font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="#c5a065" text-anchor="middle">N</text>
-                </g>
-                <!-- Base glow track -->
-                <path d="M 495 72 C 422.5 72, 422.5 148, 350 148 C 282.5 148, 282.5 95, 215 95 C 160.0 95, 160.0 152, 105 152 " fill="none" stroke="url(#rmGrad-d1224)" stroke-width="5" opacity="0.22" stroke-linecap="round"/>
-                <!-- Animated flowing dashed route line -->
-                <path class="rm-flowing-path" d="M 495 72 C 422.5 72, 422.5 148, 350 148 C 282.5 148, 282.5 95, 215 95 C 160.0 95, 160.0 152, 105 152 " fill="none" stroke="url(#rmGrad-d1224)" stroke-width="2.6" stroke-dasharray="7 5" stroke-linecap="round"/>
-                
-          <g class="rm-svg-pin active-pin" data-pin-idx="0" onclick="selectRouteNode('d1224', 0)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="495" cy="72" r="15" />
-            <circle class="rm-pin-outer" cx="495" cy="72" r="10" />
-            <text x="495" y="75.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">01</text>
-            <rect x="431" y="85" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="495" y="96" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">東橫INN 八重洲北口</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="1" onclick="selectRouteNode('d1224', 1)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="350" cy="148" r="15" />
-            <circle class="rm-pin-outer" cx="350" cy="148" r="10" />
-            <text x="350" y="151.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">02</text>
-            <rect x="286" y="121" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="350" y="132" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">丸之內 Brick S</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="2" onclick="selectRouteNode('d1224', 2)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="215" cy="95" r="15" />
-            <circle class="rm-pin-outer" cx="215" cy="95" r="10" />
-            <text x="215" y="98.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">03</text>
-            <rect x="151" y="68" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="215" y="79" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">KITTE 6F 屋上</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="3" onclick="selectRouteNode('d1224', 3)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="105" cy="152" r="15" />
-            <circle class="rm-pin-outer" cx="105" cy="152" r="10" />
-            <text x="105" y="155.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">04</text>
-            <rect x="41" y="125" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="105" y="136" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">丸之內仲通 香檳金燈海</text>
-          </g>
-        
-              </svg>
-            </div>
-            <div class="rm-view-pane" data-rm-view="street">
-              <iframe class="rm-street-iframe" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-src="https://maps.google.com/maps?q=Marunouchi+Naka-dori+Street+Tokyo&t=m&z=14&output=embed&iwloc=near"></iframe>
-            </div>
+            <div class="rm-view-pane active" data-rm-view="street"><iframe class="rm-street-iframe" loading="lazy" title="地面路線地圖" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
           </div>
 
           <!-- Right: Active Stop Concierge Inspector -->
@@ -6827,86 +6760,21 @@ body.theme-night .lanyard-action-btn {
       <div class="daily-route-minimap" id="rm-d1225" data-nodes='[{"id": "01", "name": "東京站 / 大手町", "time": "10:00", "x": 490, "y": 75, "leg": "由飯店步行至東京站/大手町站", "tip": "乘搭東京メトロ千代田線直達表參道站（免轉車 15 分鐘）", "q": "Tokyo+Station"}, {"id": "02", "name": "表參道之丘 ＆ 原宿貓街", "time": "10:30", "x": 125, "y": 82, "leg": "🚇 千代田線直達表參道 A2出口 (16分)", "tip": "漫步安藤忠雄建築群，到 Ralph&#39;s Coffee 或 Blue Bottle 嘆啡", "q": "Omotesando+Hills"}, {"id": "03", "name": "東橫INN 午間回充休息", "time": "15:00", "x": 475, "y": 115, "leg": "🚇 千代田線返大手町/東京站 (18分)", "tip": "避開下班地鐵人潮，小睡充電迎接聖誕夜重頭戲", "q": "東横INN東京駅八重洲北口"}, {"id": "04", "name": "六本木 櫸坂大道 (Keyakizaka)", "time": "18:00", "x": 255, "y": 168, "leg": "🚇 丸之內線轉日比谷線至六本木站 (22分)", "tip": "最佳機位：Tiffany 轉角斑馬線與六本木 Hills 二樓天橋，正對紅色東京鐵塔", "q": "Roppongi+Keyakizaka+Dori"}]'>
         <div class="rm-top-bar">
           <div class="rm-title-group">
-            <span class="rm-badge">📍 DAILY ROUTE RADAR // 當日動線與走線小地圖</span>
+            <span class="rm-badge">📍 DAILY GROUND ROUTE // 當日地面路線</span>
             <span class="rm-zone-code">OMOTESANDO ➔ ROPPONGI KEYAKIZAKA</span>
           </div>
-          <div class="rm-mode-btns">
-            <button type="button" class="rm-mode-btn active" onclick="switchMiniMapView('d1225', 'vector', this)">🧭 工藝動線圖</button>
-            <button type="button" class="rm-mode-btn" onclick="switchMiniMapView('d1225', 'street', this)">🗺️ 實景街道圖</button>
-          </div>
+          <div class="rm-mode-btns"><button type="button" class="rm-mode-btn" data-mode="walking" aria-pressed="false" onclick="switchMiniMapView('d1225', 'walking')">步行路線</button><button type="button" class="rm-mode-btn" data-mode="transit" aria-pressed="false" onclick="switchMiniMapView('d1225', 'transit')">公共交通</button></div>
         </div>
 
         <div class="rm-chain-bar">
           <button type="button" class="rm-step-pill active" data-node-idx="0" onclick="selectRouteNode('d1225', 0, this)"><span class="rm-step-num">01</span> 東京站 / 大手町</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="1" onclick="selectRouteNode('d1225', 1, this)"><span class="rm-step-num">02</span> 表參道之丘 ＆ 原宿貓街</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="2" onclick="selectRouteNode('d1225', 2, this)"><span class="rm-step-num">03</span> 東橫INN 午間回充休息</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="3" onclick="selectRouteNode('d1225', 3, this)"><span class="rm-step-num">04</span> 六本木 櫸坂大道 (Keyakizaka)</button>
         </div>
 
+        <p class="rm-route-note" aria-live="polite"></p>
         <div class="rm-Stage-grid">
           <!-- Left: Vector Archival Route Canvas OR Live Street Iframe -->
           <div class="rm-canvas-wrap">
-            <div class="rm-view-pane active" data-rm-view="vector">
-              <svg class="rm-vector-svg" viewBox="0 0 600 215" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="rmGrad-d1225" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#c5a065"/>
-                    <stop offset="50%" stop-color="#e2cb9d"/>
-                    <stop offset="100%" stop-color="#63b3ed"/>
-                  </linearGradient>
-                  <pattern id="rmGrid-d1225" width="30" height="30" patternUnits="userSpaceOnUse">
-                    <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(197,160,101,0.12)" stroke-width="0.7"/>
-                  </pattern>
-                </defs>
-                <rect width="600" height="215" fill="url(#rmGrid-d1225)"/>
-                <!-- Topographic contour decorative arcs -->
-                <path d="M -20 190 Q 180 120 390 175 T 620 110" fill="none" stroke="rgba(197,160,101,0.14)" stroke-width="1" stroke-dasharray="3 3"/>
-                <path d="M -10 55 Q 240 110 430 45 T 610 85" fill="none" stroke="rgba(99,179,237,0.12)" stroke-width="1" stroke-dasharray="4 4"/>
-                <!-- Compass Rose -->
-                <g transform="translate(565, 32)" opacity="0.65">
-                  <circle cx="0" cy="0" r="14" fill="none" stroke="#c5a065" stroke-width="0.9"/>
-                  <polygon points="0,-11 -3.5,3 0,0 3.5,3" fill="#c5a065"/>
-                  <text x="0" y="-15" font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="#c5a065" text-anchor="middle">N</text>
-                </g>
-                <!-- Base glow track -->
-                <path d="M 490 75 C 307.5 75, 307.5 82, 125 82 C 300.0 82, 300.0 115, 475 115 C 365.0 115, 365.0 168, 255 168 " fill="none" stroke="url(#rmGrad-d1225)" stroke-width="5" opacity="0.22" stroke-linecap="round"/>
-                <!-- Animated flowing dashed route line -->
-                <path class="rm-flowing-path" d="M 490 75 C 307.5 75, 307.5 82, 125 82 C 300.0 82, 300.0 115, 475 115 C 365.0 115, 365.0 168, 255 168 " fill="none" stroke="url(#rmGrad-d1225)" stroke-width="2.6" stroke-dasharray="7 5" stroke-linecap="round"/>
-                
-          <g class="rm-svg-pin active-pin" data-pin-idx="0" onclick="selectRouteNode('d1225', 0)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="490" cy="75" r="15" />
-            <circle class="rm-pin-outer" cx="490" cy="75" r="10" />
-            <text x="490" y="78.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">01</text>
-            <rect x="426" y="88" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="490" y="99" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">東京站 / 大手町</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="1" onclick="selectRouteNode('d1225', 1)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="125" cy="82" r="15" />
-            <circle class="rm-pin-outer" cx="125" cy="82" r="10" />
-            <text x="125" y="85.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">02</text>
-            <rect x="61" y="55" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="125" y="66" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">表參道之丘 ＆ 原宿貓</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="2" onclick="selectRouteNode('d1225', 2)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="475" cy="115" r="15" />
-            <circle class="rm-pin-outer" cx="475" cy="115" r="10" />
-            <text x="475" y="118.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">03</text>
-            <rect x="411" y="88" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="475" y="99" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">東橫INN 午間回充休</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="3" onclick="selectRouteNode('d1225', 3)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="255" cy="168" r="15" />
-            <circle class="rm-pin-outer" cx="255" cy="168" r="10" />
-            <text x="255" y="171.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">04</text>
-            <rect x="191" y="141" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="255" y="152" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">六本木 櫸坂大道 (K</text>
-          </g>
-        
-              </svg>
-            </div>
-            <div class="rm-view-pane" data-rm-view="street">
-              <iframe class="rm-street-iframe" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-src="https://maps.google.com/maps?q=Roppongi+Keyakizaka+Dori+Tokyo&t=m&z=14&output=embed&iwloc=near"></iframe>
-            </div>
+            <div class="rm-view-pane active" data-rm-view="street"><iframe class="rm-street-iframe" loading="lazy" title="地面路線地圖" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
           </div>
 
           <!-- Right: Active Stop Concierge Inspector -->
@@ -7036,86 +6904,21 @@ body.theme-night .lanyard-action-btn {
       <div class="daily-route-minimap" id="rm-d1226" data-nodes='[{"id": "01", "name": "東橫INN 八重洲北口", "time": "10:00", "x": 420, "y": 70, "leg": "冬日溫泉療癒日出發", "tip": "輕裝出發，毛巾與浴衣館內全包", "q": "東横INN東京駅八重洲北口"}, {"id": "02", "name": "豐洲 千客萬來 (江戶美食街)", "time": "11:00", "x": 510, "y": 162, "leg": "🚌 八重洲口乘都營巴士/有樂町線轉百合海鷗號 (22分)", "tip": "先在 2F 江戶街品嚐海鮮串燒、和牛可樂餅與抹茶甜點", "q": "Toyosu+Senkyakubanrai"}, {"id": "03", "name": "東京豐洲 萬葉俱樂部 (海景足湯)", "time": "13:30", "x": 310, "y": 150, "leg": "🛗 同棟直上 7F 溫泉大浴場 (1分)", "tip": "湯河原直送天然溫泉，必上頂樓 360度展望足湯睇東京灣日落", "q": "Tokyo+Toyosu+Manyo+Club"}, {"id": "04", "name": "備選：箱根湯本 浪漫特快日歸", "time": "全日", "x": 95, "y": 115, "leg": "🚄 若選箱根：新宿乘小田急浪漫特快 (75分)", "tip": "直達箱根湯本「天山湯治鄉」或「箱根湯寮」浸山林露天風呂", "q": "Hakone+Yumoto+Station"}]'>
         <div class="rm-top-bar">
           <div class="rm-title-group">
-            <span class="rm-badge">📍 DAILY ROUTE RADAR // 當日動線與走線小地圖</span>
+            <span class="rm-badge">📍 DAILY GROUND ROUTE // 當日地面路線</span>
             <span class="rm-zone-code">TOYOSU SENKYAKUBANRAI // HAKONE ONSEN</span>
           </div>
-          <div class="rm-mode-btns">
-            <button type="button" class="rm-mode-btn active" onclick="switchMiniMapView('d1226', 'vector', this)">🧭 工藝動線圖</button>
-            <button type="button" class="rm-mode-btn" onclick="switchMiniMapView('d1226', 'street', this)">🗺️ 實景街道圖</button>
-          </div>
+          <div class="rm-mode-btns"><button type="button" class="rm-mode-btn" data-mode="walking" aria-pressed="false" onclick="switchMiniMapView('d1226', 'walking')">步行路線</button><button type="button" class="rm-mode-btn" data-mode="transit" aria-pressed="false" onclick="switchMiniMapView('d1226', 'transit')">公共交通</button></div>
         </div>
 
         <div class="rm-chain-bar">
           <button type="button" class="rm-step-pill active" data-node-idx="0" onclick="selectRouteNode('d1226', 0, this)"><span class="rm-step-num">01</span> 東橫INN 八重洲北口</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="1" onclick="selectRouteNode('d1226', 1, this)"><span class="rm-step-num">02</span> 豐洲 千客萬來 (江戶美食街)</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="2" onclick="selectRouteNode('d1226', 2, this)"><span class="rm-step-num">03</span> 東京豐洲 萬葉俱樂部 (海景足湯)</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="3" onclick="selectRouteNode('d1226', 3, this)"><span class="rm-step-num">04</span> 備選：箱根湯本 浪漫特快日歸</button>
         </div>
 
+        <p class="rm-route-note" aria-live="polite"></p>
         <div class="rm-Stage-grid">
           <!-- Left: Vector Archival Route Canvas OR Live Street Iframe -->
           <div class="rm-canvas-wrap">
-            <div class="rm-view-pane active" data-rm-view="vector">
-              <svg class="rm-vector-svg" viewBox="0 0 600 215" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="rmGrad-d1226" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#c5a065"/>
-                    <stop offset="50%" stop-color="#e2cb9d"/>
-                    <stop offset="100%" stop-color="#63b3ed"/>
-                  </linearGradient>
-                  <pattern id="rmGrid-d1226" width="30" height="30" patternUnits="userSpaceOnUse">
-                    <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(197,160,101,0.12)" stroke-width="0.7"/>
-                  </pattern>
-                </defs>
-                <rect width="600" height="215" fill="url(#rmGrid-d1226)"/>
-                <!-- Topographic contour decorative arcs -->
-                <path d="M -20 190 Q 180 120 390 175 T 620 110" fill="none" stroke="rgba(197,160,101,0.14)" stroke-width="1" stroke-dasharray="3 3"/>
-                <path d="M -10 55 Q 240 110 430 45 T 610 85" fill="none" stroke="rgba(99,179,237,0.12)" stroke-width="1" stroke-dasharray="4 4"/>
-                <!-- Compass Rose -->
-                <g transform="translate(565, 32)" opacity="0.65">
-                  <circle cx="0" cy="0" r="14" fill="none" stroke="#c5a065" stroke-width="0.9"/>
-                  <polygon points="0,-11 -3.5,3 0,0 3.5,3" fill="#c5a065"/>
-                  <text x="0" y="-15" font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="#c5a065" text-anchor="middle">N</text>
-                </g>
-                <!-- Base glow track -->
-                <path d="M 420 70 C 465.0 70, 465.0 162, 510 162 C 410.0 162, 410.0 150, 310 150 C 202.5 150, 202.5 115, 95 115 " fill="none" stroke="url(#rmGrad-d1226)" stroke-width="5" opacity="0.22" stroke-linecap="round"/>
-                <!-- Animated flowing dashed route line -->
-                <path class="rm-flowing-path" d="M 420 70 C 465.0 70, 465.0 162, 510 162 C 410.0 162, 410.0 150, 310 150 C 202.5 150, 202.5 115, 95 115 " fill="none" stroke="url(#rmGrad-d1226)" stroke-width="2.6" stroke-dasharray="7 5" stroke-linecap="round"/>
-                
-          <g class="rm-svg-pin active-pin" data-pin-idx="0" onclick="selectRouteNode('d1226', 0)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="420" cy="70" r="15" />
-            <circle class="rm-pin-outer" cx="420" cy="70" r="10" />
-            <text x="420" y="73.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">01</text>
-            <rect x="356" y="83" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="420" y="94" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">東橫INN 八重洲北口</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="1" onclick="selectRouteNode('d1226', 1)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="510" cy="162" r="15" />
-            <circle class="rm-pin-outer" cx="510" cy="162" r="10" />
-            <text x="510" y="165.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">02</text>
-            <rect x="446" y="135" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="510" y="146" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">豐洲 千客萬來 (江戶</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="2" onclick="selectRouteNode('d1226', 2)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="310" cy="150" r="15" />
-            <circle class="rm-pin-outer" cx="310" cy="150" r="10" />
-            <text x="310" y="153.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">03</text>
-            <rect x="246" y="123" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="310" y="134" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">東京豐洲 萬葉俱樂部 </text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="3" onclick="selectRouteNode('d1226', 3)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="95" cy="115" r="15" />
-            <circle class="rm-pin-outer" cx="95" cy="115" r="10" />
-            <text x="95" y="118.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">04</text>
-            <rect x="31" y="88" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="95" y="99" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">備選：箱根湯本 浪漫特</text>
-          </g>
-        
-              </svg>
-            </div>
-            <div class="rm-view-pane" data-rm-view="street">
-              <iframe class="rm-street-iframe" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-src="https://maps.google.com/maps?q=Toyosu+Senkyakubanrai+Manyo+Club&t=m&z=14&output=embed&iwloc=near"></iframe>
-            </div>
+            <div class="rm-view-pane active" data-rm-view="street"><iframe class="rm-street-iframe" loading="lazy" title="地面路線地圖" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
           </div>
 
           <!-- Right: Active Stop Concierge Inspector -->
@@ -7253,86 +7056,21 @@ body.theme-night .lanyard-action-btn {
       <div class="daily-route-minimap" id="rm-d1227" data-nodes='[{"id": "01", "name": "東橫INN 八重洲北口", "time": "10:30", "x": 140, "y": 62, "leg": "銀座步行者天國採購日", "tip": "星期日銀座中央通中午起封街變成「步行者天國」，馬路中間隨意影相", "q": "東横INN東京駅八重洲北口"}, {"id": "02", "name": "UNIQLO 銀座 12層全球旗艦店", "time": "11:00", "x": 265, "y": 115, "leg": "🚇 東京站搭丸之內線 1站至銀座 (或步行12分)", "tip": "一次買齊滑雪極暖 Heattech Ultra Warm、防風手套與厚毛襪", "q": "UNIQLO+Ginza"}, {"id": "03", "name": "資生堂 Parlour 銀座本店", "time": "15:00", "x": 395, "y": 158, "leg": "🚶 沿銀座中央通向南漫步 (4分)", "tip": "百年經典紅磚大樓，必試冬季限定日本草莓皇冠芭菲", "q": "Shiseido+Parlour+Salon+de+Cafe+Ginza"}, {"id": "04", "name": "GINZA SIX 空中花園 ＆ 和牛晚餐", "time": "17:30", "x": 505, "y": 95, "leg": "🚶 銀座六丁目斜對面即達 (2分)", "tip": "參觀蔦屋書店與挑高藝術中庭，晚上品嚐銀座頂級和牛燒肉或壽司", "q": "GINZA+SIX"}]'>
         <div class="rm-top-bar">
           <div class="rm-title-group">
-            <span class="rm-badge">📍 DAILY ROUTE RADAR // 當日動線與走線小地圖</span>
+            <span class="rm-badge">📍 DAILY GROUND ROUTE // 當日地面路線</span>
             <span class="rm-zone-code">GINZA CHUO-DORI // SHOPPING & SALON</span>
           </div>
-          <div class="rm-mode-btns">
-            <button type="button" class="rm-mode-btn active" onclick="switchMiniMapView('d1227', 'vector', this)">🧭 工藝動線圖</button>
-            <button type="button" class="rm-mode-btn" onclick="switchMiniMapView('d1227', 'street', this)">🗺️ 實景街道圖</button>
-          </div>
+          <div class="rm-mode-btns"><button type="button" class="rm-mode-btn" data-mode="walking" aria-pressed="false" onclick="switchMiniMapView('d1227', 'walking')">步行路線</button><button type="button" class="rm-mode-btn" data-mode="transit" aria-pressed="false" onclick="switchMiniMapView('d1227', 'transit')">公共交通</button></div>
         </div>
 
         <div class="rm-chain-bar">
           <button type="button" class="rm-step-pill active" data-node-idx="0" onclick="selectRouteNode('d1227', 0, this)"><span class="rm-step-num">01</span> 東橫INN 八重洲北口</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="1" onclick="selectRouteNode('d1227', 1, this)"><span class="rm-step-num">02</span> UNIQLO 銀座 12層全球旗艦店</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="2" onclick="selectRouteNode('d1227', 2, this)"><span class="rm-step-num">03</span> 資生堂 Parlour 銀座本店</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="3" onclick="selectRouteNode('d1227', 3, this)"><span class="rm-step-num">04</span> GINZA SIX 空中花園 ＆ 和牛晚餐</button>
         </div>
 
+        <p class="rm-route-note" aria-live="polite"></p>
         <div class="rm-Stage-grid">
           <!-- Left: Vector Archival Route Canvas OR Live Street Iframe -->
           <div class="rm-canvas-wrap">
-            <div class="rm-view-pane active" data-rm-view="vector">
-              <svg class="rm-vector-svg" viewBox="0 0 600 215" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="rmGrad-d1227" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#c5a065"/>
-                    <stop offset="50%" stop-color="#e2cb9d"/>
-                    <stop offset="100%" stop-color="#63b3ed"/>
-                  </linearGradient>
-                  <pattern id="rmGrid-d1227" width="30" height="30" patternUnits="userSpaceOnUse">
-                    <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(197,160,101,0.12)" stroke-width="0.7"/>
-                  </pattern>
-                </defs>
-                <rect width="600" height="215" fill="url(#rmGrid-d1227)"/>
-                <!-- Topographic contour decorative arcs -->
-                <path d="M -20 190 Q 180 120 390 175 T 620 110" fill="none" stroke="rgba(197,160,101,0.14)" stroke-width="1" stroke-dasharray="3 3"/>
-                <path d="M -10 55 Q 240 110 430 45 T 610 85" fill="none" stroke="rgba(99,179,237,0.12)" stroke-width="1" stroke-dasharray="4 4"/>
-                <!-- Compass Rose -->
-                <g transform="translate(565, 32)" opacity="0.65">
-                  <circle cx="0" cy="0" r="14" fill="none" stroke="#c5a065" stroke-width="0.9"/>
-                  <polygon points="0,-11 -3.5,3 0,0 3.5,3" fill="#c5a065"/>
-                  <text x="0" y="-15" font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="#c5a065" text-anchor="middle">N</text>
-                </g>
-                <!-- Base glow track -->
-                <path d="M 140 62 C 202.5 62, 202.5 115, 265 115 C 330.0 115, 330.0 158, 395 158 C 450.0 158, 450.0 95, 505 95 " fill="none" stroke="url(#rmGrad-d1227)" stroke-width="5" opacity="0.22" stroke-linecap="round"/>
-                <!-- Animated flowing dashed route line -->
-                <path class="rm-flowing-path" d="M 140 62 C 202.5 62, 202.5 115, 265 115 C 330.0 115, 330.0 158, 395 158 C 450.0 158, 450.0 95, 505 95 " fill="none" stroke="url(#rmGrad-d1227)" stroke-width="2.6" stroke-dasharray="7 5" stroke-linecap="round"/>
-                
-          <g class="rm-svg-pin active-pin" data-pin-idx="0" onclick="selectRouteNode('d1227', 0)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="140" cy="62" r="15" />
-            <circle class="rm-pin-outer" cx="140" cy="62" r="10" />
-            <text x="140" y="65.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">01</text>
-            <rect x="76" y="75" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="140" y="86" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">東橫INN 八重洲北口</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="1" onclick="selectRouteNode('d1227', 1)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="265" cy="115" r="15" />
-            <circle class="rm-pin-outer" cx="265" cy="115" r="10" />
-            <text x="265" y="118.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">02</text>
-            <rect x="201" y="88" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="265" y="99" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">UNIQLO 銀座 1</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="2" onclick="selectRouteNode('d1227', 2)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="395" cy="158" r="15" />
-            <circle class="rm-pin-outer" cx="395" cy="158" r="10" />
-            <text x="395" y="161.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">03</text>
-            <rect x="331" y="131" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="395" y="142" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">資生堂 Parlour</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="3" onclick="selectRouteNode('d1227', 3)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="505" cy="95" r="15" />
-            <circle class="rm-pin-outer" cx="505" cy="95" r="10" />
-            <text x="505" y="98.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">04</text>
-            <rect x="441" y="68" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="505" y="79" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">GINZA SIX 空</text>
-          </g>
-        
-              </svg>
-            </div>
-            <div class="rm-view-pane" data-rm-view="street">
-              <iframe class="rm-street-iframe" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-src="https://maps.google.com/maps?q=GINZA+SIX+Tokyo&t=m&z=14&output=embed&iwloc=near"></iframe>
-            </div>
+            <div class="rm-view-pane active" data-rm-view="street"><iframe class="rm-street-iframe" loading="lazy" title="地面路線地圖" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
           </div>
 
           <!-- Right: Active Stop Concierge Inspector -->
@@ -7462,86 +7200,21 @@ body.theme-night .lanyard-action-btn {
       <div class="daily-route-minimap" id="rm-d1228" data-nodes='[{"id": "01", "name": "淺草寺 雷門 ＆ 仲見世通", "time": "10:00", "x": 185, "y": 85, "leg": "🚇 日本橋站乘銀座線直達淺草站 1號出口 (14分)", "tip": "雷門大燈籠打卡，必食木村家人形燒、淺草吉列肉餅與抹茶雪糕", "q": "Senso-ji+Temple"}, {"id": "02", "name": "隅田川水岸步道 (Tokyo Mizumachi)", "time": "13:00", "x": 325, "y": 115, "leg": "🚶 經隅田公園跨河漫步 (15分)", "tip": "沿途抬頭就是完整晴空塔倒影，水岸邊有多間高質感文青 Cafe", "q": "SUMIDA+RIVER+WALK"}, {"id": "03", "name": "東京晴空塔 Tokyo Skytree", "time": "15:00", "x": 495, "y": 78, "leg": "🚶 沿北十間川直達押上晴空街道 (8分)", "tip": "黃昏登塔眺望東京全景與富士山夕陽，順逛 Solamachi 伴手禮", "q": "Tokyo+Skytree"}, {"id": "04", "name": "東橫INN 行李斷捨離 (寄存大箱)", "time": "20:30", "x": 110, "y": 165, "leg": "🚇 押上乘淺草線直達日本橋站行返飯店 (18分)", "tip": "將 28吋大喼寄存東橫INN（1/1 返住），只帶 4日輕便袋去越後湯澤！", "q": "東横INN東京駅八重洲北口"}]'>
         <div class="rm-top-bar">
           <div class="rm-title-group">
-            <span class="rm-badge">📍 DAILY ROUTE RADAR // 當日動線與走線小地圖</span>
+            <span class="rm-badge">📍 DAILY GROUND ROUTE // 當日地面路線</span>
             <span class="rm-zone-code">ASAKUSA SENSŌ-JI ➔ TOKYO SKYTREE</span>
           </div>
-          <div class="rm-mode-btns">
-            <button type="button" class="rm-mode-btn active" onclick="switchMiniMapView('d1228', 'vector', this)">🧭 工藝動線圖</button>
-            <button type="button" class="rm-mode-btn" onclick="switchMiniMapView('d1228', 'street', this)">🗺️ 實景街道圖</button>
-          </div>
+          <div class="rm-mode-btns"><button type="button" class="rm-mode-btn" data-mode="walking" aria-pressed="false" onclick="switchMiniMapView('d1228', 'walking')">步行路線</button><button type="button" class="rm-mode-btn" data-mode="transit" aria-pressed="false" onclick="switchMiniMapView('d1228', 'transit')">公共交通</button></div>
         </div>
 
         <div class="rm-chain-bar">
           <button type="button" class="rm-step-pill active" data-node-idx="0" onclick="selectRouteNode('d1228', 0, this)"><span class="rm-step-num">01</span> 淺草寺 雷門 ＆ 仲見世通</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="1" onclick="selectRouteNode('d1228', 1, this)"><span class="rm-step-num">02</span> 隅田川水岸步道 (Tokyo Mizumachi)</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="2" onclick="selectRouteNode('d1228', 2, this)"><span class="rm-step-num">03</span> 東京晴空塔 Tokyo Skytree</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="3" onclick="selectRouteNode('d1228', 3, this)"><span class="rm-step-num">04</span> 東橫INN 行李斷捨離 (寄存大箱)</button>
         </div>
 
+        <p class="rm-route-note" aria-live="polite"></p>
         <div class="rm-Stage-grid">
           <!-- Left: Vector Archival Route Canvas OR Live Street Iframe -->
           <div class="rm-canvas-wrap">
-            <div class="rm-view-pane active" data-rm-view="vector">
-              <svg class="rm-vector-svg" viewBox="0 0 600 215" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="rmGrad-d1228" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#c5a065"/>
-                    <stop offset="50%" stop-color="#e2cb9d"/>
-                    <stop offset="100%" stop-color="#63b3ed"/>
-                  </linearGradient>
-                  <pattern id="rmGrid-d1228" width="30" height="30" patternUnits="userSpaceOnUse">
-                    <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(197,160,101,0.12)" stroke-width="0.7"/>
-                  </pattern>
-                </defs>
-                <rect width="600" height="215" fill="url(#rmGrid-d1228)"/>
-                <!-- Topographic contour decorative arcs -->
-                <path d="M -20 190 Q 180 120 390 175 T 620 110" fill="none" stroke="rgba(197,160,101,0.14)" stroke-width="1" stroke-dasharray="3 3"/>
-                <path d="M -10 55 Q 240 110 430 45 T 610 85" fill="none" stroke="rgba(99,179,237,0.12)" stroke-width="1" stroke-dasharray="4 4"/>
-                <!-- Compass Rose -->
-                <g transform="translate(565, 32)" opacity="0.65">
-                  <circle cx="0" cy="0" r="14" fill="none" stroke="#c5a065" stroke-width="0.9"/>
-                  <polygon points="0,-11 -3.5,3 0,0 3.5,3" fill="#c5a065"/>
-                  <text x="0" y="-15" font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="#c5a065" text-anchor="middle">N</text>
-                </g>
-                <!-- Base glow track -->
-                <path d="M 185 85 C 255.0 85, 255.0 115, 325 115 C 410.0 115, 410.0 78, 495 78 C 302.5 78, 302.5 165, 110 165 " fill="none" stroke="url(#rmGrad-d1228)" stroke-width="5" opacity="0.22" stroke-linecap="round"/>
-                <!-- Animated flowing dashed route line -->
-                <path class="rm-flowing-path" d="M 185 85 C 255.0 85, 255.0 115, 325 115 C 410.0 115, 410.0 78, 495 78 C 302.5 78, 302.5 165, 110 165 " fill="none" stroke="url(#rmGrad-d1228)" stroke-width="2.6" stroke-dasharray="7 5" stroke-linecap="round"/>
-                
-          <g class="rm-svg-pin active-pin" data-pin-idx="0" onclick="selectRouteNode('d1228', 0)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="185" cy="85" r="15" />
-            <circle class="rm-pin-outer" cx="185" cy="85" r="10" />
-            <text x="185" y="88.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">01</text>
-            <rect x="121" y="58" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="185" y="69" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">淺草寺 雷門 ＆ 仲見</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="1" onclick="selectRouteNode('d1228', 1)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="325" cy="115" r="15" />
-            <circle class="rm-pin-outer" cx="325" cy="115" r="10" />
-            <text x="325" y="118.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">02</text>
-            <rect x="261" y="88" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="325" y="99" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">隅田川水岸步道 (To</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="2" onclick="selectRouteNode('d1228', 2)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="495" cy="78" r="15" />
-            <circle class="rm-pin-outer" cx="495" cy="78" r="10" />
-            <text x="495" y="81.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">03</text>
-            <rect x="431" y="91" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="495" y="102" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">東京晴空塔 Tokyo</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="3" onclick="selectRouteNode('d1228', 3)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="110" cy="165" r="15" />
-            <circle class="rm-pin-outer" cx="110" cy="165" r="10" />
-            <text x="110" y="168.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">04</text>
-            <rect x="46" y="138" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="110" y="149" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">東橫INN 行李斷捨離</text>
-          </g>
-        
-              </svg>
-            </div>
-            <div class="rm-view-pane" data-rm-view="street">
-              <iframe class="rm-street-iframe" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-src="https://maps.google.com/maps?q=Senso-ji+Asakusa+Tokyo&t=m&z=14&output=embed&iwloc=near"></iframe>
-            </div>
+            <div class="rm-view-pane active" data-rm-view="street"><iframe class="rm-street-iframe" loading="lazy" title="地面路線地圖" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
           </div>
 
           <!-- Right: Active Stop Concierge Inspector -->
@@ -7687,86 +7360,21 @@ body.theme-night .lanyard-action-btn {
       <div class="daily-route-minimap" id="rm-d1229" data-nodes='[{"id": "01", "name": "東京站 上越新幹線月台 (20–23番線)", "time": "09:12", "x": 90, "y": 162, "leg": "🚶 由東橫INN輕裝步行入八重洲北口 (5分)", "tip": "入閘前買定新幹線駅弁（牛肉便當）同咖啡，穿過清水隧道即見萬丈銀白", "q": "Tokyo+Station"}, {"id": "02", "name": "越後湯澤站 (西口溫泉街)", "time": "10:28", "x": 270, "y": 105, "leg": "🚄 上越新幹線 Toki / Tanigawa 直達 (76分)", "tip": "出閘即聞到溫泉香氣與漫天粉雪，西口一出來就有免費足湯", "q": "Echigo-Yuzawa+Station"}, {"id": "03", "name": "越後湯澤「雪之花」溫泉旅館", "time": "10:45", "x": 395, "y": 135, "leg": "🚶 由越後湯澤站西口向右步行 (3分)", "tip": "先寄存行李、換領雪場優惠券，全館鋪設榻榻米免著鞋極舒服", "q": "越後湯沢温泉+湯けむりの宿+雪の花"}, {"id": "04", "name": "湯澤高原 / GALA 雪場 (6人會合開滑)", "time": "12:30", "x": 510, "y": 65, "leg": "🚌 步行 5分至湯澤高原纜車 或 免費接駁車至 GALA", "tip": "6人全員集合租板開滑！晚上返雪之花嘆新潟會席料理、露天風呂同免費夜鳴拉麵", "q": "Yuzawa+Kogen+Ski+Resort"}]'>
         <div class="rm-top-bar">
           <div class="rm-title-group">
-            <span class="rm-badge">📍 DAILY ROUTE RADAR // 當日動線與走線小地圖</span>
+            <span class="rm-badge">📍 DAILY GROUND ROUTE // 當日地面路線</span>
             <span class="rm-zone-code">TOKYO 🚄 ECHIGO-YUZAWA // SNOW COUNTRY</span>
           </div>
-          <div class="rm-mode-btns">
-            <button type="button" class="rm-mode-btn active" onclick="switchMiniMapView('d1229', 'vector', this)">🧭 工藝動線圖</button>
-            <button type="button" class="rm-mode-btn" onclick="switchMiniMapView('d1229', 'street', this)">🗺️ 實景街道圖</button>
-          </div>
+          <div class="rm-mode-btns"><button type="button" class="rm-mode-btn" data-mode="walking" aria-pressed="false" onclick="switchMiniMapView('d1229', 'walking')">步行路線</button><button type="button" class="rm-mode-btn" data-mode="transit" aria-pressed="false" onclick="switchMiniMapView('d1229', 'transit')">公共交通</button></div>
         </div>
 
         <div class="rm-chain-bar">
           <button type="button" class="rm-step-pill active" data-node-idx="0" onclick="selectRouteNode('d1229', 0, this)"><span class="rm-step-num">01</span> 東京站 上越新幹線月台 (20–23番線)</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="1" onclick="selectRouteNode('d1229', 1, this)"><span class="rm-step-num">02</span> 越後湯澤站 (西口溫泉街)</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="2" onclick="selectRouteNode('d1229', 2, this)"><span class="rm-step-num">03</span> 越後湯澤「雪之花」溫泉旅館</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="3" onclick="selectRouteNode('d1229', 3, this)"><span class="rm-step-num">04</span> 湯澤高原 / GALA 雪場 (6人會合開滑)</button>
         </div>
 
+        <p class="rm-route-note" aria-live="polite"></p>
         <div class="rm-Stage-grid">
           <!-- Left: Vector Archival Route Canvas OR Live Street Iframe -->
           <div class="rm-canvas-wrap">
-            <div class="rm-view-pane active" data-rm-view="vector">
-              <svg class="rm-vector-svg" viewBox="0 0 600 215" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="rmGrad-d1229" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#c5a065"/>
-                    <stop offset="50%" stop-color="#e2cb9d"/>
-                    <stop offset="100%" stop-color="#63b3ed"/>
-                  </linearGradient>
-                  <pattern id="rmGrid-d1229" width="30" height="30" patternUnits="userSpaceOnUse">
-                    <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(197,160,101,0.12)" stroke-width="0.7"/>
-                  </pattern>
-                </defs>
-                <rect width="600" height="215" fill="url(#rmGrid-d1229)"/>
-                <!-- Topographic contour decorative arcs -->
-                <path d="M -20 190 Q 180 120 390 175 T 620 110" fill="none" stroke="rgba(197,160,101,0.14)" stroke-width="1" stroke-dasharray="3 3"/>
-                <path d="M -10 55 Q 240 110 430 45 T 610 85" fill="none" stroke="rgba(99,179,237,0.12)" stroke-width="1" stroke-dasharray="4 4"/>
-                <!-- Compass Rose -->
-                <g transform="translate(565, 32)" opacity="0.65">
-                  <circle cx="0" cy="0" r="14" fill="none" stroke="#c5a065" stroke-width="0.9"/>
-                  <polygon points="0,-11 -3.5,3 0,0 3.5,3" fill="#c5a065"/>
-                  <text x="0" y="-15" font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="#c5a065" text-anchor="middle">N</text>
-                </g>
-                <!-- Base glow track -->
-                <path d="M 90 162 C 180.0 162, 180.0 105, 270 105 C 332.5 105, 332.5 135, 395 135 C 452.5 135, 452.5 65, 510 65 " fill="none" stroke="url(#rmGrad-d1229)" stroke-width="5" opacity="0.22" stroke-linecap="round"/>
-                <!-- Animated flowing dashed route line -->
-                <path class="rm-flowing-path" d="M 90 162 C 180.0 162, 180.0 105, 270 105 C 332.5 105, 332.5 135, 395 135 C 452.5 135, 452.5 65, 510 65 " fill="none" stroke="url(#rmGrad-d1229)" stroke-width="2.6" stroke-dasharray="7 5" stroke-linecap="round"/>
-                
-          <g class="rm-svg-pin active-pin" data-pin-idx="0" onclick="selectRouteNode('d1229', 0)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="90" cy="162" r="15" />
-            <circle class="rm-pin-outer" cx="90" cy="162" r="10" />
-            <text x="90" y="165.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">01</text>
-            <rect x="26" y="135" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="90" y="146" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">東京站 上越新幹線月台</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="1" onclick="selectRouteNode('d1229', 1)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="270" cy="105" r="15" />
-            <circle class="rm-pin-outer" cx="270" cy="105" r="10" />
-            <text x="270" y="108.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">02</text>
-            <rect x="206" y="78" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="270" y="89" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">越後湯澤站 (西口溫泉</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="2" onclick="selectRouteNode('d1229', 2)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="395" cy="135" r="15" />
-            <circle class="rm-pin-outer" cx="395" cy="135" r="10" />
-            <text x="395" y="138.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">03</text>
-            <rect x="331" y="108" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="395" y="119" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">越後湯澤「雪之花」溫泉</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="3" onclick="selectRouteNode('d1229', 3)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="510" cy="65" r="15" />
-            <circle class="rm-pin-outer" cx="510" cy="65" r="10" />
-            <text x="510" y="68.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">04</text>
-            <rect x="446" y="78" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="510" y="89" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">湯澤高原 / GALA</text>
-          </g>
-        
-              </svg>
-            </div>
-            <div class="rm-view-pane" data-rm-view="street">
-              <iframe class="rm-street-iframe" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-src="https://maps.google.com/maps?q=Yuzawa+Yukinohana+Ryokan&t=m&z=14&output=embed&iwloc=near"></iframe>
-            </div>
+            <div class="rm-view-pane active" data-rm-view="street"><iframe class="rm-street-iframe" loading="lazy" title="地面路線地圖" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
           </div>
 
           <!-- Right: Active Stop Concierge Inspector -->
@@ -7904,86 +7512,21 @@ body.theme-night .lanyard-action-btn {
       <div class="daily-route-minimap" id="rm-d1230" data-nodes='[{"id": "01", "name": "雪之花 晨間早餐出發", "time": "08:30", "x": 115, "y": 152, "leg": "享用地道魚沼越光米早餐後出發", "tip": "門口或越後湯澤站均有免費 Shuttle Bus 往返各大雪場", "q": "越後湯沢温泉+湯けむりの宿+雪の花"}, {"id": "02", "name": "GALA 湯澤 ／ 石打丸山 (三山連通)", "time": "09:15", "x": 275, "y": 62, "leg": "🚌 免費雪場接駁巴士直達 (8–10分)", "tip": "趁朝早壓雪車剛走過衝麵條雪道！中午食新潟越光米咖哩炸豬排", "q": "GALA+Yuzawa+Snow+Resort"}, {"id": "03", "name": "越後湯澤站「ぽんしゅ館」清酒博物館", "time": "17:00", "x": 415, "y": 138, "leg": "🚌 乘接駁車返抵越後湯澤站構內 (8分)", "tip": "¥500 換 5枚代幣＋試飲杯，由 111 間新潟酒藏投幣機自選試飲！必食雪ん洞爆彈飯糰", "q": "Ponshukan+Echigo-Yuzawa"}, {"id": "04", "name": "雪之花 私人貸切風呂 ＆ 溫泉街歡聚", "time": "20:00", "x": 515, "y": 95, "leg": "🚶 沿西口溫泉街漫步返旅館 (3分)", "tip": "雪之花 5樓設有 3 間免費私人貸切露天風呂（睇亮燈牌免預約即入）", "q": "越後湯沢温泉+湯けむりの宿+雪の花"}]'>
         <div class="rm-top-bar">
           <div class="rm-title-group">
-            <span class="rm-badge">📍 DAILY ROUTE RADAR // 當日動線與走線小地圖</span>
+            <span class="rm-badge">📍 DAILY GROUND ROUTE // 當日地面路線</span>
             <span class="rm-zone-code">GALA YUZAWA & ISHIUCHI // JAPOW & SAKE</span>
           </div>
-          <div class="rm-mode-btns">
-            <button type="button" class="rm-mode-btn active" onclick="switchMiniMapView('d1230', 'vector', this)">🧭 工藝動線圖</button>
-            <button type="button" class="rm-mode-btn" onclick="switchMiniMapView('d1230', 'street', this)">🗺️ 實景街道圖</button>
-          </div>
+          <div class="rm-mode-btns"><button type="button" class="rm-mode-btn" data-mode="walking" aria-pressed="false" onclick="switchMiniMapView('d1230', 'walking')">步行路線</button><button type="button" class="rm-mode-btn" data-mode="transit" aria-pressed="false" onclick="switchMiniMapView('d1230', 'transit')">公共交通</button></div>
         </div>
 
         <div class="rm-chain-bar">
           <button type="button" class="rm-step-pill active" data-node-idx="0" onclick="selectRouteNode('d1230', 0, this)"><span class="rm-step-num">01</span> 雪之花 晨間早餐出發</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="1" onclick="selectRouteNode('d1230', 1, this)"><span class="rm-step-num">02</span> GALA 湯澤 ／ 石打丸山 (三山連通)</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="2" onclick="selectRouteNode('d1230', 2, this)"><span class="rm-step-num">03</span> 越後湯澤站「ぽんしゅ館」清酒博物館</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="3" onclick="selectRouteNode('d1230', 3, this)"><span class="rm-step-num">04</span> 雪之花 私人貸切風呂 ＆ 溫泉街歡聚</button>
         </div>
 
+        <p class="rm-route-note" aria-live="polite"></p>
         <div class="rm-Stage-grid">
           <!-- Left: Vector Archival Route Canvas OR Live Street Iframe -->
           <div class="rm-canvas-wrap">
-            <div class="rm-view-pane active" data-rm-view="vector">
-              <svg class="rm-vector-svg" viewBox="0 0 600 215" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="rmGrad-d1230" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#c5a065"/>
-                    <stop offset="50%" stop-color="#e2cb9d"/>
-                    <stop offset="100%" stop-color="#63b3ed"/>
-                  </linearGradient>
-                  <pattern id="rmGrid-d1230" width="30" height="30" patternUnits="userSpaceOnUse">
-                    <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(197,160,101,0.12)" stroke-width="0.7"/>
-                  </pattern>
-                </defs>
-                <rect width="600" height="215" fill="url(#rmGrid-d1230)"/>
-                <!-- Topographic contour decorative arcs -->
-                <path d="M -20 190 Q 180 120 390 175 T 620 110" fill="none" stroke="rgba(197,160,101,0.14)" stroke-width="1" stroke-dasharray="3 3"/>
-                <path d="M -10 55 Q 240 110 430 45 T 610 85" fill="none" stroke="rgba(99,179,237,0.12)" stroke-width="1" stroke-dasharray="4 4"/>
-                <!-- Compass Rose -->
-                <g transform="translate(565, 32)" opacity="0.65">
-                  <circle cx="0" cy="0" r="14" fill="none" stroke="#c5a065" stroke-width="0.9"/>
-                  <polygon points="0,-11 -3.5,3 0,0 3.5,3" fill="#c5a065"/>
-                  <text x="0" y="-15" font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="#c5a065" text-anchor="middle">N</text>
-                </g>
-                <!-- Base glow track -->
-                <path d="M 115 152 C 195.0 152, 195.0 62, 275 62 C 345.0 62, 345.0 138, 415 138 C 465.0 138, 465.0 95, 515 95 " fill="none" stroke="url(#rmGrad-d1230)" stroke-width="5" opacity="0.22" stroke-linecap="round"/>
-                <!-- Animated flowing dashed route line -->
-                <path class="rm-flowing-path" d="M 115 152 C 195.0 152, 195.0 62, 275 62 C 345.0 62, 345.0 138, 415 138 C 465.0 138, 465.0 95, 515 95 " fill="none" stroke="url(#rmGrad-d1230)" stroke-width="2.6" stroke-dasharray="7 5" stroke-linecap="round"/>
-                
-          <g class="rm-svg-pin active-pin" data-pin-idx="0" onclick="selectRouteNode('d1230', 0)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="115" cy="152" r="15" />
-            <circle class="rm-pin-outer" cx="115" cy="152" r="10" />
-            <text x="115" y="155.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">01</text>
-            <rect x="51" y="125" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="115" y="136" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">雪之花 晨間早餐出發</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="1" onclick="selectRouteNode('d1230', 1)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="275" cy="62" r="15" />
-            <circle class="rm-pin-outer" cx="275" cy="62" r="10" />
-            <text x="275" y="65.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">02</text>
-            <rect x="211" y="75" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="275" y="86" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">GALA 湯澤 ／ 石</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="2" onclick="selectRouteNode('d1230', 2)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="415" cy="138" r="15" />
-            <circle class="rm-pin-outer" cx="415" cy="138" r="10" />
-            <text x="415" y="141.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">03</text>
-            <rect x="351" y="111" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="415" y="122" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">越後湯澤站「ぽんしゅ館</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="3" onclick="selectRouteNode('d1230', 3)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="515" cy="95" r="15" />
-            <circle class="rm-pin-outer" cx="515" cy="95" r="10" />
-            <text x="515" y="98.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">04</text>
-            <rect x="451" y="68" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="515" y="79" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">雪之花 私人貸切風呂 </text>
-          </g>
-        
-              </svg>
-            </div>
-            <div class="rm-view-pane" data-rm-view="street">
-              <iframe class="rm-street-iframe" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-src="https://maps.google.com/maps?q=GALA+Yuzawa+Snow+Resort&t=m&z=14&output=embed&iwloc=near"></iframe>
-            </div>
+            <div class="rm-view-pane active" data-rm-view="street"><iframe class="rm-street-iframe" loading="lazy" title="地面路線地圖" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
           </div>
 
           <!-- Right: Active Stop Concierge Inspector -->
@@ -8130,86 +7673,21 @@ body.theme-night .lanyard-action-btn {
       <div class="daily-route-minimap" id="rm-d1231" data-nodes='[{"id": "01", "name": "湯澤雪場 2026 收官之滑", "time": "09:30", "x": 120, "y": 75, "leg": "🚌 早上出發享受除夕粉雪", "tip": "今日約 15:30 提早還裝備收隊，留足時間返旅館嘆除夕溫泉", "q": "Yuzawa+Kogen+Ski+Resort"}, {"id": "02", "name": "雪之花 6F 大浴場「除夕洗塵湯」", "time": "17:00", "x": 275, "y": 135, "leg": "🚌 返抵雪之花溫泉旅館 (10分)", "tip": "對住漫天飄雪浸熱湯，洗去 2026 整年疲勞，出浴後嘆免費冰棒", "q": "越後湯沢温泉+湯けむりの宿+雪の花"}, {"id": "03", "name": "除夕跨年會席 ＆ 傳統「年越蕎麥麵」", "time": "19:30", "x": 410, "y": 88, "leg": "🛗 旅館餐廳「雪國之四季」", "tip": "品嚐新潟黑毛和牛與冬季寒鰤魚，食碗年越蕎麥麵寓意長壽順遂", "q": "越後湯沢温泉+湯けむりの宿+雪の花"}, {"id": "04", "name": "榻榻米暖爐舉杯 · 2027 跨年倒數", "time": "00:00", "x": 515, "y": 148, "leg": "🍶 6人房內開瓶八海山大吟釀", "tip": "聽住日本除夕鐘聲（除夜の鐘），6 人舉杯迎接 2027 新年第一刻！", "q": "越後湯沢温泉+湯けむりの宿+雪の花"}]'>
         <div class="rm-top-bar">
           <div class="rm-title-group">
-            <span class="rm-badge">📍 DAILY ROUTE RADAR // 當日動線與走線小地圖</span>
+            <span class="rm-badge">📍 DAILY GROUND ROUTE // 當日地面路線</span>
             <span class="rm-zone-code">NEW YEAR'S EVE // OMISOKA IN SNOW COUNTRY</span>
           </div>
-          <div class="rm-mode-btns">
-            <button type="button" class="rm-mode-btn active" onclick="switchMiniMapView('d1231', 'vector', this)">🧭 工藝動線圖</button>
-            <button type="button" class="rm-mode-btn" onclick="switchMiniMapView('d1231', 'street', this)">🗺️ 實景街道圖</button>
-          </div>
+          <div class="rm-mode-btns"><button type="button" class="rm-mode-btn" data-mode="walking" aria-pressed="false" onclick="switchMiniMapView('d1231', 'walking')">步行路線</button><button type="button" class="rm-mode-btn" data-mode="transit" aria-pressed="false" onclick="switchMiniMapView('d1231', 'transit')">公共交通</button></div>
         </div>
 
         <div class="rm-chain-bar">
           <button type="button" class="rm-step-pill active" data-node-idx="0" onclick="selectRouteNode('d1231', 0, this)"><span class="rm-step-num">01</span> 湯澤雪場 2026 收官之滑</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="1" onclick="selectRouteNode('d1231', 1, this)"><span class="rm-step-num">02</span> 雪之花 6F 大浴場「除夕洗塵湯」</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="2" onclick="selectRouteNode('d1231', 2, this)"><span class="rm-step-num">03</span> 除夕跨年會席 ＆ 傳統「年越蕎麥麵」</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="3" onclick="selectRouteNode('d1231', 3, this)"><span class="rm-step-num">04</span> 榻榻米暖爐舉杯 · 2027 跨年倒數</button>
         </div>
 
+        <p class="rm-route-note" aria-live="polite"></p>
         <div class="rm-Stage-grid">
           <!-- Left: Vector Archival Route Canvas OR Live Street Iframe -->
           <div class="rm-canvas-wrap">
-            <div class="rm-view-pane active" data-rm-view="vector">
-              <svg class="rm-vector-svg" viewBox="0 0 600 215" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="rmGrad-d1231" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#c5a065"/>
-                    <stop offset="50%" stop-color="#e2cb9d"/>
-                    <stop offset="100%" stop-color="#63b3ed"/>
-                  </linearGradient>
-                  <pattern id="rmGrid-d1231" width="30" height="30" patternUnits="userSpaceOnUse">
-                    <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(197,160,101,0.12)" stroke-width="0.7"/>
-                  </pattern>
-                </defs>
-                <rect width="600" height="215" fill="url(#rmGrid-d1231)"/>
-                <!-- Topographic contour decorative arcs -->
-                <path d="M -20 190 Q 180 120 390 175 T 620 110" fill="none" stroke="rgba(197,160,101,0.14)" stroke-width="1" stroke-dasharray="3 3"/>
-                <path d="M -10 55 Q 240 110 430 45 T 610 85" fill="none" stroke="rgba(99,179,237,0.12)" stroke-width="1" stroke-dasharray="4 4"/>
-                <!-- Compass Rose -->
-                <g transform="translate(565, 32)" opacity="0.65">
-                  <circle cx="0" cy="0" r="14" fill="none" stroke="#c5a065" stroke-width="0.9"/>
-                  <polygon points="0,-11 -3.5,3 0,0 3.5,3" fill="#c5a065"/>
-                  <text x="0" y="-15" font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="#c5a065" text-anchor="middle">N</text>
-                </g>
-                <!-- Base glow track -->
-                <path d="M 120 75 C 197.5 75, 197.5 135, 275 135 C 342.5 135, 342.5 88, 410 88 C 462.5 88, 462.5 148, 515 148 " fill="none" stroke="url(#rmGrad-d1231)" stroke-width="5" opacity="0.22" stroke-linecap="round"/>
-                <!-- Animated flowing dashed route line -->
-                <path class="rm-flowing-path" d="M 120 75 C 197.5 75, 197.5 135, 275 135 C 342.5 135, 342.5 88, 410 88 C 462.5 88, 462.5 148, 515 148 " fill="none" stroke="url(#rmGrad-d1231)" stroke-width="2.6" stroke-dasharray="7 5" stroke-linecap="round"/>
-                
-          <g class="rm-svg-pin active-pin" data-pin-idx="0" onclick="selectRouteNode('d1231', 0)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="120" cy="75" r="15" />
-            <circle class="rm-pin-outer" cx="120" cy="75" r="10" />
-            <text x="120" y="78.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">01</text>
-            <rect x="56" y="88" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="120" y="99" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">湯澤雪場 2026 收</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="1" onclick="selectRouteNode('d1231', 1)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="275" cy="135" r="15" />
-            <circle class="rm-pin-outer" cx="275" cy="135" r="10" />
-            <text x="275" y="138.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">02</text>
-            <rect x="211" y="108" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="275" y="119" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">雪之花 6F 大浴場「</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="2" onclick="selectRouteNode('d1231', 2)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="410" cy="88" r="15" />
-            <circle class="rm-pin-outer" cx="410" cy="88" r="10" />
-            <text x="410" y="91.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">03</text>
-            <rect x="346" y="61" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="410" y="72" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">除夕跨年會席 ＆ 傳統</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="3" onclick="selectRouteNode('d1231', 3)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="515" cy="148" r="15" />
-            <circle class="rm-pin-outer" cx="515" cy="148" r="10" />
-            <text x="515" y="151.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">04</text>
-            <rect x="451" y="121" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="515" y="132" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">榻榻米暖爐舉杯 · 2</text>
-          </g>
-        
-              </svg>
-            </div>
-            <div class="rm-view-pane" data-rm-view="street">
-              <iframe class="rm-street-iframe" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-src="https://maps.google.com/maps?q=Echigo-Yuzawa+Station&t=m&z=14&output=embed&iwloc=near"></iframe>
-            </div>
+            <div class="rm-view-pane active" data-rm-view="street"><iframe class="rm-street-iframe" loading="lazy" title="地面路線地圖" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
           </div>
 
           <!-- Right: Active Stop Concierge Inspector -->
@@ -8356,86 +7834,21 @@ body.theme-night .lanyard-action-btn {
       <div class="daily-route-minimap" id="rm-d0101" data-nodes='[{"id": "01", "name": "雪之花 元旦早餐 ＆ 寄存行李", "time": "08:00", "x": 95, "y": 88, "leg": "新年第一朝元旦御節料理", "tip": "退房後將行李暫存大堂，輕裝出發去滑新年第一轉（初滑り）", "q": "越後湯沢温泉+湯けむりの宿+雪の花"}, {"id": "02", "name": "元旦首滑 (初滑り) ＆ 歸還裝備", "time": "09:30", "x": 235, "y": 65, "leg": "🚌 往雪場進行半日衝刺并大合照", "tip": "約 15:00 歸還所有雪板雪靴，返旅館拎行李行去車站買手信", "q": "GALA+Yuzawa+Snow+Resort"}, {"id": "03", "name": "越後湯澤站 ➔ 東京站 (上越新幹線)", "time": "17:24", "x": 385, "y": 142, "leg": "🚄 乘搭上越新幹線 Toki 336号 (76分)", "tip": "喺 CoCoLo 湯澤買埋最後一輪新潟米菓同清酒上車慢慢嘆", "q": "Echigo-Yuzawa+Station"}, {"id": "04", "name": "重返 東橫INN 東京站八重洲北口", "time": "19:00", "x": 515, "y": 105, "leg": "🚶 18:40 抵東京站，步行 5分返飯店", "tip": "向櫃檯領回 12/28 寄存嘅 28吋大行李箱，輕輕鬆鬆沖涼休息", "q": "東横INN東京駅八重洲北口"}]'>
         <div class="rm-top-bar">
           <div class="rm-title-group">
-            <span class="rm-badge">📍 DAILY ROUTE RADAR // 當日動線與走線小地圖</span>
+            <span class="rm-badge">📍 DAILY GROUND ROUTE // 當日地面路線</span>
             <span class="rm-zone-code">NEW YEAR'S DAY // FIRST RUN ➔ RETURN TO TOKYO</span>
           </div>
-          <div class="rm-mode-btns">
-            <button type="button" class="rm-mode-btn active" onclick="switchMiniMapView('d0101', 'vector', this)">🧭 工藝動線圖</button>
-            <button type="button" class="rm-mode-btn" onclick="switchMiniMapView('d0101', 'street', this)">🗺️ 實景街道圖</button>
-          </div>
+          <div class="rm-mode-btns"><button type="button" class="rm-mode-btn" data-mode="walking" aria-pressed="false" onclick="switchMiniMapView('d0101', 'walking')">步行路線</button><button type="button" class="rm-mode-btn" data-mode="transit" aria-pressed="false" onclick="switchMiniMapView('d0101', 'transit')">公共交通</button></div>
         </div>
 
         <div class="rm-chain-bar">
           <button type="button" class="rm-step-pill active" data-node-idx="0" onclick="selectRouteNode('d0101', 0, this)"><span class="rm-step-num">01</span> 雪之花 元旦早餐 ＆ 寄存行李</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="1" onclick="selectRouteNode('d0101', 1, this)"><span class="rm-step-num">02</span> 元旦首滑 (初滑り) ＆ 歸還裝備</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="2" onclick="selectRouteNode('d0101', 2, this)"><span class="rm-step-num">03</span> 越後湯澤站 ➔ 東京站 (上越新幹線)</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="3" onclick="selectRouteNode('d0101', 3, this)"><span class="rm-step-num">04</span> 重返 東橫INN 東京站八重洲北口</button>
         </div>
 
+        <p class="rm-route-note" aria-live="polite"></p>
         <div class="rm-Stage-grid">
           <!-- Left: Vector Archival Route Canvas OR Live Street Iframe -->
           <div class="rm-canvas-wrap">
-            <div class="rm-view-pane active" data-rm-view="vector">
-              <svg class="rm-vector-svg" viewBox="0 0 600 215" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="rmGrad-d0101" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#c5a065"/>
-                    <stop offset="50%" stop-color="#e2cb9d"/>
-                    <stop offset="100%" stop-color="#63b3ed"/>
-                  </linearGradient>
-                  <pattern id="rmGrid-d0101" width="30" height="30" patternUnits="userSpaceOnUse">
-                    <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(197,160,101,0.12)" stroke-width="0.7"/>
-                  </pattern>
-                </defs>
-                <rect width="600" height="215" fill="url(#rmGrid-d0101)"/>
-                <!-- Topographic contour decorative arcs -->
-                <path d="M -20 190 Q 180 120 390 175 T 620 110" fill="none" stroke="rgba(197,160,101,0.14)" stroke-width="1" stroke-dasharray="3 3"/>
-                <path d="M -10 55 Q 240 110 430 45 T 610 85" fill="none" stroke="rgba(99,179,237,0.12)" stroke-width="1" stroke-dasharray="4 4"/>
-                <!-- Compass Rose -->
-                <g transform="translate(565, 32)" opacity="0.65">
-                  <circle cx="0" cy="0" r="14" fill="none" stroke="#c5a065" stroke-width="0.9"/>
-                  <polygon points="0,-11 -3.5,3 0,0 3.5,3" fill="#c5a065"/>
-                  <text x="0" y="-15" font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="#c5a065" text-anchor="middle">N</text>
-                </g>
-                <!-- Base glow track -->
-                <path d="M 95 88 C 165.0 88, 165.0 65, 235 65 C 310.0 65, 310.0 142, 385 142 C 450.0 142, 450.0 105, 515 105 " fill="none" stroke="url(#rmGrad-d0101)" stroke-width="5" opacity="0.22" stroke-linecap="round"/>
-                <!-- Animated flowing dashed route line -->
-                <path class="rm-flowing-path" d="M 95 88 C 165.0 88, 165.0 65, 235 65 C 310.0 65, 310.0 142, 385 142 C 450.0 142, 450.0 105, 515 105 " fill="none" stroke="url(#rmGrad-d0101)" stroke-width="2.6" stroke-dasharray="7 5" stroke-linecap="round"/>
-                
-          <g class="rm-svg-pin active-pin" data-pin-idx="0" onclick="selectRouteNode('d0101', 0)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="95" cy="88" r="15" />
-            <circle class="rm-pin-outer" cx="95" cy="88" r="10" />
-            <text x="95" y="91.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">01</text>
-            <rect x="31" y="61" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="95" y="72" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">雪之花 元旦早餐 ＆ </text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="1" onclick="selectRouteNode('d0101', 1)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="235" cy="65" r="15" />
-            <circle class="rm-pin-outer" cx="235" cy="65" r="10" />
-            <text x="235" y="68.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">02</text>
-            <rect x="171" y="78" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="235" y="89" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">元旦首滑 (初滑り) </text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="2" onclick="selectRouteNode('d0101', 2)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="385" cy="142" r="15" />
-            <circle class="rm-pin-outer" cx="385" cy="142" r="10" />
-            <text x="385" y="145.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">03</text>
-            <rect x="321" y="115" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="385" y="126" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">越後湯澤站 ➔ 東京站</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="3" onclick="selectRouteNode('d0101', 3)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="515" cy="105" r="15" />
-            <circle class="rm-pin-outer" cx="515" cy="105" r="10" />
-            <text x="515" y="108.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">04</text>
-            <rect x="451" y="78" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="515" y="89" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">重返 東橫INN 東京</text>
-          </g>
-        
-              </svg>
-            </div>
-            <div class="rm-view-pane" data-rm-view="street">
-              <iframe class="rm-street-iframe" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-src="https://maps.google.com/maps?q=Echigo-Yuzawa+Station&t=m&z=14&output=embed&iwloc=near"></iframe>
-            </div>
+            <div class="rm-view-pane active" data-rm-view="street"><iframe class="rm-street-iframe" loading="lazy" title="地面路線地圖" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
           </div>
 
           <!-- Right: Active Stop Concierge Inspector -->
@@ -8574,86 +7987,21 @@ body.theme-night .lanyard-action-btn {
       <div class="daily-route-minimap" id="rm-d0102" data-nodes='[{"id": "01", "name": "明治神宮「初詣」新年祈福參拜", "time": "08:45", "x": 105, "y": 135, "leg": "🚇 大手町/東京站乘千代田線直達明治神宮前 (20分)", "tip": "準備定 5円硬幣（ご縁）祈求 2027 順遂，買返支木製破魔矢與開運御守", "q": "Meiji+Jingu"}, {"id": "02", "name": "銀座三越 ／ 松屋銀座「初賣」福袋", "time": "11:30", "x": 275, "y": 72, "leg": "🚇 表參道乘銀座線直達銀座站 (15分)", "tip": "1月2日係日本百貨公司全年最震撼嘅「初売り」開賣日，B2 甜點福袋極超值", "q": "Ginza+Mitsukoshi"}, {"id": "03", "name": "銀座／日本橋 新春慶功下午茶", "time": "15:30", "x": 410, "y": 152, "leg": "🚶 沿中央通漫步至日本橋方向 (8分)", "tip": "到銀座千疋屋或日本橋 HARBS 嘆鮮果千層蛋糕，慶祝旅程大豐收", "q": "HARBS+Coredo+Muromachi"}, {"id": "04", "name": "東橫INN 終極戰利品打包夜", "time": "19:30", "x": 515, "y": 92, "leg": "🚶 由日本橋步行返抵東橫INN (7分)", "tip": "將所有手信、清酒（必須寄艙！）收入 28吋大行李箱，準備聽日輕鬆返港", "q": "東横INN東京駅八重洲北口"}]'>
         <div class="rm-top-bar">
           <div class="rm-title-group">
-            <span class="rm-badge">📍 DAILY ROUTE RADAR // 當日動線與走線小地圖</span>
+            <span class="rm-badge">📍 DAILY GROUND ROUTE // 當日地面路線</span>
             <span class="rm-zone-code">MEIJI JINGU HATSUMODE ➔ GINZA HATSU-URI</span>
           </div>
-          <div class="rm-mode-btns">
-            <button type="button" class="rm-mode-btn active" onclick="switchMiniMapView('d0102', 'vector', this)">🧭 工藝動線圖</button>
-            <button type="button" class="rm-mode-btn" onclick="switchMiniMapView('d0102', 'street', this)">🗺️ 實景街道圖</button>
-          </div>
+          <div class="rm-mode-btns"><button type="button" class="rm-mode-btn" data-mode="walking" aria-pressed="false" onclick="switchMiniMapView('d0102', 'walking')">步行路線</button><button type="button" class="rm-mode-btn" data-mode="transit" aria-pressed="false" onclick="switchMiniMapView('d0102', 'transit')">公共交通</button></div>
         </div>
 
         <div class="rm-chain-bar">
           <button type="button" class="rm-step-pill active" data-node-idx="0" onclick="selectRouteNode('d0102', 0, this)"><span class="rm-step-num">01</span> 明治神宮「初詣」新年祈福參拜</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="1" onclick="selectRouteNode('d0102', 1, this)"><span class="rm-step-num">02</span> 銀座三越 ／ 松屋銀座「初賣」福袋</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="2" onclick="selectRouteNode('d0102', 2, this)"><span class="rm-step-num">03</span> 銀座／日本橋 新春慶功下午茶</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="3" onclick="selectRouteNode('d0102', 3, this)"><span class="rm-step-num">04</span> 東橫INN 終極戰利品打包夜</button>
         </div>
 
+        <p class="rm-route-note" aria-live="polite"></p>
         <div class="rm-Stage-grid">
           <!-- Left: Vector Archival Route Canvas OR Live Street Iframe -->
           <div class="rm-canvas-wrap">
-            <div class="rm-view-pane active" data-rm-view="vector">
-              <svg class="rm-vector-svg" viewBox="0 0 600 215" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="rmGrad-d0102" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#c5a065"/>
-                    <stop offset="50%" stop-color="#e2cb9d"/>
-                    <stop offset="100%" stop-color="#63b3ed"/>
-                  </linearGradient>
-                  <pattern id="rmGrid-d0102" width="30" height="30" patternUnits="userSpaceOnUse">
-                    <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(197,160,101,0.12)" stroke-width="0.7"/>
-                  </pattern>
-                </defs>
-                <rect width="600" height="215" fill="url(#rmGrid-d0102)"/>
-                <!-- Topographic contour decorative arcs -->
-                <path d="M -20 190 Q 180 120 390 175 T 620 110" fill="none" stroke="rgba(197,160,101,0.14)" stroke-width="1" stroke-dasharray="3 3"/>
-                <path d="M -10 55 Q 240 110 430 45 T 610 85" fill="none" stroke="rgba(99,179,237,0.12)" stroke-width="1" stroke-dasharray="4 4"/>
-                <!-- Compass Rose -->
-                <g transform="translate(565, 32)" opacity="0.65">
-                  <circle cx="0" cy="0" r="14" fill="none" stroke="#c5a065" stroke-width="0.9"/>
-                  <polygon points="0,-11 -3.5,3 0,0 3.5,3" fill="#c5a065"/>
-                  <text x="0" y="-15" font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="#c5a065" text-anchor="middle">N</text>
-                </g>
-                <!-- Base glow track -->
-                <path d="M 105 135 C 190.0 135, 190.0 72, 275 72 C 342.5 72, 342.5 152, 410 152 C 462.5 152, 462.5 92, 515 92 " fill="none" stroke="url(#rmGrad-d0102)" stroke-width="5" opacity="0.22" stroke-linecap="round"/>
-                <!-- Animated flowing dashed route line -->
-                <path class="rm-flowing-path" d="M 105 135 C 190.0 135, 190.0 72, 275 72 C 342.5 72, 342.5 152, 410 152 C 462.5 152, 462.5 92, 515 92 " fill="none" stroke="url(#rmGrad-d0102)" stroke-width="2.6" stroke-dasharray="7 5" stroke-linecap="round"/>
-                
-          <g class="rm-svg-pin active-pin" data-pin-idx="0" onclick="selectRouteNode('d0102', 0)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="105" cy="135" r="15" />
-            <circle class="rm-pin-outer" cx="105" cy="135" r="10" />
-            <text x="105" y="138.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">01</text>
-            <rect x="41" y="108" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="105" y="119" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">明治神宮「初詣」新年祈</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="1" onclick="selectRouteNode('d0102', 1)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="275" cy="72" r="15" />
-            <circle class="rm-pin-outer" cx="275" cy="72" r="10" />
-            <text x="275" y="75.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">02</text>
-            <rect x="211" y="85" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="275" y="96" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">銀座三越 ／ 松屋銀座</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="2" onclick="selectRouteNode('d0102', 2)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="410" cy="152" r="15" />
-            <circle class="rm-pin-outer" cx="410" cy="152" r="10" />
-            <text x="410" y="155.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">03</text>
-            <rect x="346" y="125" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="410" y="136" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">銀座／日本橋 新春慶功</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="3" onclick="selectRouteNode('d0102', 3)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="515" cy="92" r="15" />
-            <circle class="rm-pin-outer" cx="515" cy="92" r="10" />
-            <text x="515" y="95.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">04</text>
-            <rect x="451" y="65" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="515" y="76" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">東橫INN 終極戰利品</text>
-          </g>
-        
-              </svg>
-            </div>
-            <div class="rm-view-pane" data-rm-view="street">
-              <iframe class="rm-street-iframe" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-src="https://maps.google.com/maps?q=Meiji+Jingu+Tokyo&t=m&z=14&output=embed&iwloc=near"></iframe>
-            </div>
+            <div class="rm-view-pane active" data-rm-view="street"><iframe class="rm-street-iframe" loading="lazy" title="地面路線地圖" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
           </div>
 
           <!-- Right: Active Stop Concierge Inspector -->
@@ -8791,86 +8139,21 @@ body.theme-night .lanyard-action-btn {
       <div class="daily-route-minimap" id="rm-d0103" data-nodes='[{"id": "01", "name": "東京站 GRANSTA ＆ 一番街手信衝刺", "time": "10:00", "x": 105, "y": 95, "leg": "🚶 退房暫寄行李，步行 5分入東京站", "tip": "早上去買 NewYork Perfect Cheese、Press Butter Sand 同拉麵街午餐", "q": "GRANSTA+TOKYO"}, {"id": "02", "name": "東京站 地下總武月台 ➔ 成田特快 N&#39;EX", "time": "15:00", "x": 250, "y": 148, "leg": "🚄 14:30 返東橫INN拎行李，15:00 乘 N&#39;EX (58分)", "tip": "全車指定席，行李可鎖喺車廂頭尾大型行李架，舒服直達機場", "q": "Tokyo+Station"}, {"id": "03", "name": "成田國際機場 T2 (免稅店最後衝刺)", "time": "16:00", "x": 395, "y": 68, "leg": "🛫 國泰航空櫃檯寄艙 ＆ 出境手續", "tip": "入禁區後買齊 ROYCE 生朱古力、白色戀人同東京芭娜娜免稅版", "q": "Narita+Airport+Terminal+2"}, {"id": "04", "name": "國泰 CX505 起飛 ✈ 平安抵達香港", "time": "18:10", "x": 520, "y": 138, "leg": "✈ 18:10 起飛 ➔ 22:30 降落香港 T1", "tip": "圓滿完成 12日11夜東京・越後湯澤跨年雪國之旅！", "q": "Hong+Kong+International+Airport"}]'>
         <div class="rm-top-bar">
           <div class="rm-title-group">
-            <span class="rm-badge">📍 DAILY ROUTE RADAR // 當日動線與走線小地圖</span>
+            <span class="rm-badge">📍 DAILY GROUND ROUTE // 當日地面路線</span>
             <span class="rm-zone-code">TOKYO STATION GRANSTA ➔ N'EX ✈ HKG</span>
           </div>
-          <div class="rm-mode-btns">
-            <button type="button" class="rm-mode-btn active" onclick="switchMiniMapView('d0103', 'vector', this)">🧭 工藝動線圖</button>
-            <button type="button" class="rm-mode-btn" onclick="switchMiniMapView('d0103', 'street', this)">🗺️ 實景街道圖</button>
-          </div>
+          <div class="rm-mode-btns"><button type="button" class="rm-mode-btn" data-mode="walking" aria-pressed="false" onclick="switchMiniMapView('d0103', 'walking')">步行路線</button><button type="button" class="rm-mode-btn" data-mode="transit" aria-pressed="false" onclick="switchMiniMapView('d0103', 'transit')">公共交通</button></div>
         </div>
 
         <div class="rm-chain-bar">
           <button type="button" class="rm-step-pill active" data-node-idx="0" onclick="selectRouteNode('d0103', 0, this)"><span class="rm-step-num">01</span> 東京站 GRANSTA ＆ 一番街手信衝刺</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="1" onclick="selectRouteNode('d0103', 1, this)"><span class="rm-step-num">02</span> 東京站 地下總武月台 ➔ 成田特快 N'EX</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="2" onclick="selectRouteNode('d0103', 2, this)"><span class="rm-step-num">03</span> 成田國際機場 T2 (免稅店最後衝刺)</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="3" onclick="selectRouteNode('d0103', 3, this)"><span class="rm-step-num">04</span> 國泰 CX505 起飛 ✈ 平安抵達香港</button>
         </div>
 
+        <p class="rm-route-note" aria-live="polite"></p>
         <div class="rm-Stage-grid">
           <!-- Left: Vector Archival Route Canvas OR Live Street Iframe -->
           <div class="rm-canvas-wrap">
-            <div class="rm-view-pane active" data-rm-view="vector">
-              <svg class="rm-vector-svg" viewBox="0 0 600 215" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="rmGrad-d0103" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#c5a065"/>
-                    <stop offset="50%" stop-color="#e2cb9d"/>
-                    <stop offset="100%" stop-color="#63b3ed"/>
-                  </linearGradient>
-                  <pattern id="rmGrid-d0103" width="30" height="30" patternUnits="userSpaceOnUse">
-                    <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(197,160,101,0.12)" stroke-width="0.7"/>
-                  </pattern>
-                </defs>
-                <rect width="600" height="215" fill="url(#rmGrid-d0103)"/>
-                <!-- Topographic contour decorative arcs -->
-                <path d="M -20 190 Q 180 120 390 175 T 620 110" fill="none" stroke="rgba(197,160,101,0.14)" stroke-width="1" stroke-dasharray="3 3"/>
-                <path d="M -10 55 Q 240 110 430 45 T 610 85" fill="none" stroke="rgba(99,179,237,0.12)" stroke-width="1" stroke-dasharray="4 4"/>
-                <!-- Compass Rose -->
-                <g transform="translate(565, 32)" opacity="0.65">
-                  <circle cx="0" cy="0" r="14" fill="none" stroke="#c5a065" stroke-width="0.9"/>
-                  <polygon points="0,-11 -3.5,3 0,0 3.5,3" fill="#c5a065"/>
-                  <text x="0" y="-15" font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="#c5a065" text-anchor="middle">N</text>
-                </g>
-                <!-- Base glow track -->
-                <path d="M 105 95 C 177.5 95, 177.5 148, 250 148 C 322.5 148, 322.5 68, 395 68 C 457.5 68, 457.5 138, 520 138 " fill="none" stroke="url(#rmGrad-d0103)" stroke-width="5" opacity="0.22" stroke-linecap="round"/>
-                <!-- Animated flowing dashed route line -->
-                <path class="rm-flowing-path" d="M 105 95 C 177.5 95, 177.5 148, 250 148 C 322.5 148, 322.5 68, 395 68 C 457.5 68, 457.5 138, 520 138 " fill="none" stroke="url(#rmGrad-d0103)" stroke-width="2.6" stroke-dasharray="7 5" stroke-linecap="round"/>
-                
-          <g class="rm-svg-pin active-pin" data-pin-idx="0" onclick="selectRouteNode('d0103', 0)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="105" cy="95" r="15" />
-            <circle class="rm-pin-outer" cx="105" cy="95" r="10" />
-            <text x="105" y="98.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">01</text>
-            <rect x="41" y="68" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="105" y="79" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">東京站 GRANSTA</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="1" onclick="selectRouteNode('d0103', 1)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="250" cy="148" r="15" />
-            <circle class="rm-pin-outer" cx="250" cy="148" r="10" />
-            <text x="250" y="151.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">02</text>
-            <rect x="186" y="121" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="250" y="132" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">東京站 地下總武月台 </text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="2" onclick="selectRouteNode('d0103', 2)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="395" cy="68" r="15" />
-            <circle class="rm-pin-outer" cx="395" cy="68" r="10" />
-            <text x="395" y="71.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">03</text>
-            <rect x="331" y="81" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="395" y="92" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">成田國際機場 T2 (</text>
-          </g>
-        
-          <g class="rm-svg-pin " data-pin-idx="3" onclick="selectRouteNode('d0103', 3)" style="cursor:pointer;">
-            <circle class="rm-pin-pulse" cx="520" cy="138" r="15" />
-            <circle class="rm-pin-outer" cx="520" cy="138" r="10" />
-            <text x="520" y="141.5" font-family="Space Mono, monospace" font-size="9.5" font-weight="700" fill="#16212e" text-anchor="middle">04</text>
-            <rect x="456" y="111" width="128" height="16" rx="4" fill="rgba(22,33,46,0.86)" stroke="rgba(197,160,101,0.45)" stroke-width="0.8"/>
-            <text x="520" y="122" font-family="Plus Jakarta Sans, Noto Sans TC, sans-serif" font-size="8.8" font-weight="600" fill="#f8f5ee" text-anchor="middle">國泰 CX505 起飛</text>
-          </g>
-        
-              </svg>
-            </div>
-            <div class="rm-view-pane" data-rm-view="street">
-              <iframe class="rm-street-iframe" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-src="https://maps.google.com/maps?q=GRANSTA+TOKYO&t=m&z=14&output=embed&iwloc=near"></iframe>
-            </div>
+            <div class="rm-view-pane active" data-rm-view="street"><iframe class="rm-street-iframe" loading="lazy" title="地面路線地圖" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
           </div>
 
           <!-- Right: Active Stop Concierge Inspector -->
@@ -10342,60 +9625,66 @@ window.switchTicketWallet = function(mode, btnEl) {
   });
 };
 
-// 2. Interactive Daily Route Mini-Map Controller
-window.selectRouteNode = function(dayId, idx, pillBtn) {
+// 2. Daily ground routes: real map geometry, with separate walking/transit legs.
+function routeQuery(value) { return value.replace(/\+/g, ' '); }
+function groundRoute(nodes, idx, mode, dayId) {
+  const node = nodes[idx];
+  let origin = idx > 0 ? nodes[idx - 1] : null;
+  const destination = routeQuery(node.q);
+  const flight = origin && /Hong Kong International Airport/.test(routeQuery(origin.q) + destination);
+  if (dayId === 'd1226' && idx === 3) origin = nodes[0]; // Hakone is an alternative day trip.
+  let start = origin ? routeQuery(origin.q) : '';
+  if (/Tokyo Station/.test(start) && /東横INN東京駅八重洲北口/.test(destination)) start = 'Tokyo Station Yaesu North Exit';
+  const indoor = dayId === 'd1226' && idx === 2;
+  const local = origin && !flight && !indoor && start !== destination;
+  const travelmode = mode || (/🚶/.test(node.leg) ? 'walking' : 'transit');
+  const params = local
+    ? new URLSearchParams({ saddr: start, daddr: destination, dirflg: travelmode === 'walking' ? 'w' : 'r', output: 'embed', hl: 'zh-TW' })
+    : new URLSearchParams({ q: destination, z: '16', output: 'embed', hl: 'zh-TW' });
+  const external = local
+    ? 'https://www.google.com/maps/dir/?' + new URLSearchParams({ api: '1', origin: start, destination, travelmode })
+    : 'https://www.google.com/maps/search/?' + new URLSearchParams({ api: '1', query: destination });
+  return { embed: 'https://maps.google.com/maps?' + params, external, travelmode,
+    description: local ? `${start} → ${node.name}` : node.name,
+    note: flight ? '此段為航班，地圖只顯示機場位置；請選日本境內站點查看地面路線。' : !local ? '此處為起點或同一建築內活動；地圖顯示地點，請選下一站查看路線。' : '實線路線由 Google Maps 提供；可切換步行／公共交通。站內月台及室內樓層請跟現場指示。' };
+}
+window.selectRouteNode = function(dayId, idx) {
   const wrap = document.getElementById('rm-' + dayId);
   if (!wrap) return;
-  let nodes = [];
-  try {
-    nodes = JSON.parse(wrap.getAttribute('data-nodes') || '[]');
-  } catch(e) {}
+  let nodes;
+  try { nodes = JSON.parse(wrap.getAttribute('data-nodes') || '[]'); } catch(e) { return; }
   const node = nodes[idx];
   if (!node) return;
-
-  wrap.querySelectorAll('.rm-step-pill').forEach((b, i) => {
-    b.classList.toggle('active', i === idx);
+  wrap.dataset.selectedNode = String(idx);
+  const route = groundRoute(nodes, idx, wrap.dataset.routeMode, dayId);
+  wrap.querySelectorAll('.rm-step-pill').forEach((b,i) => {
+    b.classList.toggle('active', i === idx); b.setAttribute('aria-pressed', String(i === idx));
   });
-  wrap.querySelectorAll('.rm-svg-pin').forEach((g, i) => {
-    g.classList.toggle('active-pin', i === idx);
+  wrap.querySelectorAll('.rm-mode-btn').forEach(b => {
+    const active = b.dataset.mode === route.travelmode;
+    b.classList.toggle('active', active); b.setAttribute('aria-pressed', String(active));
   });
-
-  const stepEl = document.getElementById('rmi-step-' + dayId);
-  const nameEl = document.getElementById('rmi-name-' + dayId);
-  const legEl = document.getElementById('rmi-leg-' + dayId);
-  const tipEl = document.getElementById('rmi-tip-' + dayId);
-  const linkEl = document.getElementById('rmi-link-' + dayId);
-
-  if (stepEl) stepEl.textContent = `STOP ${node.id} // ${node.time}`;
-  if (nameEl) nameEl.textContent = node.name;
-  if (legEl) legEl.textContent = `🚇 ${node.leg}`;
-  if (tipEl) tipEl.textContent = `💡 ${node.tip}`;
-  if (linkEl) linkEl.href = `https://www.google.com/maps/search/?api=1&query=${node.q}`;
-
-  // If Street Map is open, also update iframe src to focus on the clicked station
+  const fields = {step: `STOP ${node.id} // ${node.time}`, name: node.name, leg: node.leg, tip: `💡 ${node.tip}`};
+  Object.entries(fields).forEach(([key,value]) => {
+    const el = document.getElementById('rmi-' + key + '-' + dayId); if(el) el.textContent = value;
+  });
+  const link = document.getElementById('rmi-link-' + dayId);
+  if (link) { link.href = route.external; link.textContent = '在 Google Maps 開啟此段路線 ↗'; }
   const iframe = wrap.querySelector('.rm-street-iframe');
-  const streetPane = wrap.querySelector('.rm-view-pane[data-rm-view="street"]');
-  if (iframe && streetPane && streetPane.classList.contains('active')) {
-    iframe.src = `https://maps.google.com/maps?q=${node.q}&t=m&z=15&output=embed&iwloc=near`;
-  }
+  if (iframe) { iframe.title = route.description; if (iframe.getAttribute('src') !== route.embed) iframe.src = route.embed; }
+  wrap.querySelector('.rm-route-note').textContent = route.note;
 };
-
-window.switchMiniMapView = function(dayId, viewMode, btnEl) {
+window.switchMiniMapView = function(dayId, mode) {
   const wrap = document.getElementById('rm-' + dayId);
-  if (!wrap) return;
-  wrap.querySelectorAll('.rm-mode-btn').forEach(b => b.classList.remove('active'));
-  if (btnEl) btnEl.classList.add('active');
-  wrap.querySelectorAll('.rm-view-pane').forEach(p => {
-    const isTarget = p.getAttribute('data-rm-view') === viewMode;
-    p.classList.toggle('active', isTarget);
-    if (isTarget && viewMode === 'street') {
-      const iframe = p.querySelector('iframe');
-      if (iframe && !iframe.getAttribute('src')) {
-        iframe.setAttribute('src', iframe.getAttribute('data-src'));
-      }
-    }
-  });
+  if (!wrap || !['walking', 'transit'].includes(mode)) return;
+  wrap.dataset.routeMode = mode;
+  selectRouteNode(dayId, Number(wrap.dataset.selectedNode || 0));
 };
+document.querySelectorAll('.daily-route-minimap').forEach(wrap => {
+  const dayId = wrap.id.replace('rm-', '');
+  selectRouteNode(dayId, dayId === 'd1223' ? 3 : dayId === 'd0103' ? 2 : 1);
+});
+
 </script>
 
 
@@ -11567,7 +10856,7 @@ if (foilStrength > 0.0) {
     keyLight.position.set(-2, 3.8, 5.5);
     const fillLight = new THREE.DirectionalLight(0xeef4fc, 0.28);
     fillLight.position.set(2.8, -1, 3.8);
-    scene.add(keyLight, fillLight);
+    scene.add(keyLight, fillLight, new THREE.HemisphereLight(0xffffff, 0xe2d6c2, 0.9));
 
     const imageCache = new Map();
     const images = { front: null, back: null, strap: null };
@@ -11601,11 +10890,13 @@ if (foilStrength > 0.0) {
 
     const frontMaterial = new THREE.MeshPhysicalMaterial({
       map: frontTexture,
+      toneMapped: false,
       normalMap: grain,
       normalScale: new THREE.Vector2(0.06, 0.06)
     });
     const backMaterial = new THREE.MeshPhysicalMaterial({
       map: backTexture,
+      toneMapped: false,
       normalMap: grain,
       normalScale: new THREE.Vector2(0.06, 0.06)
     });
@@ -12199,6 +11490,38 @@ if (foilStrength > 0.0) {
   } else {
     init();
   }
+})();
+</script>
+<script id="ticket-artifact-controller">(() => {
+  const dialog = document.createElement('dialog');
+  dialog.className = 'ticket-detail';
+  dialog.setAttribute('aria-label', '放大交通票券');
+  const close = document.createElement('button');
+  close.type = 'button'; close.className = 'ticket-detail-close'; close.textContent = '關閉 ×';
+  const content = document.createElement('div'); content.className = 'ticket-detail-content';
+  dialog.append(close, content); document.body.append(dialog);
+  close.addEventListener('click', () => dialog.close());
+  document.querySelectorAll('.boarding-pass, .shinkansen-ticket').forEach(ticket => {
+    const frame = document.createElement('div'); frame.className = 'ticket-miniature';
+    ticket.before(frame); frame.append(ticket);
+    const open = document.createElement('button');
+    open.type = 'button'; open.className = 'ticket-enlarge'; open.textContent = '放大票券 ↗';
+    frame.after(open);
+    function resize() {
+      const compact = matchMedia('(max-width: 768px)').matches;
+      if (compact && frame.clientWidth > 0) {
+        ticket.style.zoom = String(Math.min(1, frame.clientWidth / 600));
+      } else ticket.style.removeProperty('zoom');
+    }
+    new ResizeObserver(resize).observe(frame);
+    open.addEventListener('click', () => {
+      const copy = ticket.cloneNode(true);
+      copy.style.removeProperty('zoom'); copy.style.removeProperty('transform');
+      copy.querySelectorAll('.cursor-glare-layer').forEach(el => el.remove());
+      content.replaceChildren(copy); dialog.showModal();
+    });
+    resize();
+  });
 })();
 </script>
 </body>
