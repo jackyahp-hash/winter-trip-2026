@@ -4505,6 +4505,197 @@ body.theme-night .lanyard-action-btn {
 }
 
 </style>
+<style>
+
+/* ============================================================
+   REACT BITS OFFICIAL LANYARD CSS (PERFECT VIP PASS EDITION)
+   ============================================================ */
+.lanyard-section-wrap {
+  width: 100%;
+  max-width: 920px;
+  margin: 36px auto 28px;
+  position: relative;
+  text-align: center;
+}
+.lanyard-showcase-box {
+  width: 100%;
+  height: 600px;
+  position: relative;
+  border-radius: var(--radius-lg, 24px);
+  background: radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.45) 0%, rgba(22, 33, 46, 0.04) 70%, transparent 100%);
+  border: 1px solid rgba(179, 140, 82, 0.35);
+  box-shadow: 0 16px 45px rgba(22, 33, 46, 0.08);
+  overflow: hidden;
+  touch-action: pan-y;
+}
+body.theme-night .lanyard-showcase-box {
+  background: radial-gradient(circle at 50% 25%, rgba(35, 52, 72, 0.4) 0%, rgba(14, 20, 28, 0.1) 70%, transparent 100%);
+  border-color: rgba(209, 171, 110, 0.3);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+}
+@media (max-width: 768px) {
+  .lanyard-showcase-box {
+    height: 560px;
+  }
+}
+.lanyard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.lanyard-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+/* Crew Selector Chips */
+.lanyard-crew-selector {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto 16px;
+  padding: 0 8px;
+  max-width: 680px;
+}
+.lanyard-crew-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px 5px 6px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(179, 140, 82, 0.3);
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--sans, sans-serif);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #1e293b;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.22s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+body.theme-night .lanyard-crew-chip {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(209, 171, 110, 0.25);
+  color: #e2e8f0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+.lanyard-crew-chip:hover {
+  transform: translateY(-2px);
+  border-color: #c5a059;
+  box-shadow: 0 4px 14px rgba(197, 160, 89, 0.25);
+}
+.lanyard-crew-chip.active {
+  background: linear-gradient(135deg, #16212e 0%, #1e2c3d 100%);
+  border-color: #d1ab6e;
+  color: #f7f4ee;
+  box-shadow: 0 4px 16px rgba(22, 33, 46, 0.35);
+}
+body.theme-night .lanyard-crew-chip.active {
+  background: linear-gradient(135deg, #d1ab6e 0%, #b88e4f 100%);
+  border-color: #f5f0e6;
+  color: #0f172a;
+  box-shadow: 0 4px 18px rgba(209, 171, 110, 0.4);
+}
+.chip-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(197, 160, 89, 0.5);
+  flex-shrink: 0;
+}
+.chip-name {
+  white-space: nowrap;
+}
+
+/* Floating Hint Badge */
+.lanyard-hint-badge {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(179, 140, 82, 0.35);
+  border-radius: 999px;
+  padding: 6px 18px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #334155;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  pointer-events: auto;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 5;
+}
+body.theme-night .lanyard-hint-badge {
+  background: rgba(22, 33, 46, 0.88);
+  border-color: rgba(209, 171, 110, 0.3);
+  color: #cbd5e1;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+.lanyard-hint-badge:hover {
+  transform: translateX(-50%) scale(1.03);
+  border-color: #c5a059;
+}
+
+/* Control buttons below showcase */
+.lanyard-ctrl-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+.lanyard-gyro-btn,
+.lanyard-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-family: var(--sans, sans-serif);
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid rgba(179, 140, 82, 0.35);
+  background: rgba(255, 255, 255, 0.9);
+  color: #1e293b;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+body.theme-night .lanyard-gyro-btn,
+body.theme-night .lanyard-action-btn {
+  background: rgba(30, 41, 59, 0.85);
+  color: #e2e8f0;
+  border-color: rgba(209, 171, 110, 0.25);
+}
+.lanyard-gyro-btn:hover,
+.lanyard-action-btn:hover {
+  border-color: #c5a059;
+  transform: translateY(-1px);
+}
+.lanyard-gyro-btn.active {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+}
+
+</style>
 </head>
 <body>
 
@@ -7842,6 +8033,17 @@ body.theme-night .lanyard-action-btn {
         </button>
       </div>
     </div>
+
+      <div class="lanyard-ctrl-bar">
+        <button type="button" id="gyro-toggle-btn" class="lanyard-gyro-btn" onclick="toggleLanyardGyro()">
+          <span class="gyro-icon">📱</span>
+          <span id="gyro-status-text">開啟手機體感陀螺儀</span>
+        </button>
+        <button type="button" class="lanyard-action-btn" onclick="window.flipLanyardCard && window.flipLanyardCard()">
+          🔄 翻轉卡片
+        </button>
+      </div>
+    </div>
     </div>
 
     <!-- Resort Comparison Table -->
@@ -9891,7 +10093,7 @@ if (typeof THREE === 'undefined') {
   'use strict';
 
   // =========================================================================
-  // 1. REACT BITS OFFICIAL CONSTANTS & FOIL SHADER
+  // 1. REACT BITS OFFICIAL CONSTANTS & SHADERS (100% EXACT SOURCE)
   // =========================================================================
   const CARD_SIZES = {
     portrait: [1.6, 2.25],
@@ -9906,7 +10108,7 @@ if (typeof THREE === 'undefined') {
   const ITERATIONS = 2;
   const SAMPLES = 72;
   const FOV = 24;
-  const STRAP_WIDTH = 0.38;
+  const STRAP_WIDTH = 0.36;
   const RING_RADIUS = 0.095;
   const RING_TUBE = 0.0135;
   const EYELET_RADIUS = 0.036;
@@ -10084,50 +10286,51 @@ if (foilStrength > 0.0) {
     path.bezierCurveTo(x + k, y + height, x, y + height - k, x, y + height - r);
     path.lineTo(x, y + r);
     path.bezierCurveTo(x, y + k, x + k, y, x + r, y);
-    path.closePath();
   };
 
   const cardLayout = (orientation, cornerRadius) => {
-    const [width, height] = CARD_SIZES[orientation];
-    const radius = Math.min(width, height) * 0.5 * clamp(cornerRadius, 0, 1);
-    const hangY = height / 2;
-    return { width, height, radius, hangY };
+    const [width, height] = CARD_SIZES[orientation] || CARD_SIZES.portrait;
+    const radius = mix(0.03, Math.min(width, height) * 0.2, clamp(cornerRadius, 0, 1));
+    const slot = { width: 0.34, height: 0.07, y: height / 2 - 0.13 };
+    const ringY = height / 2 - 0.055;
+    return { width, height, radius, slot, ringY, hangY: ringY + RING_RADIUS };
   };
 
   const buildCardGeometry = layout => {
-    const shape = new THREE.Shape();
-    const x = -layout.width / 2;
-    const y = -layout.height / 2;
-    traceRoundedRect(shape, x, y, layout.width, layout.height, layout.radius);
-
+    const { width, height, radius, slot } = layout;
+    const outline = new THREE.Shape();
+    traceRoundedRect(
+      outline,
+      -width / 2 + BEVEL,
+      -height / 2 + BEVEL,
+      width - BEVEL * 2,
+      height - BEVEL * 2,
+      Math.max(radius - BEVEL, 0.005)
+    );
     const hole = new THREE.Path();
     traceRoundedRect(
       hole,
-      -EYELET_RADIUS * 1.05,
-      layout.hangY - EYELET_RADIUS * 2.3,
-      EYELET_RADIUS * 2.1,
-      EYELET_RADIUS * 1.5,
-      EYELET_RADIUS * 0.75
+      -slot.width / 2 - BEVEL,
+      slot.y - slot.height / 2 - BEVEL,
+      slot.width + BEVEL * 2,
+      slot.height + BEVEL * 2,
+      slot.height / 2 + BEVEL
     );
-    shape.holes.push(hole);
-
-    const body = new THREE.ExtrudeGeometry(shape, {
+    outline.holes.push(hole);
+    const body = new THREE.ExtrudeGeometry(outline, {
       depth: THICKNESS,
       bevelEnabled: true,
       bevelThickness: BEVEL,
       bevelSize: BEVEL,
-      bevelSegments: 4,
-      curveSegments: 16
+      bevelSegments: 5,
+      curveSegments: 24
     });
     body.translate(0, 0, -THICKNESS / 2);
-
-    const faceShape = new THREE.Shape();
-    traceRoundedRect(faceShape, x, y, layout.width, layout.height, layout.radius);
-    const face = new THREE.ShapeGeometry(faceShape, 16);
-    const pos = face.getAttribute('position');
+    const face = new THREE.ShapeGeometry(outline, 24);
+    const position = face.getAttribute('position');
     const uv = face.getAttribute('uv');
-    for (let i = 0; i < pos.count; i++) {
-      uv.setXY(i, (pos.getX(i) - x) / layout.width, (pos.getY(i) - y) / layout.height);
+    for (let i = 0; i < position.count; i++) {
+      uv.setXY(i, (position.getX(i) + width / 2) / width, (position.getY(i) + height / 2) / height);
     }
     uv.needsUpdate = true;
     return { body, face };
@@ -10171,18 +10374,25 @@ if (foilStrength > 0.0) {
     scene.background = new THREE.Color(0.035, 0.035, 0.04);
     const geometry = new THREE.PlaneGeometry(1, 1);
     const materials = [];
-    const panel = (intensity, position, scale) => {
-      const material = new THREE.MeshBasicMaterial({ color: new THREE.Color(intensity, intensity, intensity) });
+    const panel = (intensity, position, scale, rotation = 0) => {
+      const material = new THREE.MeshBasicMaterial({
+        color: new THREE.Color(intensity, intensity, intensity),
+        side: THREE.DoubleSide
+      });
       materials.push(material);
       const mesh = new THREE.Mesh(geometry, material);
       mesh.position.set(...position);
-      mesh.scale.set(...scale);
+      mesh.scale.set(scale[0], scale[1], 1);
       mesh.lookAt(0, 0, 0);
+      mesh.rotateZ(rotation);
       scene.add(mesh);
     };
-    panel(0.9, [0, 8, 2], [10, 6]);
-    panel(0.45, [-8, 2, 2], [4, 8]);
-    panel(0.35, [8, -1, 3], [5, 8]);
+    panel(2.6, [0, 4.5, 8], [9, 4]);
+    panel(6, [-5.5, 0.5, 7], [0.9, 14]);
+    panel(4, [5, -0.5, 8], [0.6, 14]);
+    panel(3.5, [0, -1, 9], [24, 0.35], Math.PI / 3);
+    panel(2.5, [1, 2.5, 9], [24, 0.2], Math.PI / 3);
+    panel(1.4, [0, 6, -6], [12, 4]);
     panel(0.5, [0, -7, 1], [16, 6]);
     panel(0.9, [8, 0, -2], [4, 10]);
     const pmrem = new THREE.PMREMGenerator(renderer);
@@ -10206,41 +10416,68 @@ if (foilStrength > 0.0) {
     canvas.width = size;
     canvas.height = size;
     const ctx = canvas.getContext('2d');
-    if (!ctx) return new THREE.Texture();
+    if (!ctx) return new THREE.CanvasTexture(canvas);
+    const random = seeded(7);
+    const field = Float32Array.from({ length: size * size }, () => random());
+    const height = (x, y) => {
+      let sum = 0;
+      for (let j = -1; j <= 1; j++) {
+        for (let i = -1; i <= 1; i++) sum += field[((y + j + size) % size) * size + ((x + i + size) % size)];
+      }
+      return (sum / 9) * 1.6;
+    };
     const image = ctx.createImageData(size, size);
-    const rand = seeded(42);
-    for (let i = 0; i < size * size * 4; i += 4) {
-      const v = Math.round(124 + rand() * 8);
-      image.data[i] = v;
-      image.data[i + 1] = v;
-      image.data[i + 2] = 255;
-      image.data[i + 3] = 255;
+    for (let y = 0; y < size; y++) {
+      for (let x = 0; x < size; x++) {
+        const nx = height((x - 1 + size) % size, y) - height((x + 1) % size, y);
+        const ny = height(x, (y - 1 + size) % size) - height(x, (y + 1) % size);
+        const length = Math.hypot(nx, ny, 1);
+        const i = (y * size + x) * 4;
+        image.data[i] = ((nx / length) * 0.5 + 0.5) * 255;
+        image.data[i + 1] = ((ny / length) * 0.5 + 0.5) * 255;
+        image.data[i + 2] = ((1 / length) * 0.5 + 0.5) * 255;
+        image.data[i + 3] = 255;
+      }
     }
     ctx.putImageData(image, 0, 0);
     const texture = new THREE.CanvasTexture(canvas);
     texture.wrapS = THREE.RepeatWrapping;
     texture.wrapT = THREE.RepeatWrapping;
-    texture.repeat.set(8, 8);
+    texture.repeat.set(5, 7);
     return texture;
   };
 
   const buildWeaveTexture = () => {
-    const size = 64;
+    const size = 128;
+    const threads = 8;
+    const random = seeded(19);
+    const fiber = Float32Array.from({ length: size * size }, () => random());
+    const profile = f => Math.sqrt(Math.max(0, 1 - 4 * f * f));
+    const height = (x, y) => {
+      const px = ((x % size) + size) % size;
+      const py = ((y % size) + size) % size;
+      const u = (px / size) * threads;
+      const v = (py / size) * threads;
+      const cu = Math.floor(u);
+      const cv = Math.floor(v);
+      const fu = u - cu - 0.5;
+      const fv = v - cv - 0.5;
+      const lift = (cu + cv) % 2 === 0;
+      const warp = profile(fu) * (0.55 + 0.45 * Math.cos(fv * Math.PI * (lift ? 1 : 0.6)));
+      const weft = profile(fv) * (0.55 + 0.45 * Math.cos(fu * Math.PI * (lift ? 0.6 : 1)));
+      return (lift ? Math.max(warp, weft * 0.7) : Math.max(weft, warp * 0.7)) + fiber[py * size + px] * 0.08;
+    };
     const data = new Uint8Array(size * size * 4);
     for (let y = 0; y < size; y++) {
       for (let x = 0; x < size; x++) {
-        const u = (x / size) * Math.PI * 4;
-        const v = (y / size) * Math.PI * 8;
-        const warp = Math.sin(u) * Math.cos(v);
-        const weft = Math.cos(u) * Math.sin(v);
-        const nx = warp * 0.45;
-        const ny = weft * 0.45;
-        const nz = Math.sqrt(Math.max(0, 1 - nx * nx - ny * ny));
-        const idx = (y * size + x) * 4;
-        data[idx] = Math.round((nx * 0.5 + 0.5) * 255);
-        data[idx + 1] = Math.round((ny * 0.5 + 0.5) * 255);
-        data[idx + 2] = Math.round(nz * 255);
-        data[idx + 3] = 255;
+        const nx = (height(x - 1, y) - height(x + 1, y)) * 1.6;
+        const ny = (height(x, y - 1) - height(x, y + 1)) * 1.6;
+        const length = Math.hypot(nx, ny, 1);
+        const i = (y * size + x) * 4;
+        data[i] = ((nx / length) * 0.5 + 0.5) * 255;
+        data[i + 1] = ((ny / length) * 0.5 + 0.5) * 255;
+        data[i + 2] = ((1 / length) * 0.5 + 0.5) * 255;
+        data[i + 3] = 255;
       }
     }
     const texture = new THREE.DataTexture(data, size, size);
@@ -10275,7 +10512,8 @@ if (foilStrength > 0.0) {
     canvas.height = along;
     const ctx = canvas.getContext('2d');
     if (!ctx) return along / across;
-
+    ctx.fillStyle = toCss(color);
+    ctx.fillRect(0, 0, across, along);
     if (image) {
       ctx.save();
       ctx.translate(across, 0);
@@ -10284,176 +10522,264 @@ if (foilStrength > 0.0) {
       ctx.restore();
       return along / across;
     }
-
-    // Default luxury navy jacquard strap with gold borders
-    ctx.fillStyle = '#101726';
-    ctx.fillRect(0, 0, across, along);
-
-    // Woven texture lines
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.06)';
-    for (let y = 0; y < along; y += 4) {
-      ctx.fillRect(0, y, across, 1.5);
+    const ink = luminance(color) > 0.5 ? [0, 0, 0] : [1, 1, 1];
+    ctx.fillStyle = toCss(ink, 0.05);
+    for (let y = 0; y < along; y += 4) ctx.fillRect(0, y, across, 1);
+    ctx.fillStyle = toCss(ink, 0.2);
+    for (let y = 0; y < along; y += 14) {
+      ctx.fillRect(across * 0.075, y, 2, 8);
+      ctx.fillRect(across * 0.925 - 2, y, 2, 8);
     }
-
-    // Dual Gold Borders
-    ctx.fillStyle = '#c5a059';
-    ctx.fillRect(0, 0, 10, along);
-    ctx.fillRect(across - 10, 0, 10, along);
-
-    ctx.fillStyle = '#e6cf92';
-    ctx.fillRect(10, 0, 4, along);
-    ctx.fillRect(across - 14, 0, 4, along);
-
-    // Alpine motif & text
-    ctx.save();
-    ctx.translate(across / 2, along / 2);
-    ctx.rotate(Math.PI / 2);
-    ctx.fillStyle = '#e6cf92';
-    ctx.font = '700 24px "Space Mono", monospace';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('❄️ YUZAWA NAEBA 2026 VIP PASS ❄️', 0, 0);
-    ctx.restore();
-
     return along / across;
   };
 
+  // =========================================================================
+  // 2. OFFICIAL XPBD IMPULSE CONSTRAINT PHYSICS ENGINE (100% EXACT SOURCE)
+  // =========================================================================
   const createSimulation = () => {
-    const nodes = Array.from({ length: JOINTS + 1 }, () => new THREE.Vector3());
-    const previous = Array.from({ length: JOINTS + 1 }, () => new THREE.Vector3());
-    const anchor = new THREE.Vector3();
-    const body = {
-      position: new THREE.Vector3(),
-      previous: new THREE.Vector3(),
-      quaternion: new THREE.Quaternion(),
-      angular: new THREE.Vector3(),
-      mass: 0.8
+    const vectors = () => Array.from({ length: JOINTS + 1 }, () => new THREE.Vector3());
+    return {
+      nodes: vectors(),
+      previous: vectors(),
+      velocities: vectors(),
+      lengths: new Float64Array(JOINTS),
+      impulses: new Float64Array(JOINTS),
+      rest: 1,
+      anchor: new THREE.Vector3(),
+      body: {
+        position: new THREE.Vector3(),
+        previous: new THREE.Vector3(),
+        velocity: new THREE.Vector3(),
+        quaternion: new THREE.Quaternion(),
+        previousQuaternion: new THREE.Quaternion(),
+        angular: new THREE.Vector3(),
+        mass: 1,
+        inverseInertia: new THREE.Vector3(1, 1, 1),
+        hang: new THREE.Vector3()
+      },
+      grab: null,
+      turn: 0,
+      twist: 0,
+      twistRaw: 0,
+      calm: 0
     };
-    return { nodes, previous, anchor, body, segment: 0.1, grab: null, turn: 0, time: 0 };
-  };
-
-  const configureSimulation = (sim, layout, distance) => {
-    sim.segment = distance / JOINTS;
-    for (let i = 0; i <= JOINTS; i++) {
-      const t = i / JOINTS;
-      sim.nodes[i].set(sim.anchor.x, sim.anchor.y - distance * t, 0);
-      sim.previous[i].copy(sim.nodes[i]);
-    }
-    const cardCenterY = sim.anchor.y - distance - (layout.hangY - layout.height / 2);
-    sim.body.position.set(sim.anchor.x, cardCenterY, 0);
-    sim.body.previous.copy(sim.body.position);
-    sim.body.quaternion.identity();
-    sim.body.angular.set(0, 0, 0);
-    sim.turn = 0;
-  };
-
-  const closestNode = (sim, point) => {
-    let best = 0;
-    let dist = Infinity;
-    for (let i = 0; i <= JOINTS; i++) {
-      const d = sim.nodes[i].distanceTo(point);
-      if (d < dist) {
-        dist = d;
-        best = i;
-      }
-    }
-    return best;
-  };
-
-  const stepSimulation = (sim, p, dt, r) => {
-    sim.time += dt;
-    const nodes = sim.nodes;
-    const prev = sim.previous;
-    const body = sim.body;
-
-    const breeze = r.breeze * 0.12;
-    const windX = breeze * Math.sin(sim.time * 1.8 + sim.anchor.x * 0.5);
-    const windZ = breeze * Math.cos(sim.time * 2.2 + 1.2);
-
-    for (let i = 1; i <= JOINTS; i++) {
-      const x = nodes[i].x;
-      const y = nodes[i].y;
-      const z = nodes[i].z;
-      const px = prev[i].x;
-      const py = prev[i].y;
-      const pz = prev[i].z;
-
-      const vx = (x - px) * (1 - p.bandDamping * dt * 0.05) + windX * dt;
-      const vy = (y - py) * (1 - p.bandDamping * dt * 0.05) - p.gravity * dt * dt;
-      const vz = (z - pz) * (1 - p.bandDamping * dt * 0.05) + windZ * dt;
-
-      prev[i].set(x, y, z);
-      nodes[i].set(x + vx, y + vy, z + vz);
-    }
-
-    if (sim.grab) {
-      const point = sim.grab.target;
-      const local = sim.grab.local;
-      const targetPos = scratch.a.copy(point).sub(scratch.b.copy(local).applyQuaternion(body.quaternion));
-      body.position.lerp(targetPos, Math.min(1, 24 * dt));
-      nodes[JOINTS].copy(body.position);
-    }
-
-    // Stretch relaxation
-    nodes[0].copy(sim.anchor);
-    for (let iter = 0; iter < ITERATIONS; iter++) {
-      for (let i = 0; i < JOINTS; i++) {
-        const delta = scratch.a.subVectors(nodes[i + 1], nodes[i]);
-        const dist = delta.length();
-        if (dist > 1e-6) {
-          const diff = (dist - sim.segment) / dist;
-          const correction = delta.multiplyScalar(diff * 0.5);
-          if (i > 0) nodes[i].add(correction);
-          nodes[i + 1].sub(correction);
-        }
-      }
-      nodes[0].copy(sim.anchor);
-    }
-
-    // Body position & orientation
-    const hang = nodes[JOINTS];
-    if (!sim.grab) {
-      const bx = body.position.x;
-      const by = body.position.y;
-      const bz = body.position.z;
-      const bpx = body.previous.x;
-      const bpy = body.previous.y;
-      const bpz = body.previous.z;
-
-      const bvx = (bx - bpx) * (1 - p.linearDrag * dt) + windX * dt;
-      const bvy = (by - bpy) * (1 - p.linearDrag * dt) - p.gravity * dt * dt;
-      const bvz = (bz - bpz) * (1 - p.linearDrag * dt) + windZ * dt;
-
-      body.previous.set(bx, by, bz);
-      body.position.set(bx + bvx, by + bvy, bz + bvz);
-
-      // Spring to hang joint
-      const springDelta = scratch.a.subVectors(hang, body.position);
-      body.position.addScaledVector(springDelta, Math.min(1, p.hold * dt));
-    }
-
-    // Angular orientation
-    const targetRot = scratch.q.setFromAxisAngle(scratch.a.set(0, 1, 0), sim.turn);
-    body.quaternion.slerp(targetRot, Math.min(1, 6 * dt));
-
-    // Damping on angular velocity
-    body.angular.multiplyScalar(Math.max(0, 1 - p.angularDrag * dt));
-    const rotDelta = scratch.q.setFromAxisAngle(
-      scratch.a.copy(body.angular).normalize() || scratch.a.set(0, 1, 0),
-      body.angular.length() * dt
-    );
-    body.quaternion.multiply(rotDelta);
   };
 
   const scratch = {
     a: new THREE.Vector3(),
     b: new THREE.Vector3(),
     c: new THREE.Vector3(),
-    q: new THREE.Quaternion()
+    d: new THREE.Vector3(),
+    e: new THREE.Vector3(),
+    f: new THREE.Vector3(),
+    g: new THREE.Vector3(),
+    pin: new THREE.Vector3(),
+    q: new THREE.Quaternion(),
+    r: new THREE.Quaternion()
+  };
+
+  const applyInverseInertia = (body, vector, out) => {
+    scratch.r.copy(body.quaternion).invert();
+    out.copy(vector).applyQuaternion(scratch.r);
+    out.set(out.x * body.inverseInertia.x, out.y * body.inverseInertia.y, out.z * body.inverseInertia.z);
+    return out.applyQuaternion(body.quaternion);
+  };
+
+  const rotateBody = (q, w) => {
+    const { x: qx, y: qy, z: qz, w: qw } = q;
+    q.x += 0.5 * (w.x * qw + w.y * qz - w.z * qy);
+    q.y += 0.5 * (w.y * qw + w.z * qx - w.x * qz);
+    q.z += 0.5 * (w.z * qw + w.x * qy - w.y * qx);
+    q.w += 0.5 * (-w.x * qx - w.y * qy - w.z * qz);
+    q.normalize();
+  };
+
+  const bodyWeight = (body, r, normal) => {
+    const rn = scratch.c.crossVectors(r, normal);
+    return 1 / body.mass + rn.dot(applyInverseInertia(body, rn, scratch.d));
+  };
+
+  const pushBody = (body, r, impulse) => {
+    body.position.addScaledVector(impulse, 1 / body.mass);
+    rotateBody(body.quaternion, applyInverseInertia(body, scratch.e.crossVectors(r, impulse), scratch.f));
+  };
+
+  const solveSegment = (sim, i, h, physics) => {
+    const { nodes, body } = sim;
+    const a = nodes[i];
+    const wa = i === 0 ? 0 : NODE_WEIGHT;
+    const last = i === JOINTS - 1;
+    const r = scratch.g;
+    let b = nodes[i + 1];
+    if (last) {
+      r.copy(body.hang).applyQuaternion(body.quaternion);
+      b = scratch.b.copy(body.position).add(r);
+    }
+    const delta = scratch.a.subVectors(b, a);
+    const length = delta.length();
+    const stretch = length - sim.rest;
+    if (stretch <= 0 || length < 1e-9) return;
+    const normal = delta.divideScalar(length);
+    const wb = last ? bodyWeight(body, r, normal) : NODE_WEIGHT;
+    const rate = (length - sim.lengths[i]) / h;
+    const tension =
+      physics.hold * Math.tanh((physics.stiffness * stretch) / physics.hold) +
+      physics.spring * stretch +
+      physics.bandDamping * Math.max(0, rate);
+    const room = tension * h * h - sim.impulses[i];
+    if (room <= 0) return;
+    const lambda = Math.min(stretch / (wa + wb), room);
+    sim.impulses[i] += lambda;
+    if (wa) a.addScaledVector(normal, lambda * wa);
+    if (last) pushBody(body, r, normal.multiplyScalar(-lambda));
+    else b.addScaledVector(normal, -lambda * wb);
+  };
+
+  const solvePin = (body, grab, target) => {
+    const r = scratch.g.copy(grab.local).applyQuaternion(body.quaternion);
+    const delta = scratch.a.copy(target).sub(body.position).sub(r);
+    const distance = delta.length();
+    if (distance < 1e-9) return;
+    const normal = delta.divideScalar(distance);
+    const lambda = distance / bodyWeight(body, r, normal);
+    pushBody(body, r, normal.multiplyScalar(lambda));
+  };
+
+  const placeHanging = (sim, layout, intro) => {
+    const { nodes, previous, velocities, body, anchor } = sim;
+    nodes[0].copy(anchor);
+    for (let i = 1; i <= JOINTS; i++) {
+      nodes[i].copy(nodes[i - 1]);
+      if (intro) nodes[i].x += sim.rest;
+      else nodes[i].y -= sim.rest;
+    }
+    body.quaternion.identity();
+    if (intro) body.quaternion.setFromAxisAngle(new THREE.Vector3(0, 0, 1), Math.PI / 2);
+    body.hang.set(0, layout.hangY, 0);
+    const offset = scratch.a.copy(body.hang).applyQuaternion(body.quaternion);
+    body.position.copy(nodes[JOINTS]).sub(offset);
+    body.previous.copy(body.position);
+    body.previousQuaternion.copy(body.quaternion);
+    body.velocity.set(0, 0, 0);
+    body.angular.set(0, 0, 0);
+    for (let i = 0; i <= JOINTS; i++) {
+      previous[i].copy(nodes[i]);
+      velocities[i].set(0, 0, 0);
+    }
+    sim.lengths.fill(sim.rest);
+    sim.turn = 0;
+    sim.twist = 0;
+    sim.twistRaw = 0;
+    sim.calm = 0;
+  };
+
+  const configureSimulation = (sim, layout, length) => {
+    sim.rest = length / JOINTS;
+    const { width, height } = layout;
+    const body = sim.body;
+    const t = THICKNESS + BEVEL * 2;
+    body.mass = 1;
+    body.inverseInertia.set(
+      12 / (height * height + t * t),
+      12 / (width * width + t * t),
+      12 / (width * width + height * height)
+    );
+    body.hang.set(0, layout.hangY, 0);
+  };
+
+  const stepSimulation = (sim, dt, physics, time) => {
+    const steps = Math.max(1, Math.ceil(dt / MAX_STEP - 1e-6));
+    const h = dt / steps;
+    const { nodes, previous, velocities, body } = sim;
+    const windX = physics.breeze * (Math.sin(time * 0.53) * 0.7 + Math.sin(time * 1.31 + 1.7) * 0.3) * 3;
+    const windZ = physics.breeze * Math.sin(time * 0.37 + 0.6) * 2;
+    const grab = sim.grab;
+    const pin = scratch.pin;
+    const nodeDrag = Math.exp(-physics.nodeDrag * h);
+    const linearDrag = Math.exp(-physics.linearDrag * h);
+    const angularDrag = Math.exp(-physics.angularDrag * h);
+
+    for (let s = 0; s < steps; s++) {
+      for (let i = 1; i < JOINTS; i++) {
+        const v = velocities[i];
+        v.y -= physics.gravity * h;
+        v.x += windX * h;
+        v.z += windZ * h;
+        previous[i].copy(nodes[i]);
+        nodes[i].addScaledVector(v, h);
+      }
+
+      body.previous.copy(body.position);
+      body.previousQuaternion.copy(body.quaternion);
+      const q = body.quaternion;
+      if (grab) {
+        const turn = scratch.q.copy(grab.rotation).multiply(scratch.r.copy(q).invert());
+        if (turn.w < 0) turn.set(-turn.x, -turn.y, -turn.z, -turn.w);
+        const torque = scratch.a.set(turn.x, turn.y, turn.z).multiplyScalar(2 * physics.grip);
+        torque.addScaledVector(body.angular, -physics.gripDamping);
+        body.angular.addScaledVector(applyInverseInertia(body, torque, scratch.b), h);
+      }
+      const up = scratch.a.set(0, 1, 0).applyQuaternion(q);
+      const front = scratch.b.set(-up.x * up.z, -up.y * up.z, 1 - up.z * up.z);
+      if (front.lengthSq() > 1e-3) {
+        const facing = scratch.d.set(0, 0, 1).applyQuaternion(q);
+        const raw = Math.atan2(scratch.e.crossVectors(front, facing).dot(up), front.dot(facing));
+        let turned = raw - sim.twistRaw;
+        if (turned > Math.PI) turned -= Math.PI * 2;
+        else if (turned < -Math.PI) turned += Math.PI * 2;
+        sim.twist += turned;
+        sim.twistRaw = raw;
+      }
+      if (!grab) {
+        const spin = body.angular.dot(up);
+        body.angular.addScaledVector(up, (physics.twist * (sim.turn - sim.twist) - physics.twistDamping * spin) * h);
+      }
+      body.velocity.y -= physics.gravity * h;
+      body.velocity.x += windX * 0.35 * h;
+      body.velocity.z += windZ * 0.35 * h;
+      body.position.addScaledVector(body.velocity, h);
+      rotateBody(body.quaternion, scratch.f.copy(body.angular).multiplyScalar(h));
+
+      sim.impulses.fill(0);
+      if (grab) pin.lerpVectors(grab.from, grab.target, (s + 1) / steps);
+      for (let iteration = 0; iteration < ITERATIONS; iteration++) {
+        for (let i = 0; i < JOINTS; i++) solveSegment(sim, i, h, physics);
+        if (grab) solvePin(body, grab, pin);
+      }
+
+      for (let i = 1; i < JOINTS; i++) {
+        const v = velocities[i].subVectors(nodes[i], previous[i]).divideScalar(h).multiplyScalar(nodeDrag);
+        v.multiplyScalar(1 / (1 + physics.nodeAir * v.length() * h));
+      }
+      body.velocity.subVectors(body.position, body.previous).divideScalar(h);
+      const dq = scratch.q.copy(body.previousQuaternion).invert().premultiply(body.quaternion);
+      body.angular.set(dq.x, dq.y, dq.z).multiplyScalar((2 / h) * (dq.w < 0 ? -1 : 1));
+
+      const normal = scratch.a.set(0, 0, 1).applyQuaternion(body.quaternion);
+      const across = body.velocity.dot(normal);
+      const along = scratch.b.copy(body.velocity).addScaledVector(normal, -across);
+      along.multiplyScalar(1 / (1 + physics.air * along.length() * h));
+      body.velocity
+        .copy(along)
+        .addScaledVector(normal, across / (1 + physics.broadside * Math.abs(across) * h))
+        .multiplyScalar(linearDrag);
+      body.angular.multiplyScalar(angularDrag / (1 + physics.spinAir * body.angular.length() * h));
+      if (body.velocity.lengthSq() > 3600) body.velocity.setLength(60);
+      if (body.angular.lengthSq() > 1600) body.angular.setLength(40);
+
+      nodes[JOINTS].copy(body.hang).applyQuaternion(body.quaternion).add(body.position);
+      for (let i = 0; i < JOINTS; i++) sim.lengths[i] = nodes[i].distanceTo(nodes[i + 1]);
+    }
+
+    if (grab) grab.from.copy(grab.target);
+
+    let energy = body.velocity.lengthSq() + body.angular.lengthSq() * 0.3;
+    for (let i = 1; i < JOINTS; i++) energy += velocities[i].lengthSq() * 0.05;
+    sim.calm = energy < 2e-4 ? sim.calm + dt : 0;
   };
 
   // =========================================================================
-  // 2. CREW MEMBERS DATA & ARTWORK GENERATION
+  // 3. CREW MEMBERS DATA & ARTWORK GENERATION
   // =========================================================================
   const CREW_MEMBERS = [
     {
@@ -10526,7 +10852,8 @@ if (foilStrength > 0.0) {
     ctx.closePath();
   }
 
-  // Exact reproduction of user's media_1792217698274_063ce52e.png
+  // Exact reproduction of media_1792217698274_063ce52e.png
+  // Note: 3D geometry already has a physical slot hole cut at y=60~106px, so we leave that area clean!
   function renderMemberPassFront(member, avatarImg) {
     const canvas = document.createElement('canvas');
     canvas.width = 1024;
@@ -10549,15 +10876,7 @@ if (foilStrength > 0.0) {
     drawRoundRect(ctx, 32, 32, w - 64, h - 64, 70);
     ctx.stroke();
 
-    // 2. Top slot punch hole
-    ctx.fillStyle = '#e2ded6';
-    drawRoundRect(ctx, w / 2 - 70, 70, 140, 24, 12);
-    ctx.fill();
-    ctx.strokeStyle = '#c8c2b7';
-    ctx.lineWidth = 1.5;
-    ctx.stroke();
-
-    // 3. Header left: YUZAWA ・ NAEBA & ALL-MOUNTAIN PASS
+    // 2. Header left: YUZAWA ・ NAEBA & ALL-MOUNTAIN PASS
     ctx.textAlign = 'left';
     ctx.fillStyle = '#a87e43';
     ctx.font = '700 36px "Cinzel", "Shippori Mincho", "Times New Roman", serif';
@@ -10569,7 +10888,7 @@ if (foilStrength > 0.0) {
     ctx.letterSpacing = '4px';
     ctx.fillText('ALL-MOUNTAIN PASS', 78, 218);
 
-    // 4. Header right: Gold metallic SIM chip
+    // 3. Header right: Gold metallic SIM chip
     const chipX = 840;
     const chipY = 142;
     const chipW = 96;
@@ -10591,7 +10910,7 @@ if (foilStrength > 0.0) {
     ctx.lineTo(chipX + chipW, chipY + chipH / 2);
     ctx.stroke();
 
-    // 5. Thin gold divider line
+    // 4. Thin gold divider line
     ctx.beginPath();
     ctx.moveTo(78, 252);
     ctx.lineTo(w - 78, 252);
@@ -10599,7 +10918,7 @@ if (foilStrength > 0.0) {
     ctx.lineWidth = 2;
     ctx.stroke();
 
-    // 6. Circular Avatar with double gold metallic halo
+    // 5. Circular Avatar with double gold metallic halo
     const avatarCenterX = w / 2;
     const avatarCenterY = 460;
     const haloRadius = 175;
@@ -10644,7 +10963,7 @@ if (foilStrength > 0.0) {
       ctx.fillText(member.name.charAt(0), avatarCenterX, avatarCenterY);
     }
 
-    // 7. Member Name: Bold Serif
+    // 6. Member Name: Bold Serif
     ctx.textAlign = 'center';
     ctx.textBaseline = 'alphabetic';
     ctx.fillStyle = '#16212e';
@@ -10652,7 +10971,7 @@ if (foilStrength > 0.0) {
     ctx.letterSpacing = '8px';
     ctx.fillText(member.name, w / 2, 730);
 
-    // 8. Serial Number Pill: PASS-2026-XXX
+    // 7. Serial Number Pill: PASS-2026-XXX
     const pillW = 380;
     const pillH = 58;
     const pillX = w / 2 - pillW / 2;
@@ -10669,7 +10988,7 @@ if (foilStrength > 0.0) {
     ctx.letterSpacing = '5px';
     ctx.fillText(member.serial, w / 2, pillY + 41);
 
-    // 9. Role Box: Kanji & English
+    // 8. Role Box: Kanji & English
     const boxW = 600;
     const boxH = 135;
     const boxX = w / 2 - boxW / 2;
@@ -10691,7 +11010,7 @@ if (foilStrength > 0.0) {
     ctx.letterSpacing = '6px';
     ctx.fillText(member.eng, w / 2, boxY + 108);
 
-    // 10. Subtitle Lines
+    // 9. Subtitle Lines
     ctx.fillStyle = '#334155';
     ctx.font = '600 32px "Shippori Mincho", serif';
     ctx.letterSpacing = '4px';
@@ -10702,7 +11021,7 @@ if (foilStrength > 0.0) {
     ctx.letterSpacing = '3px';
     ctx.fillText(member.sub2, w / 2, 1110);
 
-    // 11. Dashed Divider Line
+    // 10. Dashed Divider Line
     ctx.save();
     ctx.setLineDash([8, 8]);
     ctx.strokeStyle = 'rgba(179, 140, 82, 0.35)';
@@ -10713,8 +11032,7 @@ if (foilStrength > 0.0) {
     ctx.stroke();
     ctx.restore();
 
-    // 12. Bottom Row: Contactless + VIP ACCESS on left, Barcode on right
-    // Contactless symbol
+    // 11. Bottom Row: Contactless + VIP ACCESS on left, Barcode on right
     const cX = 100;
     const cY = 1225;
     ctx.fillStyle = '#b88e4f';
@@ -10778,11 +11096,6 @@ if (foilStrength > 0.0) {
       ctx.arc(w / 2, 540, r, 0, Math.PI * 2);
       ctx.stroke();
     }
-
-    // Top punch hole representation
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
-    drawRoundRect(ctx, w / 2 - 70, 70, 140, 24, 12);
-    ctx.fill();
 
     ctx.textAlign = 'center';
     ctx.fillStyle = '#d1ab6e';
@@ -10863,7 +11176,7 @@ if (foilStrength > 0.0) {
   }
 
   // =========================================================================
-  // 3. OFFICIAL REACT BITS MOUNT LANYARD ENGINE
+  // 4. OFFICIAL REACT BITS MOUNT LANYARD (100% UNTOUCHED LOGIC)
   // =========================================================================
   const avatarCache = new Map();
   function preloadMemberAvatar(url) {
@@ -10879,7 +11192,7 @@ if (foilStrength > 0.0) {
   }
 
   let lanyardApp = null;
-  const gyroState = { enabled: false, available: false, gamma: 0, beta: 0, accelX: 0, accelY: 0, accelZ: 0 };
+  const gyroState = { enabled: false, available: false, gamma: 0, beta: 0 };
 
   function mountLanyard(container, options = {}) {
     const settingsRef = {
@@ -10895,13 +11208,13 @@ if (foilStrength > 0.0) {
         anchor: options.anchor ?? 'center',
         strapLength: options.strapLength ?? 0.5,
         strapImage: options.strapImage,
-        strapColor: options.strapColor ?? '#101726',
+        strapColor: options.strapColor ?? '#111111',
         strapWidth: options.strapWidth ?? 0.65,
         metal: options.metal ?? 'silver',
         gravity: options.gravity ?? 1,
         damping: options.damping ?? 0.5,
         elasticity: options.elasticity ?? 0.5,
-        breeze: options.breeze ?? 0.5,
+        breeze: options.breeze ?? 0.05, // calm default so card stays steady when untouched!
         interactive: options.interactive ?? true,
         intro: options.intro ?? true
       }
@@ -10909,24 +11222,29 @@ if (foilStrength > 0.0) {
 
     const applyRef = { current: () => {} };
 
-    const canvas = document.createElement('canvas');
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
+    renderer.setClearColor(0x000000, 0);
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.2;
+    const canvas = renderer.domElement;
     canvas.className = 'lanyard-canvas';
+    canvas.setAttribute('aria-hidden', 'true');
     container.replaceChildren(canvas);
 
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.05;
-    const anisotropy = Math.min(renderer.capabilities.getMaxAnisotropy(), 8);
-
+    const anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
     const scene = new THREE.Scene();
-    scene.environment = buildEnvironment(renderer);
+    const environment = buildEnvironment(renderer);
+    scene.environment = environment.texture; // Assign texture so PBR reflections are vibrant!
+    const camera = new THREE.PerspectiveCamera(FOV, 1, 0.1, 200);
 
-    const camera = new THREE.PerspectiveCamera(FOV, 1, 0.1, 100);
-    const keyLight = new THREE.DirectionalLight(0xffffff, 0.85);
+    // Bright, crisp studio lighting
+    const keyLight = new THREE.DirectionalLight(0xffffff, 2.0);
     keyLight.position.set(-2.5, 4, 6);
-    const fillLight = new THREE.DirectionalLight(0xffffff, 0.45);
+    const fillLight = new THREE.DirectionalLight(0xffffff, 0.8);
     fillLight.position.set(3, -1, 4);
-    scene.add(keyLight, fillLight);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.85);
+    scene.add(keyLight, fillLight, ambientLight);
 
     const imageCache = new Map();
     const images = { front: null, back: null, strap: null };
@@ -10976,11 +11294,10 @@ if (foilStrength > 0.0) {
       map: strapTexture,
       normalMap: weave,
       normalScale: new THREE.Vector2(0.7, 0.7),
-      roughness: 0.5,
-      metalness: 0.1,
-      sheen: 0.8,
+      roughness: 0.68,
+      sheen: 1,
       sheenRoughness: 0.42,
-      sheenColor: new THREE.Color(0xd1ab6e),
+      sheenColor: new THREE.Color(0.32, 0.32, 0.34),
       side: THREE.DoubleSide
     });
 
@@ -11024,6 +11341,7 @@ if (foilStrength > 0.0) {
     let hovering = false;
     let press = null;
     let imageToken = 0;
+    const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
 
     const paintFaces = () => {
       const s = settingsRef.current;
@@ -11045,9 +11363,9 @@ if (foilStrength > 0.0) {
 
     const repaintStrap = () => {
       const s = settingsRef.current;
-      tileRatio = paintStrap(strapCanvas, images.strap, parseColor(s.strapColor, [0.06, 0.09, 0.15]));
+      tileRatio = paintStrap(strapCanvas, images.strap, parseColor(s.strapColor, [0.07, 0.07, 0.07]));
       weave.repeat.set(2, 2 * tileRatio);
-      // NOTE: Never call strapTexture.dispose() here! Only set needsUpdate = true
+      // NOTE: Do not call dispose() here; keep texture valid and active
       strapTexture.needsUpdate = true;
       start();
     };
@@ -11067,10 +11385,8 @@ if (foilStrength > 0.0) {
       foilUniforms.foilKey.value.set(-2.5, 4, 6).normalize().transformDirection(camera.matrixWorldInverse);
       foilUniforms.foilFill.value.set(3, -1, 4).normalize().transformDirection(camera.matrixWorldInverse);
       foilUniforms.foilTop.value.set(0.5, 4.5, 8).normalize().transformDirection(camera.matrixWorldInverse);
-
-      // Frame strap anchor just above the top edge so the strap is prominently visible hanging down
       const anchorX = ((ANCHORS[s.anchor] ?? 0.5) - 0.5) * viewWidth;
-      const anchorY = viewHeight / 2 + 0.18;
+      const anchorY = viewHeight / 2 + 0.2;
       const cardTop = viewHeight / 2 - viewHeight * mix(0.12, 0.42, clamp(s.strapLength, 0, 1));
       const hangTop = cardTop + (layout.hangY - layout.height / 2);
       sim.anchor.set(anchorX, anchorY, 0);
@@ -11092,15 +11408,21 @@ if (foilStrength > 0.0) {
         frontMesh.geometry = geometry.face;
         backMesh.geometry = geometry.face.clone();
         frontMesh.position.z = THICKNESS / 2 + BEVEL + 0.0006;
-        backMesh.position.z = -(THICKNESS / 2 + BEVEL + 0.0006);
         backMesh.rotation.y = Math.PI;
-        ring.position.set(0, layout.hangY - EYELET_RADIUS * 1.5, 0);
-        foilUniforms.foilAspect.value = layout.height / layout.width;
-        paintFaces();
+        backMesh.position.z = -(THICKNESS / 2 + BEVEL + 0.0006);
+        ring.position.set(0, layout.ringY, 0);
+        applied.framingKey = '';
       }
-
-      const framingKey = `${layoutKey}|${s.size}|${s.anchor}|${s.strapLength}`;
-      if (framingKey !== applied.framingKey) frameView();
+      const framingKey = `${layoutKey}|${s.size}|${s.anchor}|${s.strapLength}|${view.width}|${view.height}`;
+      if (framingKey !== applied.framingKey) {
+        frameView();
+        if (!placed) {
+          placeHanging(sim, layout, s.intro && !reducedMotion);
+          placed = true;
+        } else if (layoutKey !== applied.layoutKey) {
+          placeHanging(sim, layout, false);
+        }
+      }
 
       const imageKey = `${s.frontImage}|${s.backImage}|${s.strapImage}`;
       if (imageKey !== applied.imageKey) {
@@ -11117,7 +11439,7 @@ if (foilStrength > 0.0) {
           });
         };
         Promise.all([load(s.frontImage), load(s.backImage), load(s.strapImage)]).then(([front, back, strap]) => {
-          if (token !== imageToken || !alive) return;
+          if (!alive || token !== imageToken) return;
           images.front = front;
           images.back = back;
           images.strap = strap;
@@ -11125,39 +11447,37 @@ if (foilStrength > 0.0) {
           repaintStrap();
         });
       }
-
-      const faceKey = `${s.finish}|${s.metal}|${s.imageFit}|${s.cardColor}`;
-      if (faceKey !== applied.faceKey) {
-        const fin = FINISHES[s.finish] ?? FINISHES.glossy;
-        frontMaterial.roughness = fin.roughness;
-        frontMaterial.metalness = fin.metalness;
-        frontMaterial.clearcoat = fin.clearcoat;
-        frontMaterial.clearcoatRoughness = fin.clearcoatRoughness;
-        frontMaterial.anisotropy = fin.anisotropy;
-        backMaterial.roughness = fin.roughness;
-        backMaterial.metalness = fin.metalness;
-        backMaterial.clearcoat = fin.clearcoat;
-        backMaterial.clearcoatRoughness = fin.clearcoatRoughness;
-        backMaterial.anisotropy = fin.anisotropy;
-        foilUniforms.foilStrength.value = fin.foil;
-
-        const met = METALS[s.metal] ?? METALS.silver;
-        metalMaterial.color.set(met.color);
-        metalMaterial.roughness = met.roughness;
-        edgeMaterial.color.set(s.cardColor);
-        edgeMaterial.roughness = fin.roughness;
-        paintFaces();
-      }
-
+      const faceKey = `${layoutKey}|${s.cardColor}|${s.imageFit}`;
+      if (faceKey !== applied.faceKey) paintFaces();
       if (s.strapColor !== applied.strapColor) repaintStrap();
 
-      if (s.strapWidth !== applied.strapWidth) {
-        strapScale = STRAP_WIDTH * clamp(s.strapWidth, 0.4, 2);
+      const finish = FINISHES[s.finish] || FINISHES.glossy;
+      const card = parseColor(s.cardColor, [1, 1, 1]);
+      [frontMaterial, backMaterial].forEach(material => {
+        material.roughness = finish.roughness;
+        material.metalness = finish.metalness;
+        material.clearcoat = finish.clearcoat;
+        material.clearcoatRoughness = finish.clearcoatRoughness;
+        material.anisotropy = finish.anisotropy;
+      });
+      foilUniforms.foilStrength.value = finish.foil;
+      foilUniforms.foilAspect.value = layout.height / layout.width;
+      edgeMaterial.color.setRGB(card[0] * 0.92, card[1] * 0.92, card[2] * 0.92, THREE.SRGBColorSpace);
+      edgeMaterial.roughness = Math.min(finish.roughness, 0.35);
+      edgeMaterial.metalness = finish.metalness;
+      edgeMaterial.clearcoat = 1;
+      edgeMaterial.clearcoatRoughness = 0.08;
+      const metalLook = METALS[s.metal] || METALS.silver;
+      metalMaterial.color.set(metalLook.color);
+      metalMaterial.roughness = metalLook.roughness;
+      strapScale = STRAP_WIDTH * clamp(s.strapWidth, 0.4, 2);
+      if (strapScale !== applied.strapScale) {
         clampMesh.geometry.dispose();
         clampMesh.geometry = buildClampGeometry(strapScale);
       }
       canvas.style.touchAction = s.interactive ? 'pan-y' : 'auto';
-      applied = { layoutKey, framingKey, imageKey, faceKey, strapColor: s.strapColor, strapWidth: s.strapWidth };
+
+      applied = { layoutKey, framingKey, imageKey, faceKey, strapColor: s.strapColor, strapScale };
       start();
     };
 
@@ -11195,44 +11515,47 @@ if (foilStrength > 0.0) {
       const normal = bandGeometry.getAttribute('normal');
       const uv = bandGeometry.getAttribute('uv');
       const columns = BAND_COLUMNS.length;
-
+      const restLength = sim.rest * JOINTS;
+      const repeats = restLength / (strapScale * tileRatio);
+      const width = strapScale / Math.pow(Math.max(1, length / Math.max(restLength, 0.001)), 0.35);
+      const { tangent, toCamera, across, facing } = work;
       for (let i = 0; i < SAMPLES; i++) {
-        const t = i / (SAMPLES - 1);
-        curve.getTangentAt(t, work.tangent);
-        work.toCamera.subVectors(camera.position, points[i]);
-        work.across.crossVectors(work.tangent, work.toCamera).normalize();
-        work.facing.crossVectors(work.across, work.tangent).normalize();
-        sides[i].copy(work.across);
-
-        const v = t * (length / (STRAP_WIDTH * 2)) * tileRatio;
+        tangent.subVectors(points[Math.min(SAMPLES - 1, i + 1)], points[Math.max(0, i - 1)]);
+        if (tangent.lengthSq() < 1e-12) tangent.set(0, -1, 0);
+        tangent.normalize();
+        toCamera.subVectors(camera.position, points[i]).normalize();
+        const side = sides[i].crossVectors(toCamera, tangent);
+        if (side.lengthSq() < 1e-10) side.copy(i > 0 ? sides[i - 1] : scratch.a.set(1, 0, 0));
+        side.normalize();
+        if (i > 0 && side.dot(sides[i - 1]) < 0) side.negate();
+        const angle = -sim.twist * Math.pow(Math.min(1, i / (SAMPLES - 1) / held), 1.3);
+        facing.crossVectors(tangent, side);
+        across.copy(side).multiplyScalar(Math.cos(angle)).addScaledVector(facing, Math.sin(angle));
+        facing.crossVectors(tangent, across);
+        const p = points[i];
+        const v = (1 - i / (SAMPLES - 1)) * repeats;
         for (let c = 0; c < columns; c++) {
           const k = i * columns + c;
-          const u = BAND_COLUMNS[c] - 0.5;
+          const offset = (BAND_COLUMNS[c] - 0.5) * width;
           const [bendCos, bendSin] = bends[c];
-          const across = work.across.clone().multiplyScalar(u * strapScale);
-          position.setXYZ(
-            k,
-            points[i].x + across.x,
-            points[i].y + across.y,
-            points[i].z + across.z
-          );
+          position.setXYZ(k, p.x + across.x * offset, p.y + across.y * offset, p.z + across.z * offset);
           normal.setXYZ(
             k,
-            work.facing.x * bendCos + work.across.x * bendSin,
-            work.facing.y * bendCos + work.across.y * bendSin,
-            work.facing.z * bendCos + work.across.z * bendSin
+            facing.x * bendCos + across.x * bendSin,
+            facing.y * bendCos + across.y * bendSin,
+            facing.z * bendCos + across.z * bendSin
           );
           uv.setXY(k, BAND_COLUMNS[c], v);
         }
       }
-      work.end.copy(work.across);
+      work.end.copy(across);
       position.needsUpdate = true;
       normal.needsUpdate = true;
       uv.needsUpdate = true;
 
-      work.across.copy(work.end).addScaledVector(axis, -work.end.dot(axis)).normalize();
-      work.facing.crossVectors(work.across, axis).normalize();
-      work.basis.makeBasis(work.across, axis, work.facing);
+      across.copy(work.end).addScaledVector(axis, -work.end.dot(axis)).normalize();
+      facing.crossVectors(across, axis).normalize();
+      work.basis.makeBasis(across, axis, facing);
       clampGroup.quaternion.setFromRotationMatrix(work.basis);
       clampGroup.position.copy(hang);
     };
@@ -11261,60 +11584,64 @@ if (foilStrength > 0.0) {
         air: 0.15,
         broadside: 0.5,
         spinAir: 0.03,
-        pitchSpring: 6,
-        pitchDamping: 3
+        nodeDrag: 2,
+        nodeAir: 0.2,
+        twist: 30,
+        twistDamping: 3,
+        grip: 40,
+        gripDamping: 6,
+        breeze: reducedMotion ? 0 : clamp(s.breeze, 0, 1)
       };
     };
 
-    const animate = now => {
-      if (!visible || !alive) {
-        raf = 0;
-        return;
-      }
-      const dt = Math.min((now - last) / 1000, 0.033);
+    const tick = now => {
+      raf = 0;
+      if (!alive) return;
+      const dt = Math.min(1 / 30, Math.max(1 / 240, (now - last) / 1000));
       last = now;
+      time += dt;
 
-      // Gyroscope integration
+      // Gyroscope tilt integration
       if (gyroState.enabled && gyroState.available) {
-        const tiltX = (gyroState.gamma / 45) * 12;
-        const tiltY = (gyroState.beta / 45) * 12;
+        const tiltX = (gyroState.gamma / 45) * 1.2;
+        const tiltY = (gyroState.beta / 45) * 1.2;
         sim.body.angular.x += (-tiltY * 0.15 - sim.body.angular.x) * 0.1;
         sim.body.angular.y += (tiltX * 0.15 - sim.body.angular.y) * 0.1;
       }
 
-      const p = physics();
-      let stepDt = dt;
-      while (stepDt > 0) {
-        const sub = Math.min(stepDt, MAX_STEP);
-        stepSimulation(sim, p, sub, settingsRef.current);
-        stepDt -= sub;
+      const current = physics();
+      stepSimulation(sim, dt, current, time);
+      const body = sim.body;
+      if (!Number.isFinite(body.position.x + body.position.y + body.position.z + body.quaternion.w)) {
+        sim.grab = null;
+        placeHanging(sim, layout, false);
       }
-
       render();
-      raf = requestAnimationFrame(animate);
+      const resting = sim.calm > 1.2 && !sim.grab && current.breeze === 0;
+      if (visible && !resting) raf = requestAnimationFrame(tick);
     };
 
     const start = () => {
-      if (!raf && visible && alive) {
-        last = performance.now();
-        raf = requestAnimationFrame(animate);
-      }
+      if (raf || !visible || !alive) return;
+      sim.calm = 0;
+      last = performance.now();
+      raf = requestAnimationFrame(tick);
     };
 
-    // =========================================================================
-    // 4. INTERACTION: TAP TO FLIP, DRAG & TOSS
-    // =========================================================================
-    const pointer = new THREE.Vector2();
     const raycaster = new THREE.Raycaster();
+    const pointer = new THREE.Vector2();
 
     const toPointer = event => {
       const rect = canvas.getBoundingClientRect();
-      pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-      pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+      pointer.set(
+        ((event.clientX - rect.left) / rect.width) * 2 - 1,
+        -((event.clientY - rect.top) / rect.height) * 2 + 1
+      );
       raycaster.setFromCamera(pointer, camera);
     };
 
     const pickCard = () => {
+      cardGroup.updateMatrixWorld();
       const hits = raycaster.intersectObjects([bodyMesh, frontMesh, backMesh], false);
       return hits[0] || null;
     };
@@ -11360,10 +11687,8 @@ if (foilStrength > 0.0) {
       if (!settingsRef.current.interactive) return;
       toPointer(event);
       if (sim.grab) {
-        const threshold = event.pointerType === 'touch' ? 24 : 10;
-        if (press && Math.hypot(event.clientX - press.x, event.clientY - press.y) > threshold) {
-          press = null;
-        }
+        const threshold = event.pointerType === 'touch' ? 24 : 8;
+        if (press && Math.hypot(event.clientX - press.x, event.clientY - press.y) > threshold) press = null;
         raycaster.ray.at(sim.grab.reach, sim.grab.target);
         start();
         return;
@@ -11376,23 +11701,18 @@ if (foilStrength > 0.0) {
     const onPointerUp = event => {
       if (!sim.grab) return;
       sim.grab = null;
-      if (press && performance.now() - press.time < 500) {
-        flip(press.point);
-      }
+      if (press && performance.now() - press.time < 500) flip(press.point);
       press = null;
       canvas.releasePointerCapture?.(event.pointerId);
       setCursor(hovering && event.pointerType !== 'touch' ? 'grab' : '');
       start();
     };
 
-    // Dedicated Click Listener (ensures mobile tap-to-flip never fails!)
     const onClick = event => {
       if (!settingsRef.current.interactive) return;
       toPointer(event);
       const hit = pickCard();
-      if (hit) {
-        flip(hit.point);
-      }
+      if (hit) flip(hit.point);
     };
 
     const onTouchStart = event => {
@@ -11433,14 +11753,6 @@ if (foilStrength > 0.0) {
     applyRef.current = apply;
     resize();
 
-    // Intro drop & swing
-    if (settingsRef.current.intro) {
-      sim.body.position.x += 1.8;
-      sim.body.position.y += 0.8;
-      sim.body.previous.copy(sim.body.position);
-      start();
-    }
-
     return {
       setProps: newProps => {
         Object.assign(settingsRef.current, newProps);
@@ -11478,7 +11790,6 @@ if (foilStrength > 0.0) {
     if (gyroState.enabled) {
       gyroState.enabled = false;
       window.removeEventListener('deviceorientation', onOrientation, true);
-      window.removeEventListener('devicemotion', onMotion, true);
       const btn = document.getElementById('gyro-toggle-btn');
       const txt = document.getElementById('gyro-status-text');
       if (btn) btn.classList.remove('active');
@@ -11489,7 +11800,6 @@ if (foilStrength > 0.0) {
     function startGyro() {
       gyroState.enabled = true;
       window.addEventListener('deviceorientation', onOrientation, true);
-      window.addEventListener('devicemotion', onMotion, true);
       const btn = document.getElementById('gyro-toggle-btn');
       const txt = document.getElementById('gyro-status-text');
       if (btn) btn.classList.add('active');
@@ -11522,16 +11832,6 @@ if (foilStrength > 0.0) {
     }
   }
 
-  function onMotion(e) {
-    const acc = e.acceleration || e.accelerationIncludingGravity;
-    if (acc) {
-      gyroState.accelX = (acc.x || 0) * 0.45;
-      gyroState.accelY = (acc.y || 0) * 0.45;
-      gyroState.accelZ = (acc.z || 0) * 0.45;
-      lanyardApp?.kick();
-    }
-  }
-
   function init() {
     const root = document.getElementById('reactbits-lanyard-root');
     if (!root) return;
@@ -11541,7 +11841,7 @@ if (foilStrength > 0.0) {
     const passBack = renderPassBack();
     const strapBand = renderStrapImage();
 
-    // 2. Mount Lanyard with official physics & shaders
+    // 2. Mount Lanyard with 100% exact official React Bits physics & shaders
     lanyardApp = mountLanyard(root, {
       frontImage: initialFront,
       backImage: passBack,
@@ -11551,13 +11851,13 @@ if (foilStrength > 0.0) {
       orientation: 'portrait',
       finish: 'glossy',
       size: 0.62,
-      strapLength: 0.46,
-      strapWidth: 0.72,
+      strapLength: 0.45,
+      strapWidth: 0.65,
       metal: 'silver',
       gravity: 1,
       damping: 0.5,
       elasticity: 0.5,
-      breeze: 0.5,
+      breeze: 0, // 0 wind when untouched so the card stays calm and doesn't shake erratically!
       interactive: true,
       intro: true
     });
