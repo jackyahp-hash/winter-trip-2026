@@ -1032,6 +1032,16 @@ body.theme-night .calc-card {
   color: var(--gold);
 }
 .dock-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+.seal-sub { white-space: nowrap; }
+/* Phone: tags stay on one line; dock becomes a small bottom row so it no longer covers the text column. */
+@media (max-width: 600px) {
+  .hero-seals { flex-wrap: wrap; gap: 8px; }
+  .seal-sub { letter-spacing: 0.06em; padding: 4px 8px; }
+  .floating-dock { flex-direction: row; gap: 8px; right: 12px; bottom: 12px; }
+  .dock-btn { width: 36px; height: 36px; }
+  .dock-btn svg { width: 16px; height: 16px; }
+  body { padding-bottom: 60px; }
+}
 
 /* Image Lightbox Modal */
 #lightbox {
