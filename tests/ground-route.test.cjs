@@ -5,7 +5,7 @@ const path = require('node:path');
 const html = fs.readFileSync(path.join(__dirname, '../index.html'), 'utf8');
 const helpers = html.slice(html.indexOf('function routeQuery('), html.indexOf('window.selectRouteNode ='));
 const scope = { URLSearchParams };
-vm.createContext(scope); vm.runInContext(helpers, scope);
+vm.createContext(scope); vm.runInContext(helpers + ';this.SPOTS = SPOTS; this.sketchXY = sketchXY;', scope);
 const nodes = [
   {q:'Hong+Kong+International+Airport',name:'香港',leg:'起點'},
   {q:'Narita+Airport+Terminal+2',name:'成田',leg:'✈ 航班'},
@@ -24,8 +24,13 @@ assert(!scope.groundRoute(nodes,0,null,'d1223').external.includes('/dir/'));
 const alternative=[{q:'hotel',name:'酒店',leg:''},{q:'toyosu',name:'豐洲',leg:''},{q:'manyo',name:'萬葉',leg:''},{q:'hakone',name:'箱根',leg:'🚄'}];
 assert.equal(new URL(scope.groundRoute(alternative,3,null,'d1226').external).searchParams.get('origin'),'hotel');
 assert(!scope.groundRoute(alternative,2,null,'d1226').external.includes('/dir/'));
-assert.equal((html.match(/class="rm-street-iframe"/g)||[]).length,12);
+assert.equal((html.match(/class="rm-street-iframe"/g)||[]).length,0);
+assert.equal((html.match(/class="rm-sketch"/g)||[]).length,12);
+for (const m of html.matchAll(/data-nodes='([^']*)'/g)) for (const n of JSON.parse(m[1])) assert(scope.SPOTS[n.q], 'no sketch position for ' + n.q);
+const sensoji = scope.sketchXY(...scope.SPOTS['Senso-ji+Temple']), meiji = scope.sketchXY(...scope.SPOTS['Meiji+Jingu']);
+assert(sensoji.x > meiji.x && sensoji.y < meiji.y, 'Senso-ji must sit north-east of Meiji Jingu');
+assert(fs.existsSync(path.join(__dirname, '../img/tokyo-base.svg')));
 assert.equal((html.match(/class="rm-vector-svg"/g)||[]).length,0);
 assert.match(html,/toneMapped: false/);
 assert.match(html,/ticket-artifact-controller/);
-console.log('PASS: walking/transit URLs, flight and indoor exceptions, alternative day origin, 12 real maps, printed pass colour, ticket enlargement.');
+console.log('PASS: walking/transit URLs, flight and indoor exceptions, alternative day origin, 12 route sketches with known stop positions, printed pass colour, ticket enlargement.');

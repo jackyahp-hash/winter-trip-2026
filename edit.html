@@ -4470,9 +4470,34 @@ body.theme-night .lanyard-action-btn {
 </style>
 
 <style id="oct18-visual-fixes">
-.rm-canvas-wrap { min-height: 340px; background: #e8e7e3; }
-.rm-street-iframe { display: block; width: 100%; height: 360px; min-height: 360px; border: 0; filter: none !important; }
-.rm-route-note { color: #ced9e6; font-size: .75rem; line-height: 1.7; margin: 12px 0 0; }
+.rm-canvas-wrap { min-height: 0; background: none; }
+.rm-sketch {
+  --sk-bg: #f7f5f0; --sk-water: #c8dbe8; --sk-rail: #c9c4bb; --sk-road-minor: #e2ddd3; --sk-road: #d4cbbb; --sk-road-major: #e0b77a;
+  --sk-ink: #16212e; --sk-label: #6b7280; --sk-leg: #2f3a46; --sk-sel: #b9382b; --sk-stop: #fff;
+  display: block; width: 100%; height: auto; aspect-ratio: 5 / 4; font-family: var(--sans);
+}
+body.theme-night .rm-sketch {
+  --sk-bg: #0b1119; --sk-water: #1b3550; --sk-rail: #33404f; --sk-road-minor: #2a2a26; --sk-road: #6e5a3a; --sk-road-major: #e9b56a;
+  --sk-ink: #f8f5ee; --sk-label: #9aa5b4; --sk-leg: #c9d3df; --sk-sel: #7ee08a; --sk-stop: #0b1119;
+}
+.rm-sk-bg { fill: var(--sk-bg); }
+body.theme-night .rm-sketch use { filter: drop-shadow(0 0 1.5px rgba(233,181,106,.55)); }
+.rm-sk-area { font-size: 10px; fill: var(--sk-label); letter-spacing: .08em; paint-order: stroke; stroke: var(--sk-bg); stroke-width: 3px; }
+.rm-sk-north { font-size: 11px; font-weight: 700; fill: var(--sk-label); }
+.rm-sk-caption { font-size: 8px; fill: var(--sk-label); paint-order: stroke; stroke: var(--sk-bg); stroke-width: 3px; }
+.rm-sk-leg { stroke: var(--sk-leg); stroke-width: 2.5; opacity: .9; }
+.rm-sk-leg.far { stroke-dasharray: 5 5; }
+.rm-sk-leg.sel { stroke: var(--sk-sel); stroke-width: 3; opacity: 1; }
+.rm-sk-head { fill: var(--sk-leg); }
+.rm-sk-head.sel { fill: var(--sk-sel); }
+.rm-sk-stop { cursor: pointer; }
+.rm-sk-stop circle { fill: var(--sk-stop); stroke: var(--sk-ink); stroke-width: 2; }
+.rm-sk-stop text { font-size: 11px; font-weight: 700; fill: var(--sk-ink); }
+.rm-sk-stop.sel circle { fill: var(--sk-sel); stroke: var(--sk-sel); }
+.rm-sk-stop.sel text { fill: var(--sk-stop); }
+body.theme-night .rm-sk-stop.sel circle { filter: drop-shadow(0 0 5px var(--sk-sel)); }
+.rm-sk-off rect { fill: var(--sk-ink); opacity: .85; }
+.rm-sk-off text { font-size: 12px; fill: var(--sk-bg); }
 .rm-mode-btn:focus-visible, .rm-step-pill:focus-visible { outline: 2px solid #e2cb9d; outline-offset: 3px; }
 .ticket-miniature { min-width: 0; }
 .ticket-enlarge { display: none; }
@@ -4482,7 +4507,6 @@ body.theme-night .lanyard-action-btn {
 .ticket-detail-close, .ticket-enlarge { border: 1px solid var(--gold); background: var(--paper); color: var(--ink); font: inherit; border-radius: 20px; padding: 7px 14px; cursor: pointer; }
 @media (max-width: 768px) {
  .rm-Stage-grid { grid-template-columns: 1fr; }
- .rm-street-iframe { height: 350px; min-height: 350px; }
  .route-card { padding-inline: 12px; }
  .ephemera-showcase { padding-inline: 8px !important; }
  /* Scale the whole physical ticket; never stack its detachable stub. */
@@ -5220,18 +5244,17 @@ body.theme-night .lanyard-action-btn {
             <span class="rm-badge">📍 DAILY GROUND ROUTE // 當日地面路線</span>
             <span class="rm-zone-code">HKG ✈ NARITA ➔ TOKYO STATION</span>
           </div>
-          <div class="rm-mode-btns"><button type="button" class="rm-mode-btn" data-mode="walking" aria-pressed="false" onclick="switchMiniMapView('d1223', 'walking')">步行路線</button><button type="button" class="rm-mode-btn" data-mode="transit" aria-pressed="false" onclick="switchMiniMapView('d1223', 'transit')">公共交通</button></div>
+
         </div>
 
         <div class="rm-chain-bar">
           <button type="button" class="rm-step-pill active" data-node-idx="0" onclick="selectRouteNode('d1223', 0, this)"><span class="rm-step-num">01</span> 香港機場 HKG T1</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="1" onclick="selectRouteNode('d1223', 1, this)"><span class="rm-step-num">02</span> 成田機場 NRT T2</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="2" onclick="selectRouteNode('d1223', 2, this)"><span class="rm-step-num">03</span> 東京站 (總武地下月台)</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="3" onclick="selectRouteNode('d1223', 3, this)"><span class="rm-step-num">04</span> 東橫INN 八重洲北口</button>
         </div>
 
-        <p class="rm-route-note" aria-live="polite"></p>
         <div class="rm-Stage-grid">
           <!-- Left: Vector Archival Route Canvas OR Live Street Iframe -->
           <div class="rm-canvas-wrap">
-            <div class="rm-view-pane active" data-rm-view="street"><iframe class="rm-street-iframe" loading="lazy" title="地面路線地圖" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+            <div class="rm-view-pane active" data-rm-view="sketch"><svg class="rm-sketch" viewBox="0 0 400 320" role="img" aria-label="當日路線示意圖"></svg></div>
           </div>
 
           <!-- Right: Active Stop Concierge Inspector -->
@@ -5380,18 +5403,17 @@ body.theme-night .lanyard-action-btn {
             <span class="rm-badge">📍 DAILY GROUND ROUTE // 當日地面路線</span>
             <span class="rm-zone-code">MARUNOUCHI & GINZA // XMAS EVE WALK</span>
           </div>
-          <div class="rm-mode-btns"><button type="button" class="rm-mode-btn" data-mode="walking" aria-pressed="false" onclick="switchMiniMapView('d1224', 'walking')">步行路線</button><button type="button" class="rm-mode-btn" data-mode="transit" aria-pressed="false" onclick="switchMiniMapView('d1224', 'transit')">公共交通</button></div>
+
         </div>
 
         <div class="rm-chain-bar">
           <button type="button" class="rm-step-pill active" data-node-idx="0" onclick="selectRouteNode('d1224', 0, this)"><span class="rm-step-num">01</span> 東橫INN 八重洲北口</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="1" onclick="selectRouteNode('d1224', 1, this)"><span class="rm-step-num">02</span> 丸之內 Brick Square</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="2" onclick="selectRouteNode('d1224', 2, this)"><span class="rm-step-num">03</span> KITTE 6F 屋上庭園</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="3" onclick="selectRouteNode('d1224', 3, this)"><span class="rm-step-num">04</span> 丸之內仲通 香檳金燈海</button>
         </div>
 
-        <p class="rm-route-note" aria-live="polite"></p>
         <div class="rm-Stage-grid">
           <!-- Left: Vector Archival Route Canvas OR Live Street Iframe -->
           <div class="rm-canvas-wrap">
-            <div class="rm-view-pane active" data-rm-view="street"><iframe class="rm-street-iframe" loading="lazy" title="地面路線地圖" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+            <div class="rm-view-pane active" data-rm-view="sketch"><svg class="rm-sketch" viewBox="0 0 400 320" role="img" aria-label="當日路線示意圖"></svg></div>
           </div>
 
           <!-- Right: Active Stop Concierge Inspector -->
@@ -5533,18 +5555,17 @@ body.theme-night .lanyard-action-btn {
             <span class="rm-badge">📍 DAILY GROUND ROUTE // 當日地面路線</span>
             <span class="rm-zone-code">OMOTESANDO ➔ ROPPONGI KEYAKIZAKA</span>
           </div>
-          <div class="rm-mode-btns"><button type="button" class="rm-mode-btn" data-mode="walking" aria-pressed="false" onclick="switchMiniMapView('d1225', 'walking')">步行路線</button><button type="button" class="rm-mode-btn" data-mode="transit" aria-pressed="false" onclick="switchMiniMapView('d1225', 'transit')">公共交通</button></div>
+
         </div>
 
         <div class="rm-chain-bar">
           <button type="button" class="rm-step-pill active" data-node-idx="0" onclick="selectRouteNode('d1225', 0, this)"><span class="rm-step-num">01</span> 東京站 / 大手町</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="1" onclick="selectRouteNode('d1225', 1, this)"><span class="rm-step-num">02</span> 表參道之丘 ＆ 原宿貓街</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="2" onclick="selectRouteNode('d1225', 2, this)"><span class="rm-step-num">03</span> 東橫INN 午間回充休息</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="3" onclick="selectRouteNode('d1225', 3, this)"><span class="rm-step-num">04</span> 六本木 櫸坂大道 (Keyakizaka)</button>
         </div>
 
-        <p class="rm-route-note" aria-live="polite"></p>
         <div class="rm-Stage-grid">
           <!-- Left: Vector Archival Route Canvas OR Live Street Iframe -->
           <div class="rm-canvas-wrap">
-            <div class="rm-view-pane active" data-rm-view="street"><iframe class="rm-street-iframe" loading="lazy" title="地面路線地圖" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+            <div class="rm-view-pane active" data-rm-view="sketch"><svg class="rm-sketch" viewBox="0 0 400 320" role="img" aria-label="當日路線示意圖"></svg></div>
           </div>
 
           <!-- Right: Active Stop Concierge Inspector -->
@@ -5677,18 +5698,17 @@ body.theme-night .lanyard-action-btn {
             <span class="rm-badge">📍 DAILY GROUND ROUTE // 當日地面路線</span>
             <span class="rm-zone-code">TOYOSU SENKYAKUBANRAI // HAKONE ONSEN</span>
           </div>
-          <div class="rm-mode-btns"><button type="button" class="rm-mode-btn" data-mode="walking" aria-pressed="false" onclick="switchMiniMapView('d1226', 'walking')">步行路線</button><button type="button" class="rm-mode-btn" data-mode="transit" aria-pressed="false" onclick="switchMiniMapView('d1226', 'transit')">公共交通</button></div>
+
         </div>
 
         <div class="rm-chain-bar">
           <button type="button" class="rm-step-pill active" data-node-idx="0" onclick="selectRouteNode('d1226', 0, this)"><span class="rm-step-num">01</span> 東橫INN 八重洲北口</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="1" onclick="selectRouteNode('d1226', 1, this)"><span class="rm-step-num">02</span> 豐洲 千客萬來 (江戶美食街)</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="2" onclick="selectRouteNode('d1226', 2, this)"><span class="rm-step-num">03</span> 東京豐洲 萬葉俱樂部 (海景足湯)</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="3" onclick="selectRouteNode('d1226', 3, this)"><span class="rm-step-num">04</span> 備選：箱根湯本 浪漫特快日歸</button>
         </div>
 
-        <p class="rm-route-note" aria-live="polite"></p>
         <div class="rm-Stage-grid">
           <!-- Left: Vector Archival Route Canvas OR Live Street Iframe -->
           <div class="rm-canvas-wrap">
-            <div class="rm-view-pane active" data-rm-view="street"><iframe class="rm-street-iframe" loading="lazy" title="地面路線地圖" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+            <div class="rm-view-pane active" data-rm-view="sketch"><svg class="rm-sketch" viewBox="0 0 400 320" role="img" aria-label="當日路線示意圖"></svg></div>
           </div>
 
           <!-- Right: Active Stop Concierge Inspector -->
@@ -5829,18 +5849,17 @@ body.theme-night .lanyard-action-btn {
             <span class="rm-badge">📍 DAILY GROUND ROUTE // 當日地面路線</span>
             <span class="rm-zone-code">GINZA CHUO-DORI // SHOPPING & SALON</span>
           </div>
-          <div class="rm-mode-btns"><button type="button" class="rm-mode-btn" data-mode="walking" aria-pressed="false" onclick="switchMiniMapView('d1227', 'walking')">步行路線</button><button type="button" class="rm-mode-btn" data-mode="transit" aria-pressed="false" onclick="switchMiniMapView('d1227', 'transit')">公共交通</button></div>
+
         </div>
 
         <div class="rm-chain-bar">
           <button type="button" class="rm-step-pill active" data-node-idx="0" onclick="selectRouteNode('d1227', 0, this)"><span class="rm-step-num">01</span> 東橫INN 八重洲北口</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="1" onclick="selectRouteNode('d1227', 1, this)"><span class="rm-step-num">02</span> UNIQLO 銀座 12層全球旗艦店</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="2" onclick="selectRouteNode('d1227', 2, this)"><span class="rm-step-num">03</span> 資生堂 Parlour 銀座本店</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="3" onclick="selectRouteNode('d1227', 3, this)"><span class="rm-step-num">04</span> GINZA SIX 空中花園 ＆ 和牛晚餐</button>
         </div>
 
-        <p class="rm-route-note" aria-live="polite"></p>
         <div class="rm-Stage-grid">
           <!-- Left: Vector Archival Route Canvas OR Live Street Iframe -->
           <div class="rm-canvas-wrap">
-            <div class="rm-view-pane active" data-rm-view="street"><iframe class="rm-street-iframe" loading="lazy" title="地面路線地圖" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+            <div class="rm-view-pane active" data-rm-view="sketch"><svg class="rm-sketch" viewBox="0 0 400 320" role="img" aria-label="當日路線示意圖"></svg></div>
           </div>
 
           <!-- Right: Active Stop Concierge Inspector -->
@@ -5973,18 +5992,17 @@ body.theme-night .lanyard-action-btn {
             <span class="rm-badge">📍 DAILY GROUND ROUTE // 當日地面路線</span>
             <span class="rm-zone-code">ASAKUSA SENSŌ-JI ➔ TOKYO SKYTREE</span>
           </div>
-          <div class="rm-mode-btns"><button type="button" class="rm-mode-btn" data-mode="walking" aria-pressed="false" onclick="switchMiniMapView('d1228', 'walking')">步行路線</button><button type="button" class="rm-mode-btn" data-mode="transit" aria-pressed="false" onclick="switchMiniMapView('d1228', 'transit')">公共交通</button></div>
+
         </div>
 
         <div class="rm-chain-bar">
           <button type="button" class="rm-step-pill active" data-node-idx="0" onclick="selectRouteNode('d1228', 0, this)"><span class="rm-step-num">01</span> 淺草寺 雷門 ＆ 仲見世通</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="1" onclick="selectRouteNode('d1228', 1, this)"><span class="rm-step-num">02</span> 隅田川水岸步道 (Tokyo Mizumachi)</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="2" onclick="selectRouteNode('d1228', 2, this)"><span class="rm-step-num">03</span> 東京晴空塔 Tokyo Skytree</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="3" onclick="selectRouteNode('d1228', 3, this)"><span class="rm-step-num">04</span> 東橫INN 行李斷捨離 (寄存大箱)</button>
         </div>
 
-        <p class="rm-route-note" aria-live="polite"></p>
         <div class="rm-Stage-grid">
           <!-- Left: Vector Archival Route Canvas OR Live Street Iframe -->
           <div class="rm-canvas-wrap">
-            <div class="rm-view-pane active" data-rm-view="street"><iframe class="rm-street-iframe" loading="lazy" title="地面路線地圖" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+            <div class="rm-view-pane active" data-rm-view="sketch"><svg class="rm-sketch" viewBox="0 0 400 320" role="img" aria-label="當日路線示意圖"></svg></div>
           </div>
 
           <!-- Right: Active Stop Concierge Inspector -->
@@ -6133,18 +6151,17 @@ body.theme-night .lanyard-action-btn {
             <span class="rm-badge">📍 DAILY GROUND ROUTE // 當日地面路線</span>
             <span class="rm-zone-code">TOKYO 🚄 ECHIGO-YUZAWA // SNOW COUNTRY</span>
           </div>
-          <div class="rm-mode-btns"><button type="button" class="rm-mode-btn" data-mode="walking" aria-pressed="false" onclick="switchMiniMapView('d1229', 'walking')">步行路線</button><button type="button" class="rm-mode-btn" data-mode="transit" aria-pressed="false" onclick="switchMiniMapView('d1229', 'transit')">公共交通</button></div>
+
         </div>
 
         <div class="rm-chain-bar">
           <button type="button" class="rm-step-pill active" data-node-idx="0" onclick="selectRouteNode('d1229', 0, this)"><span class="rm-step-num">01</span> 東京站 上越新幹線月台 (20–23番線)</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="1" onclick="selectRouteNode('d1229', 1, this)"><span class="rm-step-num">02</span> 越後湯澤站 (西口溫泉街)</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="2" onclick="selectRouteNode('d1229', 2, this)"><span class="rm-step-num">03</span> 越後湯澤「雪之花」溫泉旅館</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="3" onclick="selectRouteNode('d1229', 3, this)"><span class="rm-step-num">04</span> 湯澤高原 / GALA 雪場 (6人會合開滑)</button>
         </div>
 
-        <p class="rm-route-note" aria-live="polite"></p>
         <div class="rm-Stage-grid">
           <!-- Left: Vector Archival Route Canvas OR Live Street Iframe -->
           <div class="rm-canvas-wrap">
-            <div class="rm-view-pane active" data-rm-view="street"><iframe class="rm-street-iframe" loading="lazy" title="地面路線地圖" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+            <div class="rm-view-pane active" data-rm-view="sketch"><svg class="rm-sketch" viewBox="0 0 400 320" role="img" aria-label="當日路線示意圖"></svg></div>
           </div>
 
           <!-- Right: Active Stop Concierge Inspector -->
@@ -6285,18 +6302,17 @@ body.theme-night .lanyard-action-btn {
             <span class="rm-badge">📍 DAILY GROUND ROUTE // 當日地面路線</span>
             <span class="rm-zone-code">GALA YUZAWA & ISHIUCHI // JAPOW & SAKE</span>
           </div>
-          <div class="rm-mode-btns"><button type="button" class="rm-mode-btn" data-mode="walking" aria-pressed="false" onclick="switchMiniMapView('d1230', 'walking')">步行路線</button><button type="button" class="rm-mode-btn" data-mode="transit" aria-pressed="false" onclick="switchMiniMapView('d1230', 'transit')">公共交通</button></div>
+
         </div>
 
         <div class="rm-chain-bar">
           <button type="button" class="rm-step-pill active" data-node-idx="0" onclick="selectRouteNode('d1230', 0, this)"><span class="rm-step-num">01</span> 雪之花 晨間早餐出發</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="1" onclick="selectRouteNode('d1230', 1, this)"><span class="rm-step-num">02</span> GALA 湯澤 ／ 石打丸山 (三山連通)</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="2" onclick="selectRouteNode('d1230', 2, this)"><span class="rm-step-num">03</span> 越後湯澤站「ぽんしゅ館」清酒博物館</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="3" onclick="selectRouteNode('d1230', 3, this)"><span class="rm-step-num">04</span> 雪之花 私人貸切風呂 ＆ 溫泉街歡聚</button>
         </div>
 
-        <p class="rm-route-note" aria-live="polite"></p>
         <div class="rm-Stage-grid">
           <!-- Left: Vector Archival Route Canvas OR Live Street Iframe -->
           <div class="rm-canvas-wrap">
-            <div class="rm-view-pane active" data-rm-view="street"><iframe class="rm-street-iframe" loading="lazy" title="地面路線地圖" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+            <div class="rm-view-pane active" data-rm-view="sketch"><svg class="rm-sketch" viewBox="0 0 400 320" role="img" aria-label="當日路線示意圖"></svg></div>
           </div>
 
           <!-- Right: Active Stop Concierge Inspector -->
@@ -6446,18 +6462,17 @@ body.theme-night .lanyard-action-btn {
             <span class="rm-badge">📍 DAILY GROUND ROUTE // 當日地面路線</span>
             <span class="rm-zone-code">NEW YEAR'S EVE // OMISOKA IN SNOW COUNTRY</span>
           </div>
-          <div class="rm-mode-btns"><button type="button" class="rm-mode-btn" data-mode="walking" aria-pressed="false" onclick="switchMiniMapView('d1231', 'walking')">步行路線</button><button type="button" class="rm-mode-btn" data-mode="transit" aria-pressed="false" onclick="switchMiniMapView('d1231', 'transit')">公共交通</button></div>
+
         </div>
 
         <div class="rm-chain-bar">
           <button type="button" class="rm-step-pill active" data-node-idx="0" onclick="selectRouteNode('d1231', 0, this)"><span class="rm-step-num">01</span> 湯澤雪場 2026 收官之滑</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="1" onclick="selectRouteNode('d1231', 1, this)"><span class="rm-step-num">02</span> 雪之花 6F 大浴場「除夕洗塵湯」</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="2" onclick="selectRouteNode('d1231', 2, this)"><span class="rm-step-num">03</span> 除夕跨年會席 ＆ 傳統「年越蕎麥麵」</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="3" onclick="selectRouteNode('d1231', 3, this)"><span class="rm-step-num">04</span> 榻榻米暖爐舉杯 · 2027 跨年倒數</button>
         </div>
 
-        <p class="rm-route-note" aria-live="polite"></p>
         <div class="rm-Stage-grid">
           <!-- Left: Vector Archival Route Canvas OR Live Street Iframe -->
           <div class="rm-canvas-wrap">
-            <div class="rm-view-pane active" data-rm-view="street"><iframe class="rm-street-iframe" loading="lazy" title="地面路線地圖" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+            <div class="rm-view-pane active" data-rm-view="sketch"><svg class="rm-sketch" viewBox="0 0 400 320" role="img" aria-label="當日路線示意圖"></svg></div>
           </div>
 
           <!-- Right: Active Stop Concierge Inspector -->
@@ -6607,18 +6622,17 @@ body.theme-night .lanyard-action-btn {
             <span class="rm-badge">📍 DAILY GROUND ROUTE // 當日地面路線</span>
             <span class="rm-zone-code">NEW YEAR'S DAY // FIRST RUN ➔ RETURN TO TOKYO</span>
           </div>
-          <div class="rm-mode-btns"><button type="button" class="rm-mode-btn" data-mode="walking" aria-pressed="false" onclick="switchMiniMapView('d0101', 'walking')">步行路線</button><button type="button" class="rm-mode-btn" data-mode="transit" aria-pressed="false" onclick="switchMiniMapView('d0101', 'transit')">公共交通</button></div>
+
         </div>
 
         <div class="rm-chain-bar">
           <button type="button" class="rm-step-pill active" data-node-idx="0" onclick="selectRouteNode('d0101', 0, this)"><span class="rm-step-num">01</span> 雪之花 元旦早餐 ＆ 寄存行李</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="1" onclick="selectRouteNode('d0101', 1, this)"><span class="rm-step-num">02</span> 元旦首滑 (初滑り) ＆ 歸還裝備</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="2" onclick="selectRouteNode('d0101', 2, this)"><span class="rm-step-num">03</span> 越後湯澤站 ➔ 東京站 (上越新幹線)</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="3" onclick="selectRouteNode('d0101', 3, this)"><span class="rm-step-num">04</span> 重返 東橫INN 東京站八重洲北口</button>
         </div>
 
-        <p class="rm-route-note" aria-live="polite"></p>
         <div class="rm-Stage-grid">
           <!-- Left: Vector Archival Route Canvas OR Live Street Iframe -->
           <div class="rm-canvas-wrap">
-            <div class="rm-view-pane active" data-rm-view="street"><iframe class="rm-street-iframe" loading="lazy" title="地面路線地圖" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+            <div class="rm-view-pane active" data-rm-view="sketch"><svg class="rm-sketch" viewBox="0 0 400 320" role="img" aria-label="當日路線示意圖"></svg></div>
           </div>
 
           <!-- Right: Active Stop Concierge Inspector -->
@@ -6760,18 +6774,17 @@ body.theme-night .lanyard-action-btn {
             <span class="rm-badge">📍 DAILY GROUND ROUTE // 當日地面路線</span>
             <span class="rm-zone-code">MEIJI JINGU HATSUMODE ➔ GINZA HATSU-URI</span>
           </div>
-          <div class="rm-mode-btns"><button type="button" class="rm-mode-btn" data-mode="walking" aria-pressed="false" onclick="switchMiniMapView('d0102', 'walking')">步行路線</button><button type="button" class="rm-mode-btn" data-mode="transit" aria-pressed="false" onclick="switchMiniMapView('d0102', 'transit')">公共交通</button></div>
+
         </div>
 
         <div class="rm-chain-bar">
           <button type="button" class="rm-step-pill active" data-node-idx="0" onclick="selectRouteNode('d0102', 0, this)"><span class="rm-step-num">01</span> 明治神宮「初詣」新年祈福參拜</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="1" onclick="selectRouteNode('d0102', 1, this)"><span class="rm-step-num">02</span> 銀座三越 ／ 松屋銀座「初賣」福袋</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="2" onclick="selectRouteNode('d0102', 2, this)"><span class="rm-step-num">03</span> 銀座／日本橋 新春慶功下午茶</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="3" onclick="selectRouteNode('d0102', 3, this)"><span class="rm-step-num">04</span> 東橫INN 終極戰利品打包夜</button>
         </div>
 
-        <p class="rm-route-note" aria-live="polite"></p>
         <div class="rm-Stage-grid">
           <!-- Left: Vector Archival Route Canvas OR Live Street Iframe -->
           <div class="rm-canvas-wrap">
-            <div class="rm-view-pane active" data-rm-view="street"><iframe class="rm-street-iframe" loading="lazy" title="地面路線地圖" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+            <div class="rm-view-pane active" data-rm-view="sketch"><svg class="rm-sketch" viewBox="0 0 400 320" role="img" aria-label="當日路線示意圖"></svg></div>
           </div>
 
           <!-- Right: Active Stop Concierge Inspector -->
@@ -6912,18 +6925,17 @@ body.theme-night .lanyard-action-btn {
             <span class="rm-badge">📍 DAILY GROUND ROUTE // 當日地面路線</span>
             <span class="rm-zone-code">TOKYO STATION GRANSTA ➔ N'EX ✈ HKG</span>
           </div>
-          <div class="rm-mode-btns"><button type="button" class="rm-mode-btn" data-mode="walking" aria-pressed="false" onclick="switchMiniMapView('d0103', 'walking')">步行路線</button><button type="button" class="rm-mode-btn" data-mode="transit" aria-pressed="false" onclick="switchMiniMapView('d0103', 'transit')">公共交通</button></div>
+
         </div>
 
         <div class="rm-chain-bar">
           <button type="button" class="rm-step-pill active" data-node-idx="0" onclick="selectRouteNode('d0103', 0, this)"><span class="rm-step-num">01</span> 東京站 GRANSTA ＆ 一番街手信衝刺</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="1" onclick="selectRouteNode('d0103', 1, this)"><span class="rm-step-num">02</span> 東京站 地下總武月台 ➔ 成田特快 N'EX</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="2" onclick="selectRouteNode('d0103', 2, this)"><span class="rm-step-num">03</span> 成田國際機場 T2 (免稅店最後衝刺)</button><span class="rm-chain-arrow">▸</span><button type="button" class="rm-step-pill " data-node-idx="3" onclick="selectRouteNode('d0103', 3, this)"><span class="rm-step-num">04</span> 國泰 CX505 起飛 ✈ 平安抵達香港</button>
         </div>
 
-        <p class="rm-route-note" aria-live="polite"></p>
         <div class="rm-Stage-grid">
           <!-- Left: Vector Archival Route Canvas OR Live Street Iframe -->
           <div class="rm-canvas-wrap">
-            <div class="rm-view-pane active" data-rm-view="street"><iframe class="rm-street-iframe" loading="lazy" title="地面路線地圖" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+            <div class="rm-view-pane active" data-rm-view="sketch"><svg class="rm-sketch" viewBox="0 0 400 320" role="img" aria-label="當日路線示意圖"></svg></div>
           </div>
 
           <!-- Right: Active Stop Concierge Inspector -->
@@ -8418,6 +8430,94 @@ function groundRoute(nodes, idx, mode, dayId) {
     description: local ? `${start} → ${node.name}` : node.name,
     note: flight ? '此段為航班，地圖只顯示機場位置；請選日本境內站點查看地面路線。' : !local ? '此處為起點或同一建築內活動；地圖顯示地點，請選下一站查看路線。' : '實線路線由 Google Maps 提供；可切換步行／公共交通。站內月台及室內樓層請跟現場指示。' };
 }
+// 3. Route sketch on a static OpenStreetMap street base (img/tokyo-base.svg), to spot back-and-forth between stops.
+const SKETCH_BOX = { n: 35.727, s: 35.6325, w: 139.685, e: 139.830 }; // about 13 x 10.5 km, must match img/tokyo-base.svg
+const YUZAWA = [36.0, 139.76, '越後湯澤'];
+const SPOTS = {
+  'Tokyo+Station': [35.6812, 139.7671],
+  '東横INN東京駅八重洲北口': [35.6830, 139.7700],
+  'GRANSTA+TOKYO': [35.6805, 139.7670],
+  'Marunouchi+Brick+Square': [35.6795, 139.7636],
+  'KITTE+Marunouchi': [35.6797, 139.7648],
+  'Marunouchi+Illumination+Tokyo': [35.6785, 139.7628],
+  'Omotesando+Hills': [35.6672, 139.7087],
+  'Roppongi+Keyakizaka+Dori': [35.6597, 139.7290],
+  'Toyosu+Senkyakubanrai': [35.6455, 139.7835],
+  'Tokyo+Toyosu+Manyo+Club': [35.6452, 139.7842],
+  'UNIQLO+Ginza': [35.6707, 139.7650],
+  'Shiseido+Parlour+Salon+de+Cafe+Ginza': [35.6696, 139.7615],
+  'GINZA+SIX': [35.6698, 139.7640],
+  'Ginza+Mitsukoshi': [35.6716, 139.7660],
+  'HARBS+Coredo+Muromachi': [35.6870, 139.7735],
+  'Senso-ji+Temple': [35.7148, 139.7967],
+  'SUMIDA+RIVER+WALK': [35.7115, 139.8010],
+  'Tokyo+Skytree': [35.7101, 139.8107],
+  'Meiji+Jingu': [35.6764, 139.6993],
+  // Off the sketch: a third value is the edge label, placed in the real direction.
+  'Hong+Kong+International+Airport': [35.50, 139.60, '香港'],
+  'Narita+Airport+Terminal+2': [35.72, 140.10, '成田機場'],
+  'Hakone+Yumoto+Station': [35.50, 139.60, '箱根'],
+  'Echigo-Yuzawa+Station': YUZAWA,
+  '越後湯沢温泉+湯けむりの宿+雪の花': YUZAWA,
+  'Yuzawa+Kogen+Ski+Resort': YUZAWA,
+  'GALA+Yuzawa+Snow+Resort': YUZAWA,
+  'Ponshukan+Echigo-Yuzawa': YUZAWA
+};
+function sketchXY(lat, lng) {
+  const b = SKETCH_BOX;
+  return { x: (lng - b.w) / (b.e - b.w) * 400, y: (b.n - lat) / (b.n - b.s) * 320 };
+}
+const SKETCH_LABELS = [['新宿',35.6896,139.7006],['澀谷',35.6580,139.7016],['上野',35.7138,139.7770],['品川',35.6285,139.7388],['淺草',35.7117,139.7966],['銀座',35.6717,139.7650]]
+  .map(([t, lat, lng]) => { const p = sketchXY(lat, lng); return `<text x="${p.x}" y="${p.y}" class="rm-sk-area" text-anchor="middle">${t}</text>`; }).join('')
+  + `<text x="386" y="20" class="rm-sk-north" text-anchor="middle">N</text><path d="M386 25 L381 37 L386 34 L391 37 Z" class="rm-sk-north"/>`
+  + `<text x="8" y="314" class="rm-sk-caption">© OpenStreetMap contributors ・ 位置約數</text>`;
+let sketchBaseLoad = null;
+function loadSketchBase() {
+  sketchBaseLoad = sketchBaseLoad || fetch('img/tokyo-base.svg').then(r => r.ok ? r.text() : '')
+    .then(svg => { if (svg) document.body.insertAdjacentHTML('beforeend', svg); }).catch(() => {});
+  return sketchBaseLoad;
+}
+function drawRouteSketch(wrap, nodes, idx, dayId) {
+  const svg = wrap.querySelector('.rm-sketch');
+  if (!svg) return;
+  const placed = [];
+  const pts = nodes.map(n => {
+    const spot = SPOTS[n.q];
+    if (!spot) return null;
+    let { x, y } = sketchXY(spot[0], spot[1]);
+    if (spot[2]) return { x: Math.min(366, Math.max(34, x)), y: Math.min(290, Math.max(30, y)), off: spot[2] };
+    while (placed.some(p => Math.hypot(p.x - x, p.y - y) < 16)) { x += 15; y -= 6; } // nudge stops in the same block apart
+    placed.push({ x, y });
+    return { x, y };
+  });
+  wrap.querySelector('.rm-canvas-wrap').hidden = !pts.some(p => p && !p.off);
+  let legs = '', marks = '';
+  pts.forEach((to, i) => {
+    const from = pts[dayId === 'd1226' && i === 3 ? 0 : i - 1]; // Hakone is an alternative trip from the hotel.
+    if (!i || !from || !to || (from.off && from.off === to.off)) return;
+    const len = Math.hypot(to.x - from.x, to.y - from.y);
+    if (len < 24) return;
+    const ux = (to.x - from.x) / len, uy = (to.y - from.y) / len, pad = 12;
+    const cls = 'rm-sk-leg' + (i === idx ? ' sel' : '') + (from.off || to.off ? ' far' : '');
+    legs += `<line class="${cls}" x1="${from.x + ux * pad}" y1="${from.y + uy * pad}" x2="${to.x - ux * pad}" y2="${to.y - uy * pad}" marker-end="url(#rm-arrow-${dayId}${i === idx ? '-sel' : ''})"/>`;
+  });
+  const offDone = new Set();
+  pts.forEach((p, i) => {
+    if (!p) return;
+    if (p.off) {
+      if (offDone.has(p.off)) return;
+      offDone.add(p.off);
+      const w = p.off.length * 13 + 16;
+      marks += `<g class="rm-sk-off"><rect x="${p.x - w / 2}" y="${p.y - 12}" width="${w}" height="24" rx="12"/><text x="${p.x}" y="${p.y + 4.5}" text-anchor="middle">${p.off}</text></g>`;
+      return;
+    }
+    marks += `<g class="rm-sk-stop${i === idx ? ' sel' : ''}" onclick="selectRouteNode('${dayId}', ${i})"><circle cx="${p.x}" cy="${p.y}" r="10"/><text x="${p.x}" y="${p.y + 4}" text-anchor="middle">${i + 1}</text></g>`;
+  });
+  const marker = (id, cls) => `<marker id="${id}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 Z" class="${cls}"/></marker>`;
+  svg.innerHTML = `<defs>${marker('rm-arrow-' + dayId, 'rm-sk-head')}${marker('rm-arrow-' + dayId + '-sel', 'rm-sk-head sel')}</defs>`
+    + `<rect width="400" height="320" class="rm-sk-bg"/><use href="#tokyo-base" width="400" height="320"/>` + SKETCH_LABELS + legs + marks;
+  loadSketchBase();
+}
 window.selectRouteNode = function(dayId, idx) {
   const wrap = document.getElementById('rm-' + dayId);
   if (!wrap) return;
@@ -8430,25 +8530,13 @@ window.selectRouteNode = function(dayId, idx) {
   wrap.querySelectorAll('.rm-step-pill').forEach((b,i) => {
     b.classList.toggle('active', i === idx); b.setAttribute('aria-pressed', String(i === idx));
   });
-  wrap.querySelectorAll('.rm-mode-btn').forEach(b => {
-    const active = b.dataset.mode === route.travelmode;
-    b.classList.toggle('active', active); b.setAttribute('aria-pressed', String(active));
-  });
   const fields = {step: `STOP ${node.id} // ${node.time}`, name: node.name, leg: node.leg, tip: `💡 ${node.tip}`};
   Object.entries(fields).forEach(([key,value]) => {
     const el = document.getElementById('rmi-' + key + '-' + dayId); if(el) el.textContent = value;
   });
   const link = document.getElementById('rmi-link-' + dayId);
   if (link) { link.href = route.external; link.textContent = '在 Google Maps 開啟此段路線 ↗'; }
-  const iframe = wrap.querySelector('.rm-street-iframe');
-  if (iframe) { iframe.title = route.description; if (iframe.getAttribute('src') !== route.embed) iframe.src = route.embed; }
-  wrap.querySelector('.rm-route-note').textContent = route.note;
-};
-window.switchMiniMapView = function(dayId, mode) {
-  const wrap = document.getElementById('rm-' + dayId);
-  if (!wrap || !['walking', 'transit'].includes(mode)) return;
-  wrap.dataset.routeMode = mode;
-  selectRouteNode(dayId, Number(wrap.dataset.selectedNode || 0));
+  drawRouteSketch(wrap, nodes, idx, dayId);
 };
 document.querySelectorAll('.daily-route-minimap').forEach(wrap => {
   const dayId = wrap.id.replace('rm-', '');
